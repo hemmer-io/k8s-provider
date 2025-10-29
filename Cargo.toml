@@ -1,0 +1,24 @@
+[package]
+name = "hemmer-kubernetes-provider"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+# Hemmer provider runtime (placeholder)
+# hemmer-runtime = "0.1"
+
+# SDK dependencies for all services
+# Kubernetes SDK dependencies
+kube = { version = "0.87", features = ["runtime", "derive"] }
+k8s-openapi = { version = "0.20", features = ["v1_28"] }
+
+
+# Standard dependencies
+anyhow = "1"
+thiserror = "1.0"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+tokio = { version = "1", features = ["full"] }
+
+[dev-dependencies]
+tokio-test = "0.4"
