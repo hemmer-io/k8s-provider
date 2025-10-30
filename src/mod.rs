@@ -16,9 +16,9 @@ impl<'a> Service<'a> {
         Self { provider }
     }
 
-    /// Get openid-configuration resource handler
-    pub fn openid-configuration(&self) -> resources::Openid-configuration<'_> {
-        resources::Openid-configuration::new(self.provider)
+    /// Get openid_configuration resource handler
+    pub fn openid_configuration(&self) -> resources::Openid_configuration<'_> {
+        resources::Openid_configuration::new(self.provider)
     }
 
 }

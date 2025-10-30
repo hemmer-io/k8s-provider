@@ -1,17 +1,17 @@
-//! Logs_openapi Service
+//! Logs Service
 //!
-//! Auto-generated service module for > logs
+//! Auto-generated service module for logs
 
 pub mod resources;
 
 use crate::{ProviderError, Result};
 
-/// Service handler for > logs
-pub struct Logs_openapiService<'a> {
+/// Service handler for logs
+pub struct LogsService<'a> {
     provider: &'a crate::KubernetesProvider,
 }
 
-impl<'a> Logs_openapiService<'a> {
+impl<'a> LogsService<'a> {
     pub(crate) fn new(provider: &'a crate::KubernetesProvider) -> Self {
         Self { provider }
     }
@@ -20,6 +20,7 @@ impl<'a> Logs_openapiService<'a> {
     pub fn log(&self) -> resources::Log<'_> {
         resources::Log::new(self.provider)
     }
+
 }
 
 #[cfg(test)]

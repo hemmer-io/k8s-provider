@@ -3,103 +3,135 @@
 //! Auto-generated unified provider from kubernetes SDK version v1
 //!
 //! This provider includes multiple services:
-//! - internal
-//! - events
-//! - storage
-//! - resource
-//! -
+//! - apis_internal
+//! - apis_events
+//! - apis_storage
+//! - apis_resource
+//! - 
 //! - logs
-//! - storagemigration
-//! - storage
+//! - apis_storagemigration
+//! - apis_storage
 //! - apis
-//! - resource
-//! - admissionregistration
-//! - discovery
-//! - apiextensions
-//! - coordination
-//! - certificates
-//! - coordination
-//! - rbac
-//! - flowcontrol
-//! - node
-//! - rbac
-//! - coordination
-//! - storagemigration
-//! - authorization
-//! - autoscaling
-//! - admissionregistration
+//! - apis_resource
+//! - apis_admissionregistration
+//! - apis
+//! - apis_apiextensions
+//! - apis_coordination
+//! - apis_certificates
+//! - apis_coordination
+//! - apis_rbac
+//! - apis_flowcontrol
+//! - apis_node
+//! - apis_rbac
+//! - apis_coordination
+//! - apis_storagemigration
+//! - apis_authorization
+//! - apis_autoscaling
+//! - apis_admissionregistration
 //! - version
-//! - apps_v1
-//! - autoscaling_v1
-//! - certificates
-//! - core_v1
-//! - policy_v1
-//! - scheduling
-//! - authentication
-//! - admissionregistration
-//! - batch
-//! - authorization
-//! - apiextensions
-//! - node
-//! - networking
-//! - apiregistration
-//! - networking
-//! - certificates
-//! - coordination
-//! - autoscaling_v2
-//! - networking
-//! - authentication
-//! - policy
-//! - internal
-//! - apps
-//! - api_openapi
-//! - storage
-//! - certificates
-//! - events
-//! - flowcontrol
-//! - scheduling
-//! - discovery
-//! - resource
-//! - resource
-//! - apiregistration
-//! - batch_v1
-//! - admissionregistration
-//! - resource
-//! - openid_v1_jwks
+//! - apis_apps
+//! - apis_autoscaling
+//! - apis_certificates
+//! - api
+//! - apis_policy
+//! - apis_scheduling
+//! - apis_authentication
+//! - apis_admissionregistration
+//! - apis_batch
+//! - apis_authorization
+//! - apis_apiextensions
+//! - apis_node
+//! - apis_networking
+//! - apis_apiregistration
+//! - apis_networking
+//! - apis_certificates
+//! - apis_coordination
+//! - apis_autoscaling
+//! - apis_networking
+//! - apis_authentication
+//! - apis_policy
+//! - apis_internal
+//! - apis_apps
+//! - api
+//! - apis_storage
+//! - apis_certificates
+//! - apis_events
+//! - apis_flowcontrol
+//! - apis_scheduling
+//! - apis
+//! - apis_resource
+//! - apis_resource
+//! - apis_apiregistration
+//! - apis_batch
+//! - apis_admissionregistration
+//! - apis_resource
+//! - openid
 
-pub mod admissionregistration;
-pub mod api_openapi;
-pub mod apiextensions;
-pub mod apiregistration;
-pub mod apis;
-pub mod apps;
-pub mod apps_v1;
-pub mod authentication;
-pub mod authorization;
-pub mod autoscaling;
-pub mod autoscaling_v1;
-pub mod autoscaling_v2;
-pub mod batch;
-pub mod batch_v1;
-pub mod certificates;
-pub mod coordination;
-pub mod core_v1;
-pub mod discovery;
-pub mod events;
-pub mod flowcontrol;
-pub mod internal;
+
+pub mod apis_internal;
+pub mod apis_events;
+pub mod apis_storage;
+pub mod apis_resource;
+pub mod ;
 pub mod logs;
-pub mod networking;
-pub mod node;
-pub mod openid_v1_jwks;
-pub mod policy;
-pub mod policy_v1;
-pub mod rbac;
-pub mod resource;
-pub mod scheduling;
-pub mod storage;
-pub mod storagemigration;
+pub mod apis_storagemigration;
+pub mod apis_storage;
+pub mod apis;
+pub mod apis_resource;
+pub mod apis_admissionregistration;
+pub mod apis;
+pub mod apis_apiextensions;
+pub mod apis_coordination;
+pub mod apis_certificates;
+pub mod apis_coordination;
+pub mod apis_rbac;
+pub mod apis_flowcontrol;
+pub mod apis_node;
+pub mod apis_rbac;
+pub mod apis_coordination;
+pub mod apis_storagemigration;
+pub mod apis_authorization;
+pub mod apis_autoscaling;
+pub mod apis_admissionregistration;
 pub mod version;
+pub mod apis_apps;
+pub mod apis_autoscaling;
+pub mod apis_certificates;
+pub mod api;
+pub mod apis_policy;
+pub mod apis_scheduling;
+pub mod apis_authentication;
+pub mod apis_admissionregistration;
+pub mod apis_batch;
+pub mod apis_authorization;
+pub mod apis_apiextensions;
+pub mod apis_node;
+pub mod apis_networking;
+pub mod apis_apiregistration;
+pub mod apis_networking;
+pub mod apis_certificates;
+pub mod apis_coordination;
+pub mod apis_autoscaling;
+pub mod apis_networking;
+pub mod apis_authentication;
+pub mod apis_policy;
+pub mod apis_internal;
+pub mod apis_apps;
+pub mod api;
+pub mod apis_storage;
+pub mod apis_certificates;
+pub mod apis_events;
+pub mod apis_flowcontrol;
+pub mod apis_scheduling;
+pub mod apis;
+pub mod apis_resource;
+pub mod apis_resource;
+pub mod apis_apiregistration;
+pub mod apis_batch;
+pub mod apis_admissionregistration;
+pub mod apis_resource;
+pub mod openid;
+
 
 use thiserror::Error;
 
@@ -125,175 +157,275 @@ pub type Result<T> = std::result::Result<T, ProviderError>;
 /// Unified provider client for Kubernetes
 pub struct KubernetesProvider {
     kube_client: kube::Client,
+
 }
 
 impl KubernetesProvider {
-    /// Get internal service handler
-    pub fn internal(&self) -> internal::Apis__internalService<'_> {
-        internal::Apis__internalService::new(self)
+    /// Create a new unified provider instance
+    pub async fn new() -> Result<Self> {
+        let kube_client = kube::Client::try_default()
+            .await
+            .map_err(|e| ProviderError::SdkError(format!("Failed to create kube client: {}", e)))?;
+
+        Ok(Self {
+            kube_client,
+
+        })
     }
 
-    /// Get events service handler
-    pub fn events(&self) -> events::Apis__eventsService<'_> {
-        events::Apis__eventsService::new(self)
+    /// Get apis_internal service handler
+    pub fn apis_internal(&self) -> apis_internal::Apis_internalService<'_> {
+        apis_internal::Apis_internalService::new(self)
     }
-
-    /// Get storage service handler
-    pub fn storage(&self) -> storage::Apis__storageService<'_> {
-        storage::Apis__storageService::new(self)
+    /// Get apis_events service handler
+    pub fn apis_events(&self) -> apis_events::Apis_eventsService<'_> {
+        apis_events::Apis_eventsService::new(self)
     }
-
-    /// Get resource service handler
-    pub fn resource(&self) -> resource::Apis__resourceService<'_> {
-        resource::Apis__resourceService::new(self)
+    /// Get apis_storage service handler
+    pub fn apis_storage(&self) -> apis_storage::Apis_storageService<'_> {
+        apis_storage::Apis_storageService::new(self)
     }
-
+    /// Get apis_resource service handler
+    pub fn apis_resource(&self) -> apis_resource::Apis_resourceService<'_> {
+        apis_resource::Apis_resourceService::new(self)
+    }
+    /// Get  service handler
+    pub fn (&self) -> ::Service<'_> {
+        ::Service::new(self)
+    }
     /// Get logs service handler
-    pub fn logs(&self) -> logs::Logs_openapiService<'_> {
-        logs::Logs_openapiService::new(self)
+    pub fn logs(&self) -> logs::LogsService<'_> {
+        logs::LogsService::new(self)
     }
-
-    /// Get storagemigration service handler
-    pub fn storagemigration(&self) -> storagemigration::Apis__storagemigrationService<'_> {
-        storagemigration::Apis__storagemigrationService::new(self)
+    /// Get apis_storagemigration service handler
+    pub fn apis_storagemigration(&self) -> apis_storagemigration::Apis_storagemigrationService<'_> {
+        apis_storagemigration::Apis_storagemigrationService::new(self)
     }
-
+    /// Get apis_storage service handler
+    pub fn apis_storage(&self) -> apis_storage::Apis_storageService<'_> {
+        apis_storage::Apis_storageService::new(self)
+    }
     /// Get apis service handler
-    pub fn apis(&self) -> apis::Apis_openapiService<'_> {
-        apis::Apis_openapiService::new(self)
+    pub fn apis(&self) -> apis::ApisService<'_> {
+        apis::ApisService::new(self)
     }
-
-    /// Get admissionregistration service handler
-    pub fn admissionregistration(
-        &self,
-    ) -> admissionregistration::Apis__admissionregistrationService<'_> {
-        admissionregistration::Apis__admissionregistrationService::new(self)
+    /// Get apis_resource service handler
+    pub fn apis_resource(&self) -> apis_resource::Apis_resourceService<'_> {
+        apis_resource::Apis_resourceService::new(self)
     }
-
-    /// Get discovery service handler
-    pub fn discovery(&self) -> discovery::Apis__discoveryService<'_> {
-        discovery::Apis__discoveryService::new(self)
+    /// Get apis_admissionregistration service handler
+    pub fn apis_admissionregistration(&self) -> apis_admissionregistration::Apis_admissionregistrationService<'_> {
+        apis_admissionregistration::Apis_admissionregistrationService::new(self)
     }
-
-    /// Get apiextensions service handler
-    pub fn apiextensions(&self) -> apiextensions::Apis__apiextensionsService<'_> {
-        apiextensions::Apis__apiextensionsService::new(self)
+    /// Get apis service handler
+    pub fn apis(&self) -> apis::ApisService<'_> {
+        apis::ApisService::new(self)
     }
-
-    /// Get coordination service handler
-    pub fn coordination(&self) -> coordination::Apis__coordinationService<'_> {
-        coordination::Apis__coordinationService::new(self)
+    /// Get apis_apiextensions service handler
+    pub fn apis_apiextensions(&self) -> apis_apiextensions::Apis_apiextensionsService<'_> {
+        apis_apiextensions::Apis_apiextensionsService::new(self)
     }
-
-    /// Get certificates service handler
-    pub fn certificates(&self) -> certificates::Apis__certificatesService<'_> {
-        certificates::Apis__certificatesService::new(self)
+    /// Get apis_coordination service handler
+    pub fn apis_coordination(&self) -> apis_coordination::Apis_coordinationService<'_> {
+        apis_coordination::Apis_coordinationService::new(self)
     }
-
-    /// Get rbac service handler
-    pub fn rbac(&self) -> rbac::Apis__rbacService<'_> {
-        rbac::Apis__rbacService::new(self)
+    /// Get apis_certificates service handler
+    pub fn apis_certificates(&self) -> apis_certificates::Apis_certificatesService<'_> {
+        apis_certificates::Apis_certificatesService::new(self)
     }
-
-    /// Get flowcontrol service handler
-    pub fn flowcontrol(&self) -> flowcontrol::Apis__flowcontrolService<'_> {
-        flowcontrol::Apis__flowcontrolService::new(self)
+    /// Get apis_coordination service handler
+    pub fn apis_coordination(&self) -> apis_coordination::Apis_coordinationService<'_> {
+        apis_coordination::Apis_coordinationService::new(self)
     }
-
-    /// Get node service handler
-    pub fn node(&self) -> node::Apis__nodeService<'_> {
-        node::Apis__nodeService::new(self)
+    /// Get apis_rbac service handler
+    pub fn apis_rbac(&self) -> apis_rbac::Apis_rbacService<'_> {
+        apis_rbac::Apis_rbacService::new(self)
     }
-
-    /// Get authorization service handler
-    pub fn authorization(&self) -> authorization::Apis__authorizationService<'_> {
-        authorization::Apis__authorizationService::new(self)
+    /// Get apis_flowcontrol service handler
+    pub fn apis_flowcontrol(&self) -> apis_flowcontrol::Apis_flowcontrolService<'_> {
+        apis_flowcontrol::Apis_flowcontrolService::new(self)
     }
-
-    /// Get autoscaling service handler
-    pub fn autoscaling(&self) -> autoscaling::Apis__autoscaling_openapiService<'_> {
-        autoscaling::Apis__autoscaling_openapiService::new(self)
+    /// Get apis_node service handler
+    pub fn apis_node(&self) -> apis_node::Apis_nodeService<'_> {
+        apis_node::Apis_nodeService::new(self)
     }
-
+    /// Get apis_rbac service handler
+    pub fn apis_rbac(&self) -> apis_rbac::Apis_rbacService<'_> {
+        apis_rbac::Apis_rbacService::new(self)
+    }
+    /// Get apis_coordination service handler
+    pub fn apis_coordination(&self) -> apis_coordination::Apis_coordinationService<'_> {
+        apis_coordination::Apis_coordinationService::new(self)
+    }
+    /// Get apis_storagemigration service handler
+    pub fn apis_storagemigration(&self) -> apis_storagemigration::Apis_storagemigrationService<'_> {
+        apis_storagemigration::Apis_storagemigrationService::new(self)
+    }
+    /// Get apis_authorization service handler
+    pub fn apis_authorization(&self) -> apis_authorization::Apis_authorizationService<'_> {
+        apis_authorization::Apis_authorizationService::new(self)
+    }
+    /// Get apis_autoscaling service handler
+    pub fn apis_autoscaling(&self) -> apis_autoscaling::Apis_autoscalingService<'_> {
+        apis_autoscaling::Apis_autoscalingService::new(self)
+    }
+    /// Get apis_admissionregistration service handler
+    pub fn apis_admissionregistration(&self) -> apis_admissionregistration::Apis_admissionregistrationService<'_> {
+        apis_admissionregistration::Apis_admissionregistrationService::new(self)
+    }
     /// Get version service handler
-    pub fn version(&self) -> version::Version_openapiService<'_> {
-        version::Version_openapiService::new(self)
+    pub fn version(&self) -> version::VersionService<'_> {
+        version::VersionService::new(self)
+    }
+    /// Get apis_apps service handler
+    pub fn apis_apps(&self) -> apis_apps::Apis_appsService<'_> {
+        apis_apps::Apis_appsService::new(self)
+    }
+    /// Get apis_autoscaling service handler
+    pub fn apis_autoscaling(&self) -> apis_autoscaling::Apis_autoscalingService<'_> {
+        apis_autoscaling::Apis_autoscalingService::new(self)
+    }
+    /// Get apis_certificates service handler
+    pub fn apis_certificates(&self) -> apis_certificates::Apis_certificatesService<'_> {
+        apis_certificates::Apis_certificatesService::new(self)
+    }
+    /// Get api service handler
+    pub fn api(&self) -> api::ApiService<'_> {
+        api::ApiService::new(self)
+    }
+    /// Get apis_policy service handler
+    pub fn apis_policy(&self) -> apis_policy::Apis_policyService<'_> {
+        apis_policy::Apis_policyService::new(self)
+    }
+    /// Get apis_scheduling service handler
+    pub fn apis_scheduling(&self) -> apis_scheduling::Apis_schedulingService<'_> {
+        apis_scheduling::Apis_schedulingService::new(self)
+    }
+    /// Get apis_authentication service handler
+    pub fn apis_authentication(&self) -> apis_authentication::Apis_authenticationService<'_> {
+        apis_authentication::Apis_authenticationService::new(self)
+    }
+    /// Get apis_admissionregistration service handler
+    pub fn apis_admissionregistration(&self) -> apis_admissionregistration::Apis_admissionregistrationService<'_> {
+        apis_admissionregistration::Apis_admissionregistrationService::new(self)
+    }
+    /// Get apis_batch service handler
+    pub fn apis_batch(&self) -> apis_batch::Apis_batchService<'_> {
+        apis_batch::Apis_batchService::new(self)
+    }
+    /// Get apis_authorization service handler
+    pub fn apis_authorization(&self) -> apis_authorization::Apis_authorizationService<'_> {
+        apis_authorization::Apis_authorizationService::new(self)
+    }
+    /// Get apis_apiextensions service handler
+    pub fn apis_apiextensions(&self) -> apis_apiextensions::Apis_apiextensionsService<'_> {
+        apis_apiextensions::Apis_apiextensionsService::new(self)
+    }
+    /// Get apis_node service handler
+    pub fn apis_node(&self) -> apis_node::Apis_nodeService<'_> {
+        apis_node::Apis_nodeService::new(self)
+    }
+    /// Get apis_networking service handler
+    pub fn apis_networking(&self) -> apis_networking::Apis_networkingService<'_> {
+        apis_networking::Apis_networkingService::new(self)
+    }
+    /// Get apis_apiregistration service handler
+    pub fn apis_apiregistration(&self) -> apis_apiregistration::Apis_apiregistrationService<'_> {
+        apis_apiregistration::Apis_apiregistrationService::new(self)
+    }
+    /// Get apis_networking service handler
+    pub fn apis_networking(&self) -> apis_networking::Apis_networkingService<'_> {
+        apis_networking::Apis_networkingService::new(self)
+    }
+    /// Get apis_certificates service handler
+    pub fn apis_certificates(&self) -> apis_certificates::Apis_certificatesService<'_> {
+        apis_certificates::Apis_certificatesService::new(self)
+    }
+    /// Get apis_coordination service handler
+    pub fn apis_coordination(&self) -> apis_coordination::Apis_coordinationService<'_> {
+        apis_coordination::Apis_coordinationService::new(self)
+    }
+    /// Get apis_autoscaling service handler
+    pub fn apis_autoscaling(&self) -> apis_autoscaling::Apis_autoscalingService<'_> {
+        apis_autoscaling::Apis_autoscalingService::new(self)
+    }
+    /// Get apis_networking service handler
+    pub fn apis_networking(&self) -> apis_networking::Apis_networkingService<'_> {
+        apis_networking::Apis_networkingService::new(self)
+    }
+    /// Get apis_authentication service handler
+    pub fn apis_authentication(&self) -> apis_authentication::Apis_authenticationService<'_> {
+        apis_authentication::Apis_authenticationService::new(self)
+    }
+    /// Get apis_policy service handler
+    pub fn apis_policy(&self) -> apis_policy::Apis_policyService<'_> {
+        apis_policy::Apis_policyService::new(self)
+    }
+    /// Get apis_internal service handler
+    pub fn apis_internal(&self) -> apis_internal::Apis_internalService<'_> {
+        apis_internal::Apis_internalService::new(self)
+    }
+    /// Get apis_apps service handler
+    pub fn apis_apps(&self) -> apis_apps::Apis_appsService<'_> {
+        apis_apps::Apis_appsService::new(self)
+    }
+    /// Get api service handler
+    pub fn api(&self) -> api::ApiService<'_> {
+        api::ApiService::new(self)
+    }
+    /// Get apis_storage service handler
+    pub fn apis_storage(&self) -> apis_storage::Apis_storageService<'_> {
+        apis_storage::Apis_storageService::new(self)
+    }
+    /// Get apis_certificates service handler
+    pub fn apis_certificates(&self) -> apis_certificates::Apis_certificatesService<'_> {
+        apis_certificates::Apis_certificatesService::new(self)
+    }
+    /// Get apis_events service handler
+    pub fn apis_events(&self) -> apis_events::Apis_eventsService<'_> {
+        apis_events::Apis_eventsService::new(self)
+    }
+    /// Get apis_flowcontrol service handler
+    pub fn apis_flowcontrol(&self) -> apis_flowcontrol::Apis_flowcontrolService<'_> {
+        apis_flowcontrol::Apis_flowcontrolService::new(self)
+    }
+    /// Get apis_scheduling service handler
+    pub fn apis_scheduling(&self) -> apis_scheduling::Apis_schedulingService<'_> {
+        apis_scheduling::Apis_schedulingService::new(self)
+    }
+    /// Get apis service handler
+    pub fn apis(&self) -> apis::ApisService<'_> {
+        apis::ApisService::new(self)
+    }
+    /// Get apis_resource service handler
+    pub fn apis_resource(&self) -> apis_resource::Apis_resourceService<'_> {
+        apis_resource::Apis_resourceService::new(self)
+    }
+    /// Get apis_resource service handler
+    pub fn apis_resource(&self) -> apis_resource::Apis_resourceService<'_> {
+        apis_resource::Apis_resourceService::new(self)
+    }
+    /// Get apis_apiregistration service handler
+    pub fn apis_apiregistration(&self) -> apis_apiregistration::Apis_apiregistrationService<'_> {
+        apis_apiregistration::Apis_apiregistrationService::new(self)
+    }
+    /// Get apis_batch service handler
+    pub fn apis_batch(&self) -> apis_batch::Apis_batchService<'_> {
+        apis_batch::Apis_batchService::new(self)
+    }
+    /// Get apis_admissionregistration service handler
+    pub fn apis_admissionregistration(&self) -> apis_admissionregistration::Apis_admissionregistrationService<'_> {
+        apis_admissionregistration::Apis_admissionregistrationService::new(self)
+    }
+    /// Get apis_resource service handler
+    pub fn apis_resource(&self) -> apis_resource::Apis_resourceService<'_> {
+        apis_resource::Apis_resourceService::new(self)
+    }
+    /// Get openid service handler
+    pub fn openid(&self) -> openid::OpenidService<'_> {
+        openid::OpenidService::new(self)
     }
 
-    /// Get apps_v1 service handler
-    pub fn apps_v1(&self) -> apps_v1::Apis__apps__v1_openapiService<'_> {
-        apps_v1::Apis__apps__v1_openapiService::new(self)
-    }
-
-    /// Get autoscaling_v1 service handler
-    pub fn autoscaling_v1(&self) -> autoscaling_v1::Apis__autoscaling__v1_openapiService<'_> {
-        autoscaling_v1::Apis__autoscaling__v1_openapiService::new(self)
-    }
-
-    /// Get core_v1 service handler
-    pub fn core_v1(&self) -> core_v1::Api__v1_openapiService<'_> {
-        core_v1::Api__v1_openapiService::new(self)
-    }
-
-    /// Get policy_v1 service handler
-    pub fn policy_v1(&self) -> policy_v1::Apis__policy__v1_openapiService<'_> {
-        policy_v1::Apis__policy__v1_openapiService::new(self)
-    }
-
-    /// Get scheduling service handler
-    pub fn scheduling(&self) -> scheduling::Apis__schedulingService<'_> {
-        scheduling::Apis__schedulingService::new(self)
-    }
-
-    /// Get authentication service handler
-    pub fn authentication(&self) -> authentication::Apis__authenticationService<'_> {
-        authentication::Apis__authenticationService::new(self)
-    }
-
-    /// Get batch service handler
-    pub fn batch(&self) -> batch::Apis__batch_openapiService<'_> {
-        batch::Apis__batch_openapiService::new(self)
-    }
-
-    /// Get networking service handler
-    pub fn networking(&self) -> networking::Apis__networkingService<'_> {
-        networking::Apis__networkingService::new(self)
-    }
-
-    /// Get apiregistration service handler
-    pub fn apiregistration(&self) -> apiregistration::Apis__apiregistrationService<'_> {
-        apiregistration::Apis__apiregistrationService::new(self)
-    }
-
-    /// Get autoscaling_v2 service handler
-    pub fn autoscaling_v2(&self) -> autoscaling_v2::Apis__autoscaling__v2_openapiService<'_> {
-        autoscaling_v2::Apis__autoscaling__v2_openapiService::new(self)
-    }
-
-    /// Get policy service handler
-    pub fn policy(&self) -> policy::Apis__policy_openapiService<'_> {
-        policy::Apis__policy_openapiService::new(self)
-    }
-
-    /// Get apps service handler
-    pub fn apps(&self) -> apps::Apis__apps_openapiService<'_> {
-        apps::Apis__apps_openapiService::new(self)
-    }
-
-    /// Get api_openapi service handler
-    pub fn api_openapi(&self) -> api_openapi::Api_openapiService<'_> {
-        api_openapi::Api_openapiService::new(self)
-    }
-
-    /// Get batch_v1 service handler
-    pub fn batch_v1(&self) -> batch_v1::Apis__batch__v1_openapiService<'_> {
-        batch_v1::Apis__batch__v1_openapiService::new(self)
-    }
-
-    /// Get openid_v1_jwks service handler
-    pub fn openid_v1_jwks(&self) -> openid_v1_jwks::Openid__v1__jwks_openapiService<'_> {
-        openid_v1_jwks::Openid__v1__jwks_openapiService::new(self)
-    }
 }
 
 #[cfg(test)]

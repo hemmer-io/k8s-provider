@@ -1,25 +1,30 @@
-//! Apis_openapi Service
+//! Apis Service
 //!
-//! Auto-generated service module for > apis
+//! Auto-generated service module for apis
 
 pub mod resources;
 
 use crate::{ProviderError, Result};
 
-/// Service handler for > apis
-pub struct Apis_openapiService<'a> {
+/// Service handler for apis
+pub struct ApisService<'a> {
     provider: &'a crate::KubernetesProvider,
 }
 
-impl<'a> Apis_openapiService<'a> {
+impl<'a> ApisService<'a> {
     pub(crate) fn new(provider: &'a crate::KubernetesProvider) -> Self {
         Self { provider }
     }
 
-    /// Get api resource handler
-    pub fn api(&self) -> resources::Api<'_> {
-        resources::Api::new(self.provider)
+    /// Get v1 resource handler
+    pub fn v1(&self) -> resources::V1<'_> {
+        resources::V1::new(self.provider)
     }
+    /// Get endpointslice resource handler
+    pub fn endpointslice(&self) -> resources::Endpointslice<'_> {
+        resources::Endpointslice::new(self.provider)
+    }
+
 }
 
 #[cfg(test)]

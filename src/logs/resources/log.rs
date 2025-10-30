@@ -15,13 +15,23 @@ impl<'a> Log<'a> {
         Self { provider }
     }
 
+
+
+
     /// Read/describe a log
     ///
     /// TODO: Map `id` parameter to appropriate SDK field(s)
     #[allow(unused_variables)]
     pub async fn read(&self, id: &str) -> Result<()> {
+
         todo!("Implement read for Kubernetes")
+
     }
+
+
+
+
+
 }
 
 #[cfg(test)]

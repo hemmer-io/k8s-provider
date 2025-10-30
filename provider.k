@@ -11,14 +11,14 @@ schema KubernetesProvider:
     """
 
 
-    # Apis__internal Service
-    schema Apis__internalService:
+    # Apis_internal Service
+    schema Apis_internalService:
         """
-        Service for internal resources.
+        Service for apis_internal resources.
         """
 
 
-        schema Internal.apiserver.k8s.io:
+        schema Internal:
             """
             get information of a group
             """
@@ -27,10 +27,10 @@ schema KubernetesProvider:
 
 
 
-    # Apis__events Service
-    schema Apis__eventsService:
+    # Apis_events Service
+    schema Apis_eventsService:
         """
-        Service for events resources.
+        Service for apis_events resources.
         """
 
 
@@ -57,14 +57,14 @@ schema KubernetesProvider:
 
 
 
-    # Apis__storage Service
-    schema Apis__storageService:
+    # Apis_storage Service
+    schema Apis_storageService:
         """
-        Service for storage resources.
+        Service for apis_storage resources.
         """
 
 
-        schema Storage.k8s.io:
+        schema Storage:
             """
             get information of a group
             """
@@ -73,11 +73,19 @@ schema KubernetesProvider:
 
 
 
-    # Apis__resource Service
-    schema Apis__resourceService:
+    # Apis_resource Service
+    schema Apis_resourceService:
         """
-        Service for resource resources.
+        Service for apis_resource resources.
         """
+
+
+        schema V1alpha3:
+            """
+            get available resources
+            """
+
+
 
 
         schema Devicetaintrule:
@@ -94,14 +102,6 @@ schema KubernetesProvider:
 
 
 
-        schema V1alpha3:
-            """
-            get available resources
-            """
-
-
-
-
 
     #  Service
     schema Service:
@@ -110,7 +110,7 @@ schema KubernetesProvider:
         """
 
 
-        schema Openid-configuration:
+        schema Openid_configuration:
             """
             get service account issuer OpenID configuration, also known as the 'OIDC discovery doc'
             """
@@ -135,10 +135,10 @@ schema KubernetesProvider:
 
 
 
-    # Apis__storagemigration Service
-    schema Apis__storagemigrationService:
+    # Apis_storagemigration Service
+    schema Apis_storagemigrationService:
         """
-        Service for storagemigration resources.
+        Service for apis_storagemigration resources.
         """
 
 
@@ -179,16 +179,44 @@ schema KubernetesProvider:
 
 
 
-    # Apis__storage Service
-    schema Apis__storageService:
+    # Apis_storage Service
+    schema Apis_storageService:
         """
-        Service for storage resources.
+        Service for apis_storage resources.
         """
 
 
-        schema Storageclasse:
+        schema Volumeattributesclasse:
             """
-            create a StorageClass
+            create a VolumeAttributesClass
+            """
+
+            dry_run: str?  # When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
+
+            field_manager: str?  # fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
+
+            field_validation: str?  # fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
+
+
+
+
+        schema Csistoragecapacitie:
+            """
+            create a CSIStorageCapacity
+            """
+
+            dry_run: str?  # When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
+
+            field_manager: str?  # fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
+
+            field_validation: str?  # fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
+
+
+
+
+        schema Csinode:
+            """
+            create a CSINode
             """
 
             dry_run: str?  # When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
@@ -222,65 +250,37 @@ schema KubernetesProvider:
 
 
 
-        schema Csidriver:
-            """
-            create a CSIDriver
-            """
-
-            dry_run: str?  # When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
-
-            field_manager: str?  # fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
-
-            field_validation: str?  # fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
-
-
-
-
-        schema Csistoragecapacitie:
-            """
-            create a CSIStorageCapacity
-            """
-
-            dry_run: str?  # When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
-
-            field_manager: str?  # fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
-
-            field_validation: str?  # fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
-
-
-
-
-        schema Volumeattributesclasse:
-            """
-            create a VolumeAttributesClass
-            """
-
-            dry_run: str?  # When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
-
-            field_manager: str?  # fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
-
-            field_validation: str?  # fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
-
-
-
-
-        schema Csinode:
-            """
-            create a CSINode
-            """
-
-            dry_run: str?  # When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
-
-            field_manager: str?  # fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
-
-            field_validation: str?  # fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
-
-
-
-
         schema Volumeattachment:
             """
             create a VolumeAttachment
+            """
+
+            dry_run: str?  # When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
+
+            field_manager: str?  # fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
+
+            field_validation: str?  # fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
+
+
+
+
+        schema Storageclasse:
+            """
+            create a StorageClass
+            """
+
+            dry_run: str?  # When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
+
+            field_manager: str?  # fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
+
+            field_validation: str?  # fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
+
+
+
+
+        schema Csidriver:
+            """
+            create a CSIDriver
             """
 
             dry_run: str?  # When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
@@ -309,30 +309,16 @@ schema KubernetesProvider:
 
 
 
-    # Apis__resource Service
-    schema Apis__resourceService:
+    # Apis_resource Service
+    schema Apis_resourceService:
         """
-        Service for resource resources.
+        Service for apis_resource resources.
         """
 
 
         schema Resourceclaimtemplate:
             """
             create a ResourceClaimTemplate
-            """
-
-            dry_run: str?  # When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
-
-            field_manager: str?  # fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
-
-            field_validation: str?  # fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
-
-
-
-
-        schema Resourceslice:
-            """
-            create a ResourceSlice
             """
 
             dry_run: str?  # When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
@@ -358,9 +344,17 @@ schema KubernetesProvider:
 
 
 
-        schema Statu:
+        schema V1beta1:
             """
-            read status of the specified ResourceClaim
+            get available resources
+            """
+
+
+
+
+        schema Resourceslice:
+            """
+            create a ResourceSlice
             """
 
             dry_run: str?  # When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
@@ -386,57 +380,9 @@ schema KubernetesProvider:
 
 
 
-        schema V1beta1:
+        schema Statu:
             """
-            get available resources
-            """
-
-
-
-
-
-    # Apis__admissionregistration Service
-    schema Apis__admissionregistrationService:
-        """
-        Service for admissionregistration resources.
-        """
-
-
-        schema Admissionregistration.k8s.io:
-            """
-            get information of a group
-            """
-
-
-
-
-
-    # Apis__discovery Service
-    schema Apis__discoveryService:
-        """
-        Service for discovery resources.
-        """
-
-
-        schema Discovery.k8s.io:
-            """
-            get information of a group
-            """
-
-
-
-
-
-    # Apis__apiextensions Service
-    schema Apis__apiextensionsService:
-        """
-        Service for apiextensions resources.
-        """
-
-
-        schema Customresourcedefinition:
-            """
-            create a CustomResourceDefinition
+            read status of the specified ResourceClaim
             """
 
             dry_run: str?  # When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
@@ -444,6 +390,54 @@ schema KubernetesProvider:
             field_manager: str?  # fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
 
             field_validation: str?  # fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
+
+
+
+
+
+    # Apis_admissionregistration Service
+    schema Apis_admissionregistrationService:
+        """
+        Service for apis_admissionregistration resources.
+        """
+
+
+        schema Admissionregistration:
+            """
+            get information of a group
+            """
+
+
+
+
+
+    # Apis Service
+    schema ApisService:
+        """
+        Service for apis resources.
+        """
+
+
+        schema Discovery:
+            """
+            get information of a group
+            """
+
+
+
+
+
+    # Apis_apiextensions Service
+    schema Apis_apiextensionsService:
+        """
+        Service for apis_apiextensions resources.
+        """
+
+
+        schema V1:
+            """
+            get available resources
+            """
 
 
 
@@ -462,23 +456,29 @@ schema KubernetesProvider:
 
 
 
-        schema V1:
+        schema Customresourcedefinition:
             """
-            get available resources
+            create a CustomResourceDefinition
             """
 
+            dry_run: str?  # When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
+
+            field_manager: str?  # fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
+
+            field_validation: str?  # fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
 
 
 
 
-    # Apis__coordination Service
-    schema Apis__coordinationService:
+
+    # Apis_coordination Service
+    schema Apis_coordinationService:
         """
-        Service for coordination resources.
+        Service for apis_coordination resources.
         """
 
 
-        schema Coordination.k8s.io:
+        schema Coordination:
             """
             get information of a group
             """
@@ -487,10 +487,10 @@ schema KubernetesProvider:
 
 
 
-    # Apis__certificates Service
-    schema Apis__certificatesService:
+    # Apis_certificates Service
+    schema Apis_certificatesService:
         """
-        Service for certificates resources.
+        Service for apis_certificates resources.
         """
 
 
@@ -545,19 +545,11 @@ schema KubernetesProvider:
 
 
 
-    # Apis__coordination Service
-    schema Apis__coordinationService:
+    # Apis_coordination Service
+    schema Apis_coordinationService:
         """
-        Service for coordination resources.
+        Service for apis_coordination resources.
         """
-
-
-        schema V1alpha2:
-            """
-            get available resources
-            """
-
-
 
 
         schema Leasecandidate:
@@ -574,15 +566,23 @@ schema KubernetesProvider:
 
 
 
+        schema V1alpha2:
+            """
+            get available resources
+            """
 
-    # Apis__rbac Service
-    schema Apis__rbacService:
+
+
+
+
+    # Apis_rbac Service
+    schema Apis_rbacService:
         """
-        Service for rbac resources.
+        Service for apis_rbac resources.
         """
 
 
-        schema Rbac.authorization.k8s.io:
+        schema Rbac.authorization:
             """
             get information of a group
             """
@@ -591,14 +591,14 @@ schema KubernetesProvider:
 
 
 
-    # Apis__flowcontrol Service
-    schema Apis__flowcontrolService:
+    # Apis_flowcontrol Service
+    schema Apis_flowcontrolService:
         """
-        Service for flowcontrol resources.
+        Service for apis_flowcontrol resources.
         """
 
 
-        schema Flowcontrol.apiserver.k8s.io:
+        schema Flowcontrol:
             """
             get information of a group
             """
@@ -607,11 +607,19 @@ schema KubernetesProvider:
 
 
 
-    # Apis__node Service
-    schema Apis__nodeService:
+    # Apis_node Service
+    schema Apis_nodeService:
         """
-        Service for node resources.
+        Service for apis_node resources.
         """
+
+
+        schema V1:
+            """
+            get available resources
+            """
+
+
 
 
         schema Runtimeclasse:
@@ -628,6 +636,14 @@ schema KubernetesProvider:
 
 
 
+
+    # Apis_rbac Service
+    schema Apis_rbacService:
+        """
+        Service for apis_rbac resources.
+        """
+
+
         schema V1:
             """
             get available resources
@@ -636,17 +652,23 @@ schema KubernetesProvider:
 
 
 
-
-    # Apis__rbac Service
-    schema Apis__rbacService:
-        """
-        Service for rbac resources.
-        """
-
-
         schema Role:
             """
             create a Role
+            """
+
+            dry_run: str?  # When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
+
+            field_manager: str?  # fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
+
+            field_validation: str?  # fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
+
+
+
+
+        schema Clusterrole:
+            """
+            create a ClusterRole
             """
 
             dry_run: str?  # When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
@@ -686,34 +708,20 @@ schema KubernetesProvider:
 
 
 
+
+    # Apis_coordination Service
+    schema Apis_coordinationService:
+        """
+        Service for apis_coordination resources.
+        """
+
+
         schema V1:
             """
             get available resources
             """
 
 
-
-
-        schema Clusterrole:
-            """
-            create a ClusterRole
-            """
-
-            dry_run: str?  # When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
-
-            field_manager: str?  # fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
-
-            field_validation: str?  # fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
-
-
-
-
-
-    # Apis__coordination Service
-    schema Apis__coordinationService:
-        """
-        Service for coordination resources.
-        """
 
 
         schema Lease:
@@ -730,23 +738,15 @@ schema KubernetesProvider:
 
 
 
-        schema V1:
-            """
-            get available resources
-            """
 
-
-
-
-
-    # Apis__storagemigration Service
-    schema Apis__storagemigrationService:
+    # Apis_storagemigration Service
+    schema Apis_storagemigrationService:
         """
-        Service for storagemigration resources.
+        Service for apis_storagemigration resources.
         """
 
 
-        schema Storagemigration.k8s.io:
+        schema Storagemigration:
             """
             get information of a group
             """
@@ -755,14 +755,14 @@ schema KubernetesProvider:
 
 
 
-    # Apis__authorization Service
-    schema Apis__authorizationService:
+    # Apis_authorization Service
+    schema Apis_authorizationService:
         """
-        Service for authorization resources.
+        Service for apis_authorization resources.
         """
 
 
-        schema Authorization.k8s.io:
+        schema Authorization:
             """
             get information of a group
             """
@@ -771,10 +771,10 @@ schema KubernetesProvider:
 
 
 
-    # Autoscaling Service
-    schema AutoscalingService:
+    # Apis_autoscaling Service
+    schema Apis_autoscalingService:
         """
-        Service for autoscaling resources.
+        Service for apis_autoscaling resources.
         """
 
 
@@ -787,10 +787,10 @@ schema KubernetesProvider:
 
 
 
-    # Apis__admissionregistration Service
-    schema Apis__admissionregistrationService:
+    # Apis_admissionregistration Service
+    schema Apis_admissionregistrationService:
         """
-        Service for admissionregistration resources.
+        Service for apis_admissionregistration resources.
         """
 
 
@@ -802,9 +802,9 @@ schema KubernetesProvider:
 
 
 
-        schema Mutatingadmissionpolicybinding:
+        schema Mutatingadmissionpolicie:
             """
-            create a MutatingAdmissionPolicyBinding
+            create a MutatingAdmissionPolicy
             """
 
             dry_run: str?  # When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
@@ -816,9 +816,9 @@ schema KubernetesProvider:
 
 
 
-        schema Mutatingadmissionpolicie:
+        schema Mutatingadmissionpolicybinding:
             """
-            create a MutatingAdmissionPolicy
+            create a MutatingAdmissionPolicyBinding
             """
 
             dry_run: str?  # When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
@@ -847,53 +847,11 @@ schema KubernetesProvider:
 
 
 
-    # AppsV1 Service
-    schema AppsV1Service:
+    # Apis_apps Service
+    schema Apis_appsService:
         """
-        Service for apps_v1 resources.
+        Service for apis_apps resources.
         """
-
-
-        schema Replicaset:
-            """
-            create a ReplicaSet
-            """
-
-            dry_run: str?  # When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
-
-            field_manager: str?  # fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
-
-            field_validation: str?  # fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
-
-
-
-
-        schema Statefulset:
-            """
-            create a StatefulSet
-            """
-
-            dry_run: str?  # When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
-
-            field_manager: str?  # fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
-
-            field_validation: str?  # fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
-
-
-
-
-        schema Statu:
-            """
-            read status of the specified StatefulSet
-            """
-
-            dry_run: str?  # When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
-
-            field_manager: str?  # fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
-
-            field_validation: str?  # fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
-
-
 
 
         schema V1:
@@ -906,7 +864,7 @@ schema KubernetesProvider:
 
         schema Scale:
             """
-            read scale of the specified StatefulSet
+            read scale of the specified Deployment
             """
 
             dry_run: str?  # When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
@@ -932,9 +890,37 @@ schema KubernetesProvider:
 
 
 
-        schema Deployment:
+        schema Statu:
             """
-            create a Deployment
+            read status of the specified Deployment
+            """
+
+            dry_run: str?  # When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
+
+            field_manager: str?  # fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
+
+            field_validation: str?  # fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
+
+
+
+
+        schema Statefulset:
+            """
+            create a StatefulSet
+            """
+
+            dry_run: str?  # When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
+
+            field_manager: str?  # fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
+
+            field_validation: str?  # fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
+
+
+
+
+        schema Replicaset:
+            """
+            create a ReplicaSet
             """
 
             dry_run: str?  # When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
@@ -960,12 +946,40 @@ schema KubernetesProvider:
 
 
 
+        schema Deployment:
+            """
+            create a Deployment
+            """
 
-    # AutoscalingV1 Service
-    schema AutoscalingV1Service:
+            dry_run: str?  # When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
+
+            field_manager: str?  # fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
+
+            field_validation: str?  # fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
+
+
+
+
+
+    # Apis_autoscaling Service
+    schema Apis_autoscalingService:
         """
-        Service for autoscaling_v1 resources.
+        Service for apis_autoscaling resources.
         """
+
+
+        schema Horizontalpodautoscaler:
+            """
+            create a HorizontalPodAutoscaler
+            """
+
+            dry_run: str?  # When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
+
+            field_manager: str?  # fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
+
+            field_validation: str?  # fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
+
+
 
 
         schema V1:
@@ -990,29 +1004,15 @@ schema KubernetesProvider:
 
 
 
-        schema Horizontalpodautoscaler:
-            """
-            create a HorizontalPodAutoscaler
-            """
 
-            dry_run: str?  # When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
-
-            field_manager: str?  # fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
-
-            field_validation: str?  # fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
-
-
-
-
-
-    # Apis__certificates Service
-    schema Apis__certificatesService:
+    # Apis_certificates Service
+    schema Apis_certificatesService:
         """
-        Service for certificates resources.
+        Service for apis_certificates resources.
         """
 
 
-        schema Certificates.k8s.io:
+        schema Certificate:
             """
             get information of a group
             """
@@ -1021,30 +1021,16 @@ schema KubernetesProvider:
 
 
 
-    # CoreV1 Service
-    schema CoreV1Service:
+    # Api Service
+    schema ApiService:
         """
-        Service for core_v1 resources.
+        Service for api resources.
         """
 
 
-        schema Endpoint:
+        schema Resourcequota:
             """
-            create Endpoints
-            """
-
-            dry_run: str?  # When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
-
-            field_manager: str?  # fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
-
-            field_validation: str?  # fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
-
-
-
-
-        schema Namespace:
-            """
-            create a Namespace
+            create a ResourceQuota
             """
 
             dry_run: str?  # When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
@@ -1056,138 +1042,10 @@ schema KubernetesProvider:
 
 
 
-        schema Scale:
+        schema Attach:
             """
-            read scale of the specified ReplicationController
+            connect POST requests to attach of Pod
             """
-
-            dry_run: str?  # When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
-
-            field_manager: str?  # fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
-
-            field_validation: str?  # fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
-
-
-
-
-        schema Eviction:
-            """
-            create eviction of a Pod
-            """
-
-
-
-
-        schema Ephemeralcontainer:
-            """
-            read ephemeralcontainers of the specified Pod
-            """
-
-            dry_run: str?  # When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
-
-            field_manager: str?  # fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
-
-            field_validation: str?  # fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
-
-
-
-
-        schema Statu:
-            """
-            read status of the specified Service
-            """
-
-            dry_run: str?  # When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
-
-            field_manager: str?  # fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
-
-            field_validation: str?  # fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
-
-
-
-
-        schema Binding:
-            """
-            create a Binding
-            """
-
-
-
-
-        schema Secret:
-            """
-            create a Secret
-            """
-
-            dry_run: str?  # When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
-
-            field_manager: str?  # fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
-
-            field_validation: str?  # fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
-
-
-
-
-        schema Podtemplate:
-            """
-            create a PodTemplate
-            """
-
-            dry_run: str?  # When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
-
-            field_manager: str?  # fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
-
-            field_validation: str?  # fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
-
-
-
-
-        schema Resize:
-            """
-            read resize of the specified Pod
-            """
-
-            dry_run: str?  # When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
-
-            field_manager: str?  # fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
-
-            field_validation: str?  # fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
-
-
-
-
-        schema Proxy:
-            """
-            connect POST requests to proxy of Pod
-            """
-
-
-
-
-        schema Configmap:
-            """
-            create a ConfigMap
-            """
-
-            dry_run: str?  # When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
-
-            field_manager: str?  # fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
-
-            field_validation: str?  # fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
-
-
-
-
-        schema Pod:
-            """
-            create a Pod
-            """
-
-            dry_run: str?  # When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
-
-            field_manager: str?  # fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
-
-            field_validation: str?  # fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
 
 
 
@@ -1195,52 +1053,6 @@ schema KubernetesProvider:
         schema Limitrange:
             """
             create a LimitRange
-            """
-
-            dry_run: str?  # When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
-
-            field_manager: str?  # fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
-
-            field_validation: str?  # fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
-
-
-
-
-        schema Exec:
-            """
-            connect POST requests to exec of Pod
-            """
-
-
-
-
-        schema Componentstatuse:
-            """
-            read the specified ComponentStatus
-            """
-
-
-
-
-        schema Portforward:
-            """
-            connect POST requests to portforward of Pod
-            """
-
-
-
-
-        schema V1:
-            """
-            get available resources
-            """
-
-
-
-
-        schema Node:
-            """
-            create a Node
             """
 
             dry_run: str?  # When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
@@ -1266,9 +1078,9 @@ schema KubernetesProvider:
 
 
 
-        schema Resourcequota:
+        schema Service:
             """
-            create a ResourceQuota
+            create a Service
             """
 
             dry_run: str?  # When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
@@ -1280,10 +1092,112 @@ schema KubernetesProvider:
 
 
 
+        schema Portforward:
+            """
+            connect POST requests to portforward of Pod
+            """
+
+
+
+
+        schema Exec:
+            """
+            connect POST requests to exec of Pod
+            """
+
+
+
+
         schema Log:
             """
             read log of the specified Pod
             """
+
+
+
+
+        schema Scale:
+            """
+            read scale of the specified ReplicationController
+            """
+
+            dry_run: str?  # When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
+
+            field_manager: str?  # fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
+
+            field_validation: str?  # fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
+
+
+
+
+        schema Serviceaccount:
+            """
+            create a ServiceAccount
+            """
+
+            dry_run: str?  # When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
+
+            field_manager: str?  # fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
+
+            field_validation: str?  # fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
+
+
+
+
+        schema Statu:
+            """
+            read status of the specified Service
+            """
+
+            dry_run: str?  # When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
+
+            field_manager: str?  # fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
+
+            field_validation: str?  # fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
+
+
+
+
+        schema Node:
+            """
+            create a Node
+            """
+
+            dry_run: str?  # When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
+
+            field_manager: str?  # fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
+
+            field_validation: str?  # fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
+
+
+
+
+        schema Binding:
+            """
+            create a Binding
+            """
+
+
+
+
+        schema Componentstatuse:
+            """
+            list objects of kind ComponentStatus
+            """
+
+
+
+
+        schema Resize:
+            """
+            read resize of the specified Pod
+            """
+
+            dry_run: str?  # When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
+
+            field_manager: str?  # fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
+
+            field_validation: str?  # fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
 
 
 
@@ -1310,31 +1224,9 @@ schema KubernetesProvider:
 
 
 
-        schema Serviceaccount:
+        schema Configmap:
             """
-            create a ServiceAccount
-            """
-
-            dry_run: str?  # When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
-
-            field_manager: str?  # fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
-
-            field_validation: str?  # fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
-
-
-
-
-        schema Token:
-            """
-            create token of a ServiceAccount
-            """
-
-
-
-
-        schema Persistentvolumeclaim:
-            """
-            create a PersistentVolumeClaim
+            create a ConfigMap
             """
 
             dry_run: str?  # When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
@@ -1346,17 +1238,9 @@ schema KubernetesProvider:
 
 
 
-        schema Attach:
+        schema Ephemeralcontainer:
             """
-            connect POST requests to attach of Pod
-            """
-
-
-
-
-        schema Persistentvolume:
-            """
-            create a PersistentVolume
+            read ephemeralcontainers of the specified Pod
             """
 
             dry_run: str?  # When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
@@ -1368,31 +1252,9 @@ schema KubernetesProvider:
 
 
 
-        schema Service:
+        schema Podtemplate:
             """
-            create a Service
-            """
-
-            dry_run: str?  # When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
-
-            field_manager: str?  # fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
-
-            field_validation: str?  # fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
-
-
-
-
-
-    # PolicyV1 Service
-    schema PolicyV1Service:
-        """
-        Service for policy_v1 resources.
-        """
-
-
-        schema Statu:
-            """
-            read status of the specified PodDisruptionBudget
+            create a PodTemplate
             """
 
             dry_run: str?  # When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
@@ -1404,9 +1266,23 @@ schema KubernetesProvider:
 
 
 
-        schema Poddisruptionbudget:
+        schema Namespace:
             """
-            create a PodDisruptionBudget
+            create a Namespace
+            """
+
+            dry_run: str?  # When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
+
+            field_manager: str?  # fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
+
+            field_validation: str?  # fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
+
+
+
+
+        schema Endpoint:
+            """
+            create Endpoints
             """
 
             dry_run: str?  # When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
@@ -1426,11 +1302,135 @@ schema KubernetesProvider:
 
 
 
+        schema Token:
+            """
+            create token of a ServiceAccount
+            """
 
-    # Apis__scheduling Service
-    schema Apis__schedulingService:
+
+
+
+        schema Secret:
+            """
+            create a Secret
+            """
+
+            dry_run: str?  # When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
+
+            field_manager: str?  # fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
+
+            field_validation: str?  # fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
+
+
+
+
+        schema Persistentvolume:
+            """
+            create a PersistentVolume
+            """
+
+            dry_run: str?  # When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
+
+            field_manager: str?  # fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
+
+            field_validation: str?  # fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
+
+
+
+
+        schema Proxy:
+            """
+            connect POST requests to proxy of Node
+            """
+
+
+
+
+        schema Pod:
+            """
+            create a Pod
+            """
+
+            dry_run: str?  # When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
+
+            field_manager: str?  # fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
+
+            field_validation: str?  # fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
+
+
+
+
+        schema Persistentvolumeclaim:
+            """
+            create a PersistentVolumeClaim
+            """
+
+            dry_run: str?  # When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
+
+            field_manager: str?  # fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
+
+            field_validation: str?  # fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
+
+
+
+
+        schema Eviction:
+            """
+            create eviction of a Pod
+            """
+
+
+
+
+
+    # Apis_policy Service
+    schema Apis_policyService:
         """
-        Service for scheduling resources.
+        Service for apis_policy resources.
+        """
+
+
+        schema V1:
+            """
+            get available resources
+            """
+
+
+
+
+        schema Poddisruptionbudget:
+            """
+            create a PodDisruptionBudget
+            """
+
+            dry_run: str?  # When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
+
+            field_manager: str?  # fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
+
+            field_validation: str?  # fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
+
+
+
+
+        schema Statu:
+            """
+            read status of the specified PodDisruptionBudget
+            """
+
+            dry_run: str?  # When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
+
+            field_manager: str?  # fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
+
+            field_validation: str?  # fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
+
+
+
+
+
+    # Apis_scheduling Service
+    schema Apis_schedulingService:
+        """
+        Service for apis_scheduling resources.
         """
 
 
@@ -1457,14 +1457,14 @@ schema KubernetesProvider:
 
 
 
-    # Apis__authentication Service
-    schema Apis__authenticationService:
+    # Apis_authentication Service
+    schema Apis_authenticationService:
         """
-        Service for authentication resources.
+        Service for apis_authentication resources.
         """
 
 
-        schema Authentication.k8s.io:
+        schema Authentication:
             """
             get information of a group
             """
@@ -1473,11 +1473,25 @@ schema KubernetesProvider:
 
 
 
-    # Apis__admissionregistration Service
-    schema Apis__admissionregistrationService:
+    # Apis_admissionregistration Service
+    schema Apis_admissionregistrationService:
         """
-        Service for admissionregistration resources.
+        Service for apis_admissionregistration resources.
         """
+
+
+        schema Mutatingadmissionpolicybinding:
+            """
+            create a MutatingAdmissionPolicyBinding
+            """
+
+            dry_run: str?  # When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
+
+            field_manager: str?  # fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
+
+            field_validation: str?  # fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
+
+
 
 
         schema Mutatingadmissionpolicie:
@@ -1502,25 +1516,11 @@ schema KubernetesProvider:
 
 
 
-        schema Mutatingadmissionpolicybinding:
-            """
-            create a MutatingAdmissionPolicyBinding
-            """
 
-            dry_run: str?  # When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
-
-            field_manager: str?  # fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
-
-            field_validation: str?  # fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
-
-
-
-
-
-    # Batch Service
-    schema BatchService:
+    # Apis_batch Service
+    schema Apis_batchService:
         """
-        Service for batch resources.
+        Service for apis_batch resources.
         """
 
 
@@ -1533,10 +1533,10 @@ schema KubernetesProvider:
 
 
 
-    # Apis__authorization Service
-    schema Apis__authorizationService:
+    # Apis_authorization Service
+    schema Apis_authorizationService:
         """
-        Service for authorization resources.
+        Service for apis_authorization resources.
         """
 
 
@@ -1564,14 +1564,6 @@ schema KubernetesProvider:
 
 
 
-        schema V1:
-            """
-            get available resources
-            """
-
-
-
-
         schema Subjectaccessreview:
             """
             create a SubjectAccessReview
@@ -1580,15 +1572,23 @@ schema KubernetesProvider:
 
 
 
+        schema V1:
+            """
+            get available resources
+            """
 
-    # Apis__apiextensions Service
-    schema Apis__apiextensionsService:
+
+
+
+
+    # Apis_apiextensions Service
+    schema Apis_apiextensionsService:
         """
-        Service for apiextensions resources.
+        Service for apis_apiextensions resources.
         """
 
 
-        schema Apiextensions.k8s.io:
+        schema Apiextension:
             """
             get information of a group
             """
@@ -1597,14 +1597,14 @@ schema KubernetesProvider:
 
 
 
-    # Apis__node Service
-    schema Apis__nodeService:
+    # Apis_node Service
+    schema Apis_nodeService:
         """
-        Service for node resources.
+        Service for apis_node resources.
         """
 
 
-        schema Node.k8s.io:
+        schema Node:
             """
             get information of a group
             """
@@ -1613,39 +1613,11 @@ schema KubernetesProvider:
 
 
 
-    # Apis__networking Service
-    schema Apis__networkingService:
+    # Apis_networking Service
+    schema Apis_networkingService:
         """
-        Service for networking resources.
+        Service for apis_networking resources.
         """
-
-
-        schema Networkpolicie:
-            """
-            create a NetworkPolicy
-            """
-
-            dry_run: str?  # When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
-
-            field_manager: str?  # fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
-
-            field_validation: str?  # fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
-
-
-
-
-        schema Servicecidr:
-            """
-            create a ServiceCIDR
-            """
-
-            dry_run: str?  # When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
-
-            field_manager: str?  # fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
-
-            field_validation: str?  # fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
-
-
 
 
         schema Ingressclasse:
@@ -1672,14 +1644,6 @@ schema KubernetesProvider:
             field_manager: str?  # fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
 
             field_validation: str?  # fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
-
-
-
-
-        schema V1:
-            """
-            get available resources
-            """
 
 
 
@@ -1712,17 +1676,9 @@ schema KubernetesProvider:
 
 
 
-
-    # Apis__apiregistration Service
-    schema Apis__apiregistrationService:
-        """
-        Service for apiregistration resources.
-        """
-
-
-        schema Apiservice:
+        schema Servicecidr:
             """
-            create an APIService
+            create a ServiceCIDR
             """
 
             dry_run: str?  # When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
@@ -1734,9 +1690,9 @@ schema KubernetesProvider:
 
 
 
-        schema Statu:
+        schema Networkpolicie:
             """
-            read status of the specified APIService
+            create a NetworkPolicy
             """
 
             dry_run: str?  # When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
@@ -1757,16 +1713,16 @@ schema KubernetesProvider:
 
 
 
-    # Apis__networking Service
-    schema Apis__networkingService:
+    # Apis_apiregistration Service
+    schema Apis_apiregistrationService:
         """
-        Service for networking resources.
+        Service for apis_apiregistration resources.
         """
 
 
-        schema Ipaddresse:
+        schema Statu:
             """
-            create an IPAddress
+            read status of the specified APIService
             """
 
             dry_run: str?  # When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
@@ -1778,9 +1734,53 @@ schema KubernetesProvider:
 
 
 
+        schema Apiservice:
+            """
+            create an APIService
+            """
+
+            dry_run: str?  # When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
+
+            field_manager: str?  # fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
+
+            field_validation: str?  # fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
+
+
+
+
+        schema V1:
+            """
+            get available resources
+            """
+
+
+
+
+
+    # Apis_networking Service
+    schema Apis_networkingService:
+        """
+        Service for apis_networking resources.
+        """
+
+
         schema Statu:
             """
             read status of the specified ServiceCIDR
+            """
+
+            dry_run: str?  # When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
+
+            field_manager: str?  # fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
+
+            field_validation: str?  # fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
+
+
+
+
+        schema Ipaddresse:
+            """
+            create an IPAddress
             """
 
             dry_run: str?  # When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
@@ -1815,11 +1815,25 @@ schema KubernetesProvider:
 
 
 
-    # Apis__certificates Service
-    schema Apis__certificatesService:
+    # Apis_certificates Service
+    schema Apis_certificatesService:
         """
-        Service for certificates resources.
+        Service for apis_certificates resources.
         """
+
+
+        schema Certificatesigningrequest:
+            """
+            create a CertificateSigningRequest
+            """
+
+            dry_run: str?  # When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
+
+            field_manager: str?  # fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
+
+            field_validation: str?  # fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
+
+
 
 
         schema Approval:
@@ -1858,25 +1872,11 @@ schema KubernetesProvider:
 
 
 
-        schema Certificatesigningrequest:
-            """
-            create a CertificateSigningRequest
-            """
 
-            dry_run: str?  # When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
-
-            field_manager: str?  # fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
-
-            field_validation: str?  # fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
-
-
-
-
-
-    # Apis__coordination Service
-    schema Apis__coordinationService:
+    # Apis_coordination Service
+    schema Apis_coordinationService:
         """
-        Service for coordination resources.
+        Service for apis_coordination resources.
         """
 
 
@@ -1903,10 +1903,10 @@ schema KubernetesProvider:
 
 
 
-    # AutoscalingV2 Service
-    schema AutoscalingV2Service:
+    # Apis_autoscaling Service
+    schema Apis_autoscalingService:
         """
-        Service for autoscaling_v2 resources.
+        Service for apis_autoscaling resources.
         """
 
 
@@ -1947,14 +1947,14 @@ schema KubernetesProvider:
 
 
 
-    # Apis__networking Service
-    schema Apis__networkingService:
+    # Apis_networking Service
+    schema Apis_networkingService:
         """
-        Service for networking resources.
+        Service for apis_networking resources.
         """
 
 
-        schema Networking.k8s.io:
+        schema Networking:
             """
             get information of a group
             """
@@ -1963,19 +1963,11 @@ schema KubernetesProvider:
 
 
 
-    # Apis__authentication Service
-    schema Apis__authenticationService:
+    # Apis_authentication Service
+    schema Apis_authenticationService:
         """
-        Service for authentication resources.
+        Service for apis_authentication resources.
         """
-
-
-        schema Tokenreview:
-            """
-            create a TokenReview
-            """
-
-
 
 
         schema V1:
@@ -1994,11 +1986,19 @@ schema KubernetesProvider:
 
 
 
+        schema Tokenreview:
+            """
+            create a TokenReview
+            """
 
-    # Policy Service
-    schema PolicyService:
+
+
+
+
+    # Apis_policy Service
+    schema Apis_policyService:
         """
-        Service for policy resources.
+        Service for apis_policy resources.
         """
 
 
@@ -2011,23 +2011,17 @@ schema KubernetesProvider:
 
 
 
-    # Apis__internal Service
-    schema Apis__internalService:
+    # Apis_internal Service
+    schema Apis_internalService:
         """
-        Service for internal resources.
+        Service for apis_internal resources.
         """
 
 
-        schema Statu:
+        schema V1alpha1:
             """
-            read status of the specified StorageVersion
+            get available resources
             """
-
-            dry_run: str?  # When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
-
-            field_manager: str?  # fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
-
-            field_validation: str?  # fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
 
 
 
@@ -2046,19 +2040,25 @@ schema KubernetesProvider:
 
 
 
-        schema V1alpha1:
+        schema Statu:
             """
-            get available resources
+            read status of the specified StorageVersion
             """
 
+            dry_run: str?  # When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
+
+            field_manager: str?  # fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
+
+            field_validation: str?  # fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
 
 
 
 
-    # Apps Service
-    schema AppsService:
+
+    # Apis_apps Service
+    schema Apis_appsService:
         """
-        Service for apps resources.
+        Service for apis_apps resources.
         """
 
 
@@ -2071,10 +2071,10 @@ schema KubernetesProvider:
 
 
 
-    # Core Service
-    schema CoreService:
+    # Api Service
+    schema ApiService:
         """
-        Service for core resources.
+        Service for api resources.
         """
 
 
@@ -2087,19 +2087,11 @@ schema KubernetesProvider:
 
 
 
-    # Apis__storage Service
-    schema Apis__storageService:
+    # Apis_storage Service
+    schema Apis_storageService:
         """
-        Service for storage resources.
+        Service for apis_storage resources.
         """
-
-
-        schema V1beta1:
-            """
-            get available resources
-            """
-
-
 
 
         schema Volumeattributesclasse:
@@ -2116,11 +2108,19 @@ schema KubernetesProvider:
 
 
 
+        schema V1beta1:
+            """
+            get available resources
+            """
 
-    # Apis__certificates Service
-    schema Apis__certificatesService:
+
+
+
+
+    # Apis_certificates Service
+    schema Apis_certificatesService:
         """
-        Service for certificates resources.
+        Service for apis_certificates resources.
         """
 
 
@@ -2147,14 +2147,14 @@ schema KubernetesProvider:
 
 
 
-    # Apis__events Service
-    schema Apis__eventsService:
+    # Apis_events Service
+    schema Apis_eventsService:
         """
-        Service for events resources.
+        Service for apis_events resources.
         """
 
 
-        schema Events.k8s.io:
+        schema Event:
             """
             get information of a group
             """
@@ -2163,30 +2163,24 @@ schema KubernetesProvider:
 
 
 
-    # Apis__flowcontrol Service
-    schema Apis__flowcontrolService:
+    # Apis_flowcontrol Service
+    schema Apis_flowcontrolService:
         """
-        Service for flowcontrol resources.
+        Service for apis_flowcontrol resources.
         """
 
 
-        schema Prioritylevelconfiguration:
+        schema V1:
             """
-            create a PriorityLevelConfiguration
+            get available resources
             """
-
-            dry_run: str?  # When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
-
-            field_manager: str?  # fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
-
-            field_validation: str?  # fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
 
 
 
 
         schema Statu:
             """
-            read status of the specified PriorityLevelConfiguration
+            read status of the specified FlowSchema
             """
 
             dry_run: str?  # When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
@@ -2212,23 +2206,29 @@ schema KubernetesProvider:
 
 
 
-        schema V1:
+        schema Prioritylevelconfiguration:
             """
-            get available resources
+            create a PriorityLevelConfiguration
             """
 
+            dry_run: str?  # When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
+
+            field_manager: str?  # fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
+
+            field_validation: str?  # fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
 
 
 
 
-    # Apis__scheduling Service
-    schema Apis__schedulingService:
+
+    # Apis_scheduling Service
+    schema Apis_schedulingService:
         """
-        Service for scheduling resources.
+        Service for apis_scheduling resources.
         """
 
 
-        schema Scheduling.k8s.io:
+        schema Scheduling:
             """
             get information of a group
             """
@@ -2237,11 +2237,19 @@ schema KubernetesProvider:
 
 
 
-    # Apis__discovery Service
-    schema Apis__discoveryService:
+    # Apis Service
+    schema ApisService:
         """
-        Service for discovery resources.
+        Service for apis resources.
         """
+
+
+        schema V1:
+            """
+            get available resources
+            """
+
+
 
 
         schema Endpointslice:
@@ -2258,25 +2266,45 @@ schema KubernetesProvider:
 
 
 
-        schema V1:
-            """
-            get available resources
-            """
 
-
-
-
-
-    # Apis__resource Service
-    schema Apis__resourceService:
+    # Apis_resource Service
+    schema Apis_resourceService:
         """
-        Service for resource resources.
+        Service for apis_resource resources.
         """
+
+
+        schema Deviceclasse:
+            """
+            create a DeviceClass
+            """
+
+            dry_run: str?  # When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
+
+            field_manager: str?  # fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
+
+            field_validation: str?  # fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
+
+
 
 
         schema Resourceclaimtemplate:
             """
             create a ResourceClaimTemplate
+            """
+
+            dry_run: str?  # When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
+
+            field_manager: str?  # fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
+
+            field_validation: str?  # fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
+
+
+
+
+        schema Resourceslice:
+            """
+            create a ResourceSlice
             """
 
             dry_run: str?  # When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
@@ -2302,28 +2330,6 @@ schema KubernetesProvider:
 
 
 
-        schema V1beta2:
-            """
-            get available resources
-            """
-
-
-
-
-        schema Resourceslice:
-            """
-            create a ResourceSlice
-            """
-
-            dry_run: str?  # When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
-
-            field_manager: str?  # fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
-
-            field_validation: str?  # fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
-
-
-
-
         schema Resourceclaim:
             """
             create a ResourceClaim
@@ -2338,9 +2344,57 @@ schema KubernetesProvider:
 
 
 
-        schema Deviceclasse:
+        schema V1beta2:
             """
-            create a DeviceClass
+            get available resources
+            """
+
+
+
+
+
+    # Apis_resource Service
+    schema Apis_resourceService:
+        """
+        Service for apis_resource resources.
+        """
+
+
+        schema Resource:
+            """
+            get information of a group
+            """
+
+
+
+
+
+    # Apis_apiregistration Service
+    schema Apis_apiregistrationService:
+        """
+        Service for apis_apiregistration resources.
+        """
+
+
+        schema Apiregistration:
+            """
+            get information of a group
+            """
+
+
+
+
+
+    # Apis_batch Service
+    schema Apis_batchService:
+        """
+        Service for apis_batch resources.
+        """
+
+
+        schema Cronjob:
+            """
+            create a CronJob
             """
 
             dry_run: str?  # When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
@@ -2352,49 +2406,9 @@ schema KubernetesProvider:
 
 
 
-
-    # Apis__resource Service
-    schema Apis__resourceService:
-        """
-        Service for resource resources.
-        """
-
-
-        schema Resource.k8s.io:
+        schema Job:
             """
-            get information of a group
-            """
-
-
-
-
-
-    # Apis__apiregistration Service
-    schema Apis__apiregistrationService:
-        """
-        Service for apiregistration resources.
-        """
-
-
-        schema Apiregistration.k8s.io:
-            """
-            get information of a group
-            """
-
-
-
-
-
-    # BatchV1 Service
-    schema BatchV1Service:
-        """
-        Service for batch_v1 resources.
-        """
-
-
-        schema Cronjob:
-            """
-            create a CronJob
+            create a Job
             """
 
             dry_run: str?  # When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
@@ -2428,9 +2442,17 @@ schema KubernetesProvider:
 
 
 
-        schema Job:
+
+    # Apis_admissionregistration Service
+    schema Apis_admissionregistrationService:
+        """
+        Service for apis_admissionregistration resources.
+        """
+
+
+        schema Validatingadmissionpolicybinding:
             """
-            create a Job
+            create a ValidatingAdmissionPolicyBinding
             """
 
             dry_run: str?  # When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
@@ -2442,17 +2464,17 @@ schema KubernetesProvider:
 
 
 
-
-    # Apis__admissionregistration Service
-    schema Apis__admissionregistrationService:
-        """
-        Service for admissionregistration resources.
-        """
-
-
-        schema Mutatingwebhookconfiguration:
+        schema V1:
             """
-            create a MutatingWebhookConfiguration
+            get available resources
+            """
+
+
+
+
+        schema Statu:
+            """
+            read status of the specified ValidatingAdmissionPolicy
             """
 
             dry_run: str?  # When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
@@ -2478,9 +2500,9 @@ schema KubernetesProvider:
 
 
 
-        schema Statu:
+        schema Mutatingwebhookconfiguration:
             """
-            read status of the specified ValidatingAdmissionPolicy
+            create a MutatingWebhookConfiguration
             """
 
             dry_run: str?  # When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
@@ -2506,67 +2528,17 @@ schema KubernetesProvider:
 
 
 
-        schema V1:
-            """
-            get available resources
-            """
 
-
-
-
-        schema Validatingadmissionpolicybinding:
-            """
-            create a ValidatingAdmissionPolicyBinding
-            """
-
-            dry_run: str?  # When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
-
-            field_manager: str?  # fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
-
-            field_validation: str?  # fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
-
-
-
-
-
-    # Apis__resource Service
-    schema Apis__resourceService:
+    # Apis_resource Service
+    schema Apis_resourceService:
         """
-        Service for resource resources.
+        Service for apis_resource resources.
         """
 
 
         schema Resourceslice:
             """
             create a ResourceSlice
-            """
-
-            dry_run: str?  # When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
-
-            field_manager: str?  # fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
-
-            field_validation: str?  # fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
-
-
-
-
-        schema Resourceclaimtemplate:
-            """
-            create a ResourceClaimTemplate
-            """
-
-            dry_run: str?  # When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
-
-            field_manager: str?  # fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
-
-            field_validation: str?  # fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
-
-
-
-
-        schema Statu:
-            """
-            read status of the specified ResourceClaim
             """
 
             dry_run: str?  # When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
@@ -2592,9 +2564,9 @@ schema KubernetesProvider:
 
 
 
-        schema Resourceclaim:
+        schema Statu:
             """
-            create a ResourceClaim
+            read status of the specified ResourceClaim
             """
 
             dry_run: str?  # When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
@@ -2614,11 +2586,39 @@ schema KubernetesProvider:
 
 
 
+        schema Resourceclaimtemplate:
+            """
+            create a ResourceClaimTemplate
+            """
 
-    # OpenidV1Jwks Service
-    schema OpenidV1JwksService:
+            dry_run: str?  # When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
+
+            field_manager: str?  # fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
+
+            field_validation: str?  # fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
+
+
+
+
+        schema Resourceclaim:
+            """
+            create a ResourceClaim
+            """
+
+            dry_run: str?  # When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
+
+            field_manager: str?  # fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
+
+            field_validation: str?  # fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
+
+
+
+
+
+    # Openid Service
+    schema OpenidService:
         """
-        Service for openid_v1_jwks resources.
+        Service for openid resources.
         """
 
 

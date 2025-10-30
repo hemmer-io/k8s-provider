@@ -1,0 +1,45 @@
+//! Batch resource
+//!
+//! get information of a group
+
+use crate::{ProviderError, Result};
+use std::collections::HashMap;
+
+/// Batch resource handler
+pub struct Batch<'a> {
+    provider: &'a crate::KubernetesProvider,
+}
+
+impl<'a> Batch<'a> {
+    pub(crate) fn new(provider: &'a crate::KubernetesProvider) -> Self {
+        Self { provider }
+    }
+
+
+
+
+    /// Read/describe a batch
+    ///
+    /// TODO: Map `id` parameter to appropriate SDK field(s)
+    #[allow(unused_variables)]
+    pub async fn read(&self, id: &str) -> Result<()> {
+
+        todo!("Implement read for Kubernetes")
+
+    }
+
+
+
+
+
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[tokio::test]
+    async fn test_batch_operations() {
+        // Test batch CRUD operations
+    }
+}

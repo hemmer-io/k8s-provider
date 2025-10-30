@@ -1,5 +1,5 @@
 //! Resource modules
 
-pub mod openid-configuration;
-pub use openid-configuration::Openid-configuration;
+pub mod openid_configuration;
+pub use openid_configuration::Openid_configuration;
 
