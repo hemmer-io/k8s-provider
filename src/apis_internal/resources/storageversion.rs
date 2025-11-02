@@ -7,11 +7,11 @@ use std::collections::HashMap;
 
 /// Storageversion resource handler
 pub struct Storageversion<'a> {
-    provider: &'a crate::KubernetesProvider,
+    provider: &'a crate::K8sProvider,
 }
 
 impl<'a> Storageversion<'a> {
-    pub(crate) fn new(provider: &'a crate::KubernetesProvider) -> Self {
+    pub(crate) fn new(provider: &'a crate::K8sProvider) -> Self {
         Self { provider }
     }
 

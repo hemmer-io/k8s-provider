@@ -7,11 +7,11 @@ use std::collections::HashMap;
 
 /// Resourceclaimtemplate resource handler
 pub struct Resourceclaimtemplate<'a> {
-    provider: &'a crate::KubernetesProvider,
+    provider: &'a crate::K8sProvider,
 }
 
 impl<'a> Resourceclaimtemplate<'a> {
-    pub(crate) fn new(provider: &'a crate::KubernetesProvider) -> Self {
+    pub(crate) fn new(provider: &'a crate::K8sProvider) -> Self {
         Self { provider }
     }
 

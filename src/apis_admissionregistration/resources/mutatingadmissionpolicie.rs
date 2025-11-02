@@ -7,11 +7,11 @@ use std::collections::HashMap;
 
 /// Mutatingadmissionpolicie resource handler
 pub struct Mutatingadmissionpolicie<'a> {
-    provider: &'a crate::KubernetesProvider,
+    provider: &'a crate::K8sProvider,
 }
 
 impl<'a> Mutatingadmissionpolicie<'a> {
-    pub(crate) fn new(provider: &'a crate::KubernetesProvider) -> Self {
+    pub(crate) fn new(provider: &'a crate::K8sProvider) -> Self {
         Self { provider }
     }
 

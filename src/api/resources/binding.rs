@@ -1,17 +1,17 @@
 //! Binding resource
 //!
-//! create a Binding
+//! create binding of a Pod
 
 use crate::{ProviderError, Result};
 use std::collections::HashMap;
 
 /// Binding resource handler
 pub struct Binding<'a> {
-    provider: &'a crate::KubernetesProvider,
+    provider: &'a crate::K8sProvider,
 }
 
 impl<'a> Binding<'a> {
-    pub(crate) fn new(provider: &'a crate::KubernetesProvider) -> Self {
+    pub(crate) fn new(provider: &'a crate::K8sProvider) -> Self {
         Self { provider }
     }
 
