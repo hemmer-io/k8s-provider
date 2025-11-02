@@ -1,17 +1,17 @@
 //! Statu resource
 //!
-//! read status of the specified Service
+//! read status of the specified PersistentVolumeClaim
 
 use crate::{ProviderError, Result};
 use std::collections::HashMap;
 
 /// Statu resource handler
 pub struct Statu<'a> {
-    provider: &'a crate::KubernetesProvider,
+    provider: &'a crate::K8sProvider,
 }
 
 impl<'a> Statu<'a> {
-    pub(crate) fn new(provider: &'a crate::KubernetesProvider) -> Self {
+    pub(crate) fn new(provider: &'a crate::K8sProvider) -> Self {
         Self { provider }
     }
 

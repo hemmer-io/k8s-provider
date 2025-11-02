@@ -1,5 +1,7 @@
 //! Resource modules
 
+pub mod authentication;
+pub use authentication::Authentication;
 pub mod v1;
 pub use v1::V1;
 pub mod selfsubjectreview;

@@ -1,17 +1,17 @@
 //! Componentstatuse resource
 //!
-//! list objects of kind ComponentStatus
+//! read the specified ComponentStatus
 
 use crate::{ProviderError, Result};
 use std::collections::HashMap;
 
 /// Componentstatuse resource handler
 pub struct Componentstatuse<'a> {
-    provider: &'a crate::KubernetesProvider,
+    provider: &'a crate::K8sProvider,
 }
 
 impl<'a> Componentstatuse<'a> {
-    pub(crate) fn new(provider: &'a crate::KubernetesProvider) -> Self {
+    pub(crate) fn new(provider: &'a crate::K8sProvider) -> Self {
         Self { provider }
     }
 
