@@ -7,11 +7,11 @@ use std::collections::HashMap;
 
 /// Binding resource handler
 pub struct Binding<'a> {
-    provider: &'a crate::K8sProvider,
+    provider: &'a crate::KubernetesProvider,
 }
 
 impl<'a> Binding<'a> {
-    pub(crate) fn new(provider: &'a crate::K8sProvider) -> Self {
+    pub(crate) fn new(provider: &'a crate::KubernetesProvider) -> Self {
         Self { provider }
     }
 

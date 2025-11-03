@@ -7,11 +7,11 @@ use std::collections::HashMap;
 
 /// Prioritylevelconfiguration resource handler
 pub struct Prioritylevelconfiguration<'a> {
-    provider: &'a crate::K8sProvider,
+    provider: &'a crate::KubernetesProvider,
 }
 
 impl<'a> Prioritylevelconfiguration<'a> {
-    pub(crate) fn new(provider: &'a crate::K8sProvider) -> Self {
+    pub(crate) fn new(provider: &'a crate::KubernetesProvider) -> Self {
         Self { provider }
     }
 

@@ -1,4 +1,4 @@
-//! Logs service for K8s provider
+//! Logs service for Kubernetes provider
 //!
 //! This module handles all logs resources and their CRUD operations.
 
@@ -7,12 +7,12 @@ use hemmer_provider::{ResourceInput, ResourceOutput, ResourcePlan};
 
 /// Logs service handler
 pub struct LogsService<'a> {
-    provider: &'a crate::K8sProvider,
+    provider: &'a crate::KubernetesProvider,
 }
 
 impl<'a> LogsService<'a> {
     /// Create a new service handler
-    pub fn new(provider: &'a crate::K8sProvider) -> Self {
+    pub fn new(provider: &'a crate::KubernetesProvider) -> Self {
         Self { provider }
     }
 
@@ -24,10 +24,13 @@ impl<'a> LogsService<'a> {
         desired_input: &ResourceInput,
     ) -> Result<ResourcePlan> {
         match resource_name {
-            "log" => self.plan_log(current_state, desired_input).await,
+            "log" => {
+                self.plan_log(current_state, desired_input).await
+            }
             _ => Err(hemmer_core::HemmerError::Provider(format!(
                 "Unknown resource type: {}.{}",
-                "logs", resource_name
+                "logs",
+                resource_name
             ))),
         }
     }
@@ -39,21 +42,31 @@ impl<'a> LogsService<'a> {
         input: ResourceInput,
     ) -> Result<ResourceOutput> {
         match resource_name {
-            "log" => self.create_log(input).await,
+            "log" => {
+                self.create_log(input).await
+            }
             _ => Err(hemmer_core::HemmerError::Provider(format!(
                 "Unknown resource type: {}.{}",
-                "logs", resource_name
+                "logs",
+                resource_name
             ))),
         }
     }
 
     /// Read resource state
-    pub async fn read_resource(&self, resource_name: &str, id: &str) -> Result<ResourceOutput> {
+    pub async fn read_resource(
+        &self,
+        resource_name: &str,
+        id: &str,
+    ) -> Result<ResourceOutput> {
         match resource_name {
-            "log" => self.read_log(id).await,
+            "log" => {
+                self.read_log(id).await
+            }
             _ => Err(hemmer_core::HemmerError::Provider(format!(
                 "Unknown resource type: {}.{}",
-                "logs", resource_name
+                "logs",
+                resource_name
             ))),
         }
     }
@@ -66,21 +79,31 @@ impl<'a> LogsService<'a> {
         input: ResourceInput,
     ) -> Result<ResourceOutput> {
         match resource_name {
-            "log" => self.update_log(id, input).await,
+            "log" => {
+                self.update_log(id, input).await
+            }
             _ => Err(hemmer_core::HemmerError::Provider(format!(
                 "Unknown resource type: {}.{}",
-                "logs", resource_name
+                "logs",
+                resource_name
             ))),
         }
     }
 
     /// Delete a resource
-    pub async fn delete_resource(&self, resource_name: &str, id: &str) -> Result<()> {
+    pub async fn delete_resource(
+        &self,
+        resource_name: &str,
+        id: &str,
+    ) -> Result<()> {
         match resource_name {
-            "log" => self.delete_log(id).await,
+            "log" => {
+                self.delete_log(id).await
+            }
             _ => Err(hemmer_core::HemmerError::Provider(format!(
                 "Unknown resource type: {}.{}",
-                "logs", resource_name
+                "logs",
+                resource_name
             ))),
         }
     }
@@ -88,6 +111,7 @@ impl<'a> LogsService<'a> {
     // ========================================================================
     // Resource-specific CRUD implementations
     // ========================================================================
+
 
     // ------------------------------------------------------------------------
     // Log resource operations
@@ -110,26 +134,44 @@ impl<'a> LogsService<'a> {
     }
 
     /// Create a new log resource
-    async fn create_log(&self, input: ResourceInput) -> Result<ResourceOutput> {
+    async fn create_log(
+        &self,
+        input: ResourceInput,
+    ) -> Result<ResourceOutput> {
         // TODO: Implement Kubernetes SDK calls
-        Ok(ResourceOutput::new().with_id("placeholder-id"))
+        Ok(ResourceOutput::new()
+            .with_id("placeholder-id"))
     }
 
     /// Read a log resource
-    async fn read_log(&self, id: &str) -> Result<ResourceOutput> {
+    async fn read_log(
+        &self,
+        id: &str,
+    ) -> Result<ResourceOutput> {
         // TODO: Implement Kubernetes SDK calls
-        Ok(ResourceOutput::new().with_id(id))
+        Ok(ResourceOutput::new()
+            .with_id(id))
     }
 
     /// Update a log resource
-    async fn update_log(&self, id: &str, input: ResourceInput) -> Result<ResourceOutput> {
+    async fn update_log(
+        &self,
+        id: &str,
+        input: ResourceInput,
+    ) -> Result<ResourceOutput> {
         // TODO: Implement Kubernetes SDK calls
-        Ok(ResourceOutput::new().with_id(id))
+        Ok(ResourceOutput::new()
+            .with_id(id))
     }
 
     /// Delete a log resource
-    async fn delete_log(&self, id: &str) -> Result<()> {
+    async fn delete_log(
+        &self,
+        id: &str,
+    ) -> Result<()> {
         // TODO: Implement Kubernetes SDK calls
         Ok(())
     }
+
+
 }

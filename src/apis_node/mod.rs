@@ -1,4 +1,4 @@
-//! Apis_node service for K8s provider
+//! Apis_node service for Kubernetes provider
 //!
 //! This module handles all apis_node resources and their CRUD operations.
 
@@ -7,12 +7,12 @@ use hemmer_provider::{ResourceInput, ResourceOutput, ResourcePlan};
 
 /// Apis_node service handler
 pub struct Apis_nodeService<'a> {
-    provider: &'a crate::K8sProvider,
+    provider: &'a crate::KubernetesProvider,
 }
 
 impl<'a> Apis_nodeService<'a> {
     /// Create a new service handler
-    pub fn new(provider: &'a crate::K8sProvider) -> Self {
+    pub fn new(provider: &'a crate::KubernetesProvider) -> Self {
         Self { provider }
     }
 
@@ -24,12 +24,19 @@ impl<'a> Apis_nodeService<'a> {
         desired_input: &ResourceInput,
     ) -> Result<ResourcePlan> {
         match resource_name {
-            "v1" => self.plan_v1(current_state, desired_input).await,
-            "runtimeclasse" => self.plan_runtimeclasse(current_state, desired_input).await,
-            "node" => self.plan_node(current_state, desired_input).await,
+            "v1" => {
+                self.plan_v1(current_state, desired_input).await
+            }
+            "runtimeclasse" => {
+                self.plan_runtimeclasse(current_state, desired_input).await
+            }
+            "node" => {
+                self.plan_node(current_state, desired_input).await
+            }
             _ => Err(hemmer_core::HemmerError::Provider(format!(
                 "Unknown resource type: {}.{}",
-                "apis_node", resource_name
+                "apis_node",
+                resource_name
             ))),
         }
     }
@@ -41,25 +48,43 @@ impl<'a> Apis_nodeService<'a> {
         input: ResourceInput,
     ) -> Result<ResourceOutput> {
         match resource_name {
-            "v1" => self.create_v1(input).await,
-            "runtimeclasse" => self.create_runtimeclasse(input).await,
-            "node" => self.create_node(input).await,
+            "v1" => {
+                self.create_v1(input).await
+            }
+            "runtimeclasse" => {
+                self.create_runtimeclasse(input).await
+            }
+            "node" => {
+                self.create_node(input).await
+            }
             _ => Err(hemmer_core::HemmerError::Provider(format!(
                 "Unknown resource type: {}.{}",
-                "apis_node", resource_name
+                "apis_node",
+                resource_name
             ))),
         }
     }
 
     /// Read resource state
-    pub async fn read_resource(&self, resource_name: &str, id: &str) -> Result<ResourceOutput> {
+    pub async fn read_resource(
+        &self,
+        resource_name: &str,
+        id: &str,
+    ) -> Result<ResourceOutput> {
         match resource_name {
-            "v1" => self.read_v1(id).await,
-            "runtimeclasse" => self.read_runtimeclasse(id).await,
-            "node" => self.read_node(id).await,
+            "v1" => {
+                self.read_v1(id).await
+            }
+            "runtimeclasse" => {
+                self.read_runtimeclasse(id).await
+            }
+            "node" => {
+                self.read_node(id).await
+            }
             _ => Err(hemmer_core::HemmerError::Provider(format!(
                 "Unknown resource type: {}.{}",
-                "apis_node", resource_name
+                "apis_node",
+                resource_name
             ))),
         }
     }
@@ -72,25 +97,43 @@ impl<'a> Apis_nodeService<'a> {
         input: ResourceInput,
     ) -> Result<ResourceOutput> {
         match resource_name {
-            "v1" => self.update_v1(id, input).await,
-            "runtimeclasse" => self.update_runtimeclasse(id, input).await,
-            "node" => self.update_node(id, input).await,
+            "v1" => {
+                self.update_v1(id, input).await
+            }
+            "runtimeclasse" => {
+                self.update_runtimeclasse(id, input).await
+            }
+            "node" => {
+                self.update_node(id, input).await
+            }
             _ => Err(hemmer_core::HemmerError::Provider(format!(
                 "Unknown resource type: {}.{}",
-                "apis_node", resource_name
+                "apis_node",
+                resource_name
             ))),
         }
     }
 
     /// Delete a resource
-    pub async fn delete_resource(&self, resource_name: &str, id: &str) -> Result<()> {
+    pub async fn delete_resource(
+        &self,
+        resource_name: &str,
+        id: &str,
+    ) -> Result<()> {
         match resource_name {
-            "v1" => self.delete_v1(id).await,
-            "runtimeclasse" => self.delete_runtimeclasse(id).await,
-            "node" => self.delete_node(id).await,
+            "v1" => {
+                self.delete_v1(id).await
+            }
+            "runtimeclasse" => {
+                self.delete_runtimeclasse(id).await
+            }
+            "node" => {
+                self.delete_node(id).await
+            }
             _ => Err(hemmer_core::HemmerError::Provider(format!(
                 "Unknown resource type: {}.{}",
-                "apis_node", resource_name
+                "apis_node",
+                resource_name
             ))),
         }
     }
@@ -98,6 +141,7 @@ impl<'a> Apis_nodeService<'a> {
     // ========================================================================
     // Resource-specific CRUD implementations
     // ========================================================================
+
 
     // ------------------------------------------------------------------------
     // V1 resource operations
@@ -120,28 +164,45 @@ impl<'a> Apis_nodeService<'a> {
     }
 
     /// Create a new v1 resource
-    async fn create_v1(&self, input: ResourceInput) -> Result<ResourceOutput> {
+    async fn create_v1(
+        &self,
+        input: ResourceInput,
+    ) -> Result<ResourceOutput> {
         // TODO: Implement Kubernetes SDK calls
-        Ok(ResourceOutput::new().with_id("placeholder-id"))
+        Ok(ResourceOutput::new()
+            .with_id("placeholder-id"))
     }
 
     /// Read a v1 resource
-    async fn read_v1(&self, id: &str) -> Result<ResourceOutput> {
+    async fn read_v1(
+        &self,
+        id: &str,
+    ) -> Result<ResourceOutput> {
         // TODO: Implement Kubernetes SDK calls
-        Ok(ResourceOutput::new().with_id(id))
+        Ok(ResourceOutput::new()
+            .with_id(id))
     }
 
     /// Update a v1 resource
-    async fn update_v1(&self, id: &str, input: ResourceInput) -> Result<ResourceOutput> {
+    async fn update_v1(
+        &self,
+        id: &str,
+        input: ResourceInput,
+    ) -> Result<ResourceOutput> {
         // TODO: Implement Kubernetes SDK calls
-        Ok(ResourceOutput::new().with_id(id))
+        Ok(ResourceOutput::new()
+            .with_id(id))
     }
 
     /// Delete a v1 resource
-    async fn delete_v1(&self, id: &str) -> Result<()> {
+    async fn delete_v1(
+        &self,
+        id: &str,
+    ) -> Result<()> {
         // TODO: Implement Kubernetes SDK calls
         Ok(())
     }
+
 
     // ------------------------------------------------------------------------
     // Runtimeclasse resource operations
@@ -164,28 +225,45 @@ impl<'a> Apis_nodeService<'a> {
     }
 
     /// Create a new runtimeclasse resource
-    async fn create_runtimeclasse(&self, input: ResourceInput) -> Result<ResourceOutput> {
+    async fn create_runtimeclasse(
+        &self,
+        input: ResourceInput,
+    ) -> Result<ResourceOutput> {
         // TODO: Implement Kubernetes SDK calls
-        Ok(ResourceOutput::new().with_id("placeholder-id"))
+        Ok(ResourceOutput::new()
+            .with_id("placeholder-id"))
     }
 
     /// Read a runtimeclasse resource
-    async fn read_runtimeclasse(&self, id: &str) -> Result<ResourceOutput> {
+    async fn read_runtimeclasse(
+        &self,
+        id: &str,
+    ) -> Result<ResourceOutput> {
         // TODO: Implement Kubernetes SDK calls
-        Ok(ResourceOutput::new().with_id(id))
+        Ok(ResourceOutput::new()
+            .with_id(id))
     }
 
     /// Update a runtimeclasse resource
-    async fn update_runtimeclasse(&self, id: &str, input: ResourceInput) -> Result<ResourceOutput> {
+    async fn update_runtimeclasse(
+        &self,
+        id: &str,
+        input: ResourceInput,
+    ) -> Result<ResourceOutput> {
         // TODO: Implement Kubernetes SDK calls
-        Ok(ResourceOutput::new().with_id(id))
+        Ok(ResourceOutput::new()
+            .with_id(id))
     }
 
     /// Delete a runtimeclasse resource
-    async fn delete_runtimeclasse(&self, id: &str) -> Result<()> {
+    async fn delete_runtimeclasse(
+        &self,
+        id: &str,
+    ) -> Result<()> {
         // TODO: Implement Kubernetes SDK calls
         Ok(())
     }
+
 
     // ------------------------------------------------------------------------
     // Node resource operations
@@ -208,26 +286,44 @@ impl<'a> Apis_nodeService<'a> {
     }
 
     /// Create a new node resource
-    async fn create_node(&self, input: ResourceInput) -> Result<ResourceOutput> {
+    async fn create_node(
+        &self,
+        input: ResourceInput,
+    ) -> Result<ResourceOutput> {
         // TODO: Implement Kubernetes SDK calls
-        Ok(ResourceOutput::new().with_id("placeholder-id"))
+        Ok(ResourceOutput::new()
+            .with_id("placeholder-id"))
     }
 
     /// Read a node resource
-    async fn read_node(&self, id: &str) -> Result<ResourceOutput> {
+    async fn read_node(
+        &self,
+        id: &str,
+    ) -> Result<ResourceOutput> {
         // TODO: Implement Kubernetes SDK calls
-        Ok(ResourceOutput::new().with_id(id))
+        Ok(ResourceOutput::new()
+            .with_id(id))
     }
 
     /// Update a node resource
-    async fn update_node(&self, id: &str, input: ResourceInput) -> Result<ResourceOutput> {
+    async fn update_node(
+        &self,
+        id: &str,
+        input: ResourceInput,
+    ) -> Result<ResourceOutput> {
         // TODO: Implement Kubernetes SDK calls
-        Ok(ResourceOutput::new().with_id(id))
+        Ok(ResourceOutput::new()
+            .with_id(id))
     }
 
     /// Delete a node resource
-    async fn delete_node(&self, id: &str) -> Result<()> {
+    async fn delete_node(
+        &self,
+        id: &str,
+    ) -> Result<()> {
         // TODO: Implement Kubernetes SDK calls
         Ok(())
     }
+
+
 }
