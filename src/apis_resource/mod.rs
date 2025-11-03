@@ -24,38 +24,32 @@ impl<'a> Apis_resourceService<'a> {
         desired_input: &ResourceInput,
     ) -> Result<ResourcePlan> {
         match resource_name {
-            "devicetaintrule" => {
-                self.plan_devicetaintrule(current_state, desired_input).await
-            }
             "v1alpha3" => {
                 self.plan_v1alpha3(current_state, desired_input).await
             }
-            "resourceclaimtemplate" => {
-                self.plan_resourceclaimtemplate(current_state, desired_input).await
-            }
-            "v1beta1" => {
-                self.plan_v1beta1(current_state, desired_input).await
-            }
-            "resourceclaim" => {
-                self.plan_resourceclaim(current_state, desired_input).await
-            }
-            "statu" => {
-                self.plan_statu(current_state, desired_input).await
-            }
-            "resourceslice" => {
-                self.plan_resourceslice(current_state, desired_input).await
+            "devicetaintrule" => {
+                self.plan_devicetaintrule(current_state, desired_input).await
             }
             "deviceclasse" => {
                 self.plan_deviceclasse(current_state, desired_input).await
             }
-            "resourceclaimtemplate" => {
-                self.plan_resourceclaimtemplate(current_state, desired_input).await
+            "statu" => {
+                self.plan_statu(current_state, desired_input).await
+            }
+            "resourceclaim" => {
+                self.plan_resourceclaim(current_state, desired_input).await
+            }
+            "v1beta1" => {
+                self.plan_v1beta1(current_state, desired_input).await
             }
             "resourceslice" => {
                 self.plan_resourceslice(current_state, desired_input).await
             }
-            "statu" => {
-                self.plan_statu(current_state, desired_input).await
+            "resourceclaimtemplate" => {
+                self.plan_resourceclaimtemplate(current_state, desired_input).await
+            }
+            "resourceclaimtemplate" => {
+                self.plan_resourceclaimtemplate(current_state, desired_input).await
             }
             "resourceclaim" => {
                 self.plan_resourceclaim(current_state, desired_input).await
@@ -66,6 +60,12 @@ impl<'a> Apis_resourceService<'a> {
             "v1beta2" => {
                 self.plan_v1beta2(current_state, desired_input).await
             }
+            "resourceslice" => {
+                self.plan_resourceslice(current_state, desired_input).await
+            }
+            "statu" => {
+                self.plan_statu(current_state, desired_input).await
+            }
             "resource" => {
                 self.plan_resource(current_state, desired_input).await
             }
@@ -75,17 +75,17 @@ impl<'a> Apis_resourceService<'a> {
             "v1" => {
                 self.plan_v1(current_state, desired_input).await
             }
-            "resourceclaim" => {
-                self.plan_resourceclaim(current_state, desired_input).await
-            }
             "resourceslice" => {
                 self.plan_resourceslice(current_state, desired_input).await
+            }
+            "resourceclaimtemplate" => {
+                self.plan_resourceclaimtemplate(current_state, desired_input).await
             }
             "statu" => {
                 self.plan_statu(current_state, desired_input).await
             }
-            "resourceclaimtemplate" => {
-                self.plan_resourceclaimtemplate(current_state, desired_input).await
+            "resourceclaim" => {
+                self.plan_resourceclaim(current_state, desired_input).await
             }
             _ => Err(hemmer_core::HemmerError::Provider(format!(
                 "Unknown resource type: {}.{}",
@@ -102,38 +102,32 @@ impl<'a> Apis_resourceService<'a> {
         input: ResourceInput,
     ) -> Result<ResourceOutput> {
         match resource_name {
-            "devicetaintrule" => {
-                self.create_devicetaintrule(input).await
-            }
             "v1alpha3" => {
                 self.create_v1alpha3(input).await
             }
-            "resourceclaimtemplate" => {
-                self.create_resourceclaimtemplate(input).await
-            }
-            "v1beta1" => {
-                self.create_v1beta1(input).await
-            }
-            "resourceclaim" => {
-                self.create_resourceclaim(input).await
-            }
-            "statu" => {
-                self.create_statu(input).await
-            }
-            "resourceslice" => {
-                self.create_resourceslice(input).await
+            "devicetaintrule" => {
+                self.create_devicetaintrule(input).await
             }
             "deviceclasse" => {
                 self.create_deviceclasse(input).await
             }
-            "resourceclaimtemplate" => {
-                self.create_resourceclaimtemplate(input).await
+            "statu" => {
+                self.create_statu(input).await
+            }
+            "resourceclaim" => {
+                self.create_resourceclaim(input).await
+            }
+            "v1beta1" => {
+                self.create_v1beta1(input).await
             }
             "resourceslice" => {
                 self.create_resourceslice(input).await
             }
-            "statu" => {
-                self.create_statu(input).await
+            "resourceclaimtemplate" => {
+                self.create_resourceclaimtemplate(input).await
+            }
+            "resourceclaimtemplate" => {
+                self.create_resourceclaimtemplate(input).await
             }
             "resourceclaim" => {
                 self.create_resourceclaim(input).await
@@ -144,6 +138,12 @@ impl<'a> Apis_resourceService<'a> {
             "v1beta2" => {
                 self.create_v1beta2(input).await
             }
+            "resourceslice" => {
+                self.create_resourceslice(input).await
+            }
+            "statu" => {
+                self.create_statu(input).await
+            }
             "resource" => {
                 self.create_resource(input).await
             }
@@ -153,17 +153,17 @@ impl<'a> Apis_resourceService<'a> {
             "v1" => {
                 self.create_v1(input).await
             }
-            "resourceclaim" => {
-                self.create_resourceclaim(input).await
-            }
             "resourceslice" => {
                 self.create_resourceslice(input).await
+            }
+            "resourceclaimtemplate" => {
+                self.create_resourceclaimtemplate(input).await
             }
             "statu" => {
                 self.create_statu(input).await
             }
-            "resourceclaimtemplate" => {
-                self.create_resourceclaimtemplate(input).await
+            "resourceclaim" => {
+                self.create_resourceclaim(input).await
             }
             _ => Err(hemmer_core::HemmerError::Provider(format!(
                 "Unknown resource type: {}.{}",
@@ -180,38 +180,32 @@ impl<'a> Apis_resourceService<'a> {
         id: &str,
     ) -> Result<ResourceOutput> {
         match resource_name {
-            "devicetaintrule" => {
-                self.read_devicetaintrule(id).await
-            }
             "v1alpha3" => {
                 self.read_v1alpha3(id).await
             }
-            "resourceclaimtemplate" => {
-                self.read_resourceclaimtemplate(id).await
-            }
-            "v1beta1" => {
-                self.read_v1beta1(id).await
-            }
-            "resourceclaim" => {
-                self.read_resourceclaim(id).await
-            }
-            "statu" => {
-                self.read_statu(id).await
-            }
-            "resourceslice" => {
-                self.read_resourceslice(id).await
+            "devicetaintrule" => {
+                self.read_devicetaintrule(id).await
             }
             "deviceclasse" => {
                 self.read_deviceclasse(id).await
             }
-            "resourceclaimtemplate" => {
-                self.read_resourceclaimtemplate(id).await
+            "statu" => {
+                self.read_statu(id).await
+            }
+            "resourceclaim" => {
+                self.read_resourceclaim(id).await
+            }
+            "v1beta1" => {
+                self.read_v1beta1(id).await
             }
             "resourceslice" => {
                 self.read_resourceslice(id).await
             }
-            "statu" => {
-                self.read_statu(id).await
+            "resourceclaimtemplate" => {
+                self.read_resourceclaimtemplate(id).await
+            }
+            "resourceclaimtemplate" => {
+                self.read_resourceclaimtemplate(id).await
             }
             "resourceclaim" => {
                 self.read_resourceclaim(id).await
@@ -222,6 +216,12 @@ impl<'a> Apis_resourceService<'a> {
             "v1beta2" => {
                 self.read_v1beta2(id).await
             }
+            "resourceslice" => {
+                self.read_resourceslice(id).await
+            }
+            "statu" => {
+                self.read_statu(id).await
+            }
             "resource" => {
                 self.read_resource(id).await
             }
@@ -231,17 +231,17 @@ impl<'a> Apis_resourceService<'a> {
             "v1" => {
                 self.read_v1(id).await
             }
-            "resourceclaim" => {
-                self.read_resourceclaim(id).await
-            }
             "resourceslice" => {
                 self.read_resourceslice(id).await
+            }
+            "resourceclaimtemplate" => {
+                self.read_resourceclaimtemplate(id).await
             }
             "statu" => {
                 self.read_statu(id).await
             }
-            "resourceclaimtemplate" => {
-                self.read_resourceclaimtemplate(id).await
+            "resourceclaim" => {
+                self.read_resourceclaim(id).await
             }
             _ => Err(hemmer_core::HemmerError::Provider(format!(
                 "Unknown resource type: {}.{}",
@@ -259,38 +259,32 @@ impl<'a> Apis_resourceService<'a> {
         input: ResourceInput,
     ) -> Result<ResourceOutput> {
         match resource_name {
-            "devicetaintrule" => {
-                self.update_devicetaintrule(id, input).await
-            }
             "v1alpha3" => {
                 self.update_v1alpha3(id, input).await
             }
-            "resourceclaimtemplate" => {
-                self.update_resourceclaimtemplate(id, input).await
-            }
-            "v1beta1" => {
-                self.update_v1beta1(id, input).await
-            }
-            "resourceclaim" => {
-                self.update_resourceclaim(id, input).await
-            }
-            "statu" => {
-                self.update_statu(id, input).await
-            }
-            "resourceslice" => {
-                self.update_resourceslice(id, input).await
+            "devicetaintrule" => {
+                self.update_devicetaintrule(id, input).await
             }
             "deviceclasse" => {
                 self.update_deviceclasse(id, input).await
             }
-            "resourceclaimtemplate" => {
-                self.update_resourceclaimtemplate(id, input).await
+            "statu" => {
+                self.update_statu(id, input).await
+            }
+            "resourceclaim" => {
+                self.update_resourceclaim(id, input).await
+            }
+            "v1beta1" => {
+                self.update_v1beta1(id, input).await
             }
             "resourceslice" => {
                 self.update_resourceslice(id, input).await
             }
-            "statu" => {
-                self.update_statu(id, input).await
+            "resourceclaimtemplate" => {
+                self.update_resourceclaimtemplate(id, input).await
+            }
+            "resourceclaimtemplate" => {
+                self.update_resourceclaimtemplate(id, input).await
             }
             "resourceclaim" => {
                 self.update_resourceclaim(id, input).await
@@ -301,6 +295,12 @@ impl<'a> Apis_resourceService<'a> {
             "v1beta2" => {
                 self.update_v1beta2(id, input).await
             }
+            "resourceslice" => {
+                self.update_resourceslice(id, input).await
+            }
+            "statu" => {
+                self.update_statu(id, input).await
+            }
             "resource" => {
                 self.update_resource(id, input).await
             }
@@ -310,17 +310,17 @@ impl<'a> Apis_resourceService<'a> {
             "v1" => {
                 self.update_v1(id, input).await
             }
-            "resourceclaim" => {
-                self.update_resourceclaim(id, input).await
-            }
             "resourceslice" => {
                 self.update_resourceslice(id, input).await
+            }
+            "resourceclaimtemplate" => {
+                self.update_resourceclaimtemplate(id, input).await
             }
             "statu" => {
                 self.update_statu(id, input).await
             }
-            "resourceclaimtemplate" => {
-                self.update_resourceclaimtemplate(id, input).await
+            "resourceclaim" => {
+                self.update_resourceclaim(id, input).await
             }
             _ => Err(hemmer_core::HemmerError::Provider(format!(
                 "Unknown resource type: {}.{}",
@@ -337,38 +337,32 @@ impl<'a> Apis_resourceService<'a> {
         id: &str,
     ) -> Result<()> {
         match resource_name {
-            "devicetaintrule" => {
-                self.delete_devicetaintrule(id).await
-            }
             "v1alpha3" => {
                 self.delete_v1alpha3(id).await
             }
-            "resourceclaimtemplate" => {
-                self.delete_resourceclaimtemplate(id).await
-            }
-            "v1beta1" => {
-                self.delete_v1beta1(id).await
-            }
-            "resourceclaim" => {
-                self.delete_resourceclaim(id).await
-            }
-            "statu" => {
-                self.delete_statu(id).await
-            }
-            "resourceslice" => {
-                self.delete_resourceslice(id).await
+            "devicetaintrule" => {
+                self.delete_devicetaintrule(id).await
             }
             "deviceclasse" => {
                 self.delete_deviceclasse(id).await
             }
-            "resourceclaimtemplate" => {
-                self.delete_resourceclaimtemplate(id).await
+            "statu" => {
+                self.delete_statu(id).await
+            }
+            "resourceclaim" => {
+                self.delete_resourceclaim(id).await
+            }
+            "v1beta1" => {
+                self.delete_v1beta1(id).await
             }
             "resourceslice" => {
                 self.delete_resourceslice(id).await
             }
-            "statu" => {
-                self.delete_statu(id).await
+            "resourceclaimtemplate" => {
+                self.delete_resourceclaimtemplate(id).await
+            }
+            "resourceclaimtemplate" => {
+                self.delete_resourceclaimtemplate(id).await
             }
             "resourceclaim" => {
                 self.delete_resourceclaim(id).await
@@ -379,6 +373,12 @@ impl<'a> Apis_resourceService<'a> {
             "v1beta2" => {
                 self.delete_v1beta2(id).await
             }
+            "resourceslice" => {
+                self.delete_resourceslice(id).await
+            }
+            "statu" => {
+                self.delete_statu(id).await
+            }
             "resource" => {
                 self.delete_resource(id).await
             }
@@ -388,17 +388,17 @@ impl<'a> Apis_resourceService<'a> {
             "v1" => {
                 self.delete_v1(id).await
             }
-            "resourceclaim" => {
-                self.delete_resourceclaim(id).await
-            }
             "resourceslice" => {
                 self.delete_resourceslice(id).await
+            }
+            "resourceclaimtemplate" => {
+                self.delete_resourceclaimtemplate(id).await
             }
             "statu" => {
                 self.delete_statu(id).await
             }
-            "resourceclaimtemplate" => {
-                self.delete_resourceclaimtemplate(id).await
+            "resourceclaim" => {
+                self.delete_resourceclaim(id).await
             }
             _ => Err(hemmer_core::HemmerError::Provider(format!(
                 "Unknown resource type: {}.{}",
@@ -411,67 +411,6 @@ impl<'a> Apis_resourceService<'a> {
     // ========================================================================
     // Resource-specific CRUD implementations
     // ========================================================================
-
-
-    // ------------------------------------------------------------------------
-    // Devicetaintrule resource operations
-    // ------------------------------------------------------------------------
-
-    /// Plan changes to a devicetaintrule resource
-    async fn plan_devicetaintrule(
-        &self,
-        current_state: Option<&ResourceOutput>,
-        desired_input: &ResourceInput,
-    ) -> Result<ResourcePlan> {
-        // If no current state exists, this is a create operation
-        if current_state.is_none() {
-            return Ok(ResourcePlan::create());
-        }
-
-        // TODO: Implement proper diff logic
-        // For now, return NoOp if resource exists
-        Ok(ResourcePlan::no_op())
-    }
-
-    /// Create a new devicetaintrule resource
-    async fn create_devicetaintrule(
-        &self,
-        input: ResourceInput,
-    ) -> Result<ResourceOutput> {
-        // TODO: Implement Kubernetes SDK calls
-        Ok(ResourceOutput::new()
-            .with_id("placeholder-id"))
-    }
-
-    /// Read a devicetaintrule resource
-    async fn read_devicetaintrule(
-        &self,
-        id: &str,
-    ) -> Result<ResourceOutput> {
-        // TODO: Implement Kubernetes SDK calls
-        Ok(ResourceOutput::new()
-            .with_id(id))
-    }
-
-    /// Update a devicetaintrule resource
-    async fn update_devicetaintrule(
-        &self,
-        id: &str,
-        input: ResourceInput,
-    ) -> Result<ResourceOutput> {
-        // TODO: Implement Kubernetes SDK calls
-        Ok(ResourceOutput::new()
-            .with_id(id))
-    }
-
-    /// Delete a devicetaintrule resource
-    async fn delete_devicetaintrule(
-        &self,
-        id: &str,
-    ) -> Result<()> {
-        // TODO: Implement Kubernetes SDK calls
-        Ok(())
-    }
 
 
     // ------------------------------------------------------------------------
@@ -536,11 +475,11 @@ impl<'a> Apis_resourceService<'a> {
 
 
     // ------------------------------------------------------------------------
-    // Resourceclaimtemplate resource operations
+    // Devicetaintrule resource operations
     // ------------------------------------------------------------------------
 
-    /// Plan changes to a resourceclaimtemplate resource
-    async fn plan_resourceclaimtemplate(
+    /// Plan changes to a devicetaintrule resource
+    async fn plan_devicetaintrule(
         &self,
         current_state: Option<&ResourceOutput>,
         desired_input: &ResourceInput,
@@ -555,8 +494,8 @@ impl<'a> Apis_resourceService<'a> {
         Ok(ResourcePlan::no_op())
     }
 
-    /// Create a new resourceclaimtemplate resource
-    async fn create_resourceclaimtemplate(
+    /// Create a new devicetaintrule resource
+    async fn create_devicetaintrule(
         &self,
         input: ResourceInput,
     ) -> Result<ResourceOutput> {
@@ -565,8 +504,8 @@ impl<'a> Apis_resourceService<'a> {
             .with_id("placeholder-id"))
     }
 
-    /// Read a resourceclaimtemplate resource
-    async fn read_resourceclaimtemplate(
+    /// Read a devicetaintrule resource
+    async fn read_devicetaintrule(
         &self,
         id: &str,
     ) -> Result<ResourceOutput> {
@@ -575,8 +514,8 @@ impl<'a> Apis_resourceService<'a> {
             .with_id(id))
     }
 
-    /// Update a resourceclaimtemplate resource
-    async fn update_resourceclaimtemplate(
+    /// Update a devicetaintrule resource
+    async fn update_devicetaintrule(
         &self,
         id: &str,
         input: ResourceInput,
@@ -586,252 +525,8 @@ impl<'a> Apis_resourceService<'a> {
             .with_id(id))
     }
 
-    /// Delete a resourceclaimtemplate resource
-    async fn delete_resourceclaimtemplate(
-        &self,
-        id: &str,
-    ) -> Result<()> {
-        // TODO: Implement Kubernetes SDK calls
-        Ok(())
-    }
-
-
-    // ------------------------------------------------------------------------
-    // V1beta1 resource operations
-    // ------------------------------------------------------------------------
-
-    /// Plan changes to a v1beta1 resource
-    async fn plan_v1beta1(
-        &self,
-        current_state: Option<&ResourceOutput>,
-        desired_input: &ResourceInput,
-    ) -> Result<ResourcePlan> {
-        // If no current state exists, this is a create operation
-        if current_state.is_none() {
-            return Ok(ResourcePlan::create());
-        }
-
-        // TODO: Implement proper diff logic
-        // For now, return NoOp if resource exists
-        Ok(ResourcePlan::no_op())
-    }
-
-    /// Create a new v1beta1 resource
-    async fn create_v1beta1(
-        &self,
-        input: ResourceInput,
-    ) -> Result<ResourceOutput> {
-        // TODO: Implement Kubernetes SDK calls
-        Ok(ResourceOutput::new()
-            .with_id("placeholder-id"))
-    }
-
-    /// Read a v1beta1 resource
-    async fn read_v1beta1(
-        &self,
-        id: &str,
-    ) -> Result<ResourceOutput> {
-        // TODO: Implement Kubernetes SDK calls
-        Ok(ResourceOutput::new()
-            .with_id(id))
-    }
-
-    /// Update a v1beta1 resource
-    async fn update_v1beta1(
-        &self,
-        id: &str,
-        input: ResourceInput,
-    ) -> Result<ResourceOutput> {
-        // TODO: Implement Kubernetes SDK calls
-        Ok(ResourceOutput::new()
-            .with_id(id))
-    }
-
-    /// Delete a v1beta1 resource
-    async fn delete_v1beta1(
-        &self,
-        id: &str,
-    ) -> Result<()> {
-        // TODO: Implement Kubernetes SDK calls
-        Ok(())
-    }
-
-
-    // ------------------------------------------------------------------------
-    // Resourceclaim resource operations
-    // ------------------------------------------------------------------------
-
-    /// Plan changes to a resourceclaim resource
-    async fn plan_resourceclaim(
-        &self,
-        current_state: Option<&ResourceOutput>,
-        desired_input: &ResourceInput,
-    ) -> Result<ResourcePlan> {
-        // If no current state exists, this is a create operation
-        if current_state.is_none() {
-            return Ok(ResourcePlan::create());
-        }
-
-        // TODO: Implement proper diff logic
-        // For now, return NoOp if resource exists
-        Ok(ResourcePlan::no_op())
-    }
-
-    /// Create a new resourceclaim resource
-    async fn create_resourceclaim(
-        &self,
-        input: ResourceInput,
-    ) -> Result<ResourceOutput> {
-        // TODO: Implement Kubernetes SDK calls
-        Ok(ResourceOutput::new()
-            .with_id("placeholder-id"))
-    }
-
-    /// Read a resourceclaim resource
-    async fn read_resourceclaim(
-        &self,
-        id: &str,
-    ) -> Result<ResourceOutput> {
-        // TODO: Implement Kubernetes SDK calls
-        Ok(ResourceOutput::new()
-            .with_id(id))
-    }
-
-    /// Update a resourceclaim resource
-    async fn update_resourceclaim(
-        &self,
-        id: &str,
-        input: ResourceInput,
-    ) -> Result<ResourceOutput> {
-        // TODO: Implement Kubernetes SDK calls
-        Ok(ResourceOutput::new()
-            .with_id(id))
-    }
-
-    /// Delete a resourceclaim resource
-    async fn delete_resourceclaim(
-        &self,
-        id: &str,
-    ) -> Result<()> {
-        // TODO: Implement Kubernetes SDK calls
-        Ok(())
-    }
-
-
-    // ------------------------------------------------------------------------
-    // Statu resource operations
-    // ------------------------------------------------------------------------
-
-    /// Plan changes to a statu resource
-    async fn plan_statu(
-        &self,
-        current_state: Option<&ResourceOutput>,
-        desired_input: &ResourceInput,
-    ) -> Result<ResourcePlan> {
-        // If no current state exists, this is a create operation
-        if current_state.is_none() {
-            return Ok(ResourcePlan::create());
-        }
-
-        // TODO: Implement proper diff logic
-        // For now, return NoOp if resource exists
-        Ok(ResourcePlan::no_op())
-    }
-
-    /// Create a new statu resource
-    async fn create_statu(
-        &self,
-        input: ResourceInput,
-    ) -> Result<ResourceOutput> {
-        // TODO: Implement Kubernetes SDK calls
-        Ok(ResourceOutput::new()
-            .with_id("placeholder-id"))
-    }
-
-    /// Read a statu resource
-    async fn read_statu(
-        &self,
-        id: &str,
-    ) -> Result<ResourceOutput> {
-        // TODO: Implement Kubernetes SDK calls
-        Ok(ResourceOutput::new()
-            .with_id(id))
-    }
-
-    /// Update a statu resource
-    async fn update_statu(
-        &self,
-        id: &str,
-        input: ResourceInput,
-    ) -> Result<ResourceOutput> {
-        // TODO: Implement Kubernetes SDK calls
-        Ok(ResourceOutput::new()
-            .with_id(id))
-    }
-
-    /// Delete a statu resource
-    async fn delete_statu(
-        &self,
-        id: &str,
-    ) -> Result<()> {
-        // TODO: Implement Kubernetes SDK calls
-        Ok(())
-    }
-
-
-    // ------------------------------------------------------------------------
-    // Resourceslice resource operations
-    // ------------------------------------------------------------------------
-
-    /// Plan changes to a resourceslice resource
-    async fn plan_resourceslice(
-        &self,
-        current_state: Option<&ResourceOutput>,
-        desired_input: &ResourceInput,
-    ) -> Result<ResourcePlan> {
-        // If no current state exists, this is a create operation
-        if current_state.is_none() {
-            return Ok(ResourcePlan::create());
-        }
-
-        // TODO: Implement proper diff logic
-        // For now, return NoOp if resource exists
-        Ok(ResourcePlan::no_op())
-    }
-
-    /// Create a new resourceslice resource
-    async fn create_resourceslice(
-        &self,
-        input: ResourceInput,
-    ) -> Result<ResourceOutput> {
-        // TODO: Implement Kubernetes SDK calls
-        Ok(ResourceOutput::new()
-            .with_id("placeholder-id"))
-    }
-
-    /// Read a resourceslice resource
-    async fn read_resourceslice(
-        &self,
-        id: &str,
-    ) -> Result<ResourceOutput> {
-        // TODO: Implement Kubernetes SDK calls
-        Ok(ResourceOutput::new()
-            .with_id(id))
-    }
-
-    /// Update a resourceslice resource
-    async fn update_resourceslice(
-        &self,
-        id: &str,
-        input: ResourceInput,
-    ) -> Result<ResourceOutput> {
-        // TODO: Implement Kubernetes SDK calls
-        Ok(ResourceOutput::new()
-            .with_id(id))
-    }
-
-    /// Delete a resourceslice resource
-    async fn delete_resourceslice(
+    /// Delete a devicetaintrule resource
+    async fn delete_devicetaintrule(
         &self,
         id: &str,
     ) -> Result<()> {
@@ -902,11 +597,11 @@ impl<'a> Apis_resourceService<'a> {
 
 
     // ------------------------------------------------------------------------
-    // Resourceclaimtemplate resource operations
+    // Statu resource operations
     // ------------------------------------------------------------------------
 
-    /// Plan changes to a resourceclaimtemplate resource
-    async fn plan_resourceclaimtemplate(
+    /// Plan changes to a statu resource
+    async fn plan_statu(
         &self,
         current_state: Option<&ResourceOutput>,
         desired_input: &ResourceInput,
@@ -921,8 +616,8 @@ impl<'a> Apis_resourceService<'a> {
         Ok(ResourcePlan::no_op())
     }
 
-    /// Create a new resourceclaimtemplate resource
-    async fn create_resourceclaimtemplate(
+    /// Create a new statu resource
+    async fn create_statu(
         &self,
         input: ResourceInput,
     ) -> Result<ResourceOutput> {
@@ -931,8 +626,8 @@ impl<'a> Apis_resourceService<'a> {
             .with_id("placeholder-id"))
     }
 
-    /// Read a resourceclaimtemplate resource
-    async fn read_resourceclaimtemplate(
+    /// Read a statu resource
+    async fn read_statu(
         &self,
         id: &str,
     ) -> Result<ResourceOutput> {
@@ -941,8 +636,8 @@ impl<'a> Apis_resourceService<'a> {
             .with_id(id))
     }
 
-    /// Update a resourceclaimtemplate resource
-    async fn update_resourceclaimtemplate(
+    /// Update a statu resource
+    async fn update_statu(
         &self,
         id: &str,
         input: ResourceInput,
@@ -952,8 +647,130 @@ impl<'a> Apis_resourceService<'a> {
             .with_id(id))
     }
 
-    /// Delete a resourceclaimtemplate resource
-    async fn delete_resourceclaimtemplate(
+    /// Delete a statu resource
+    async fn delete_statu(
+        &self,
+        id: &str,
+    ) -> Result<()> {
+        // TODO: Implement Kubernetes SDK calls
+        Ok(())
+    }
+
+
+    // ------------------------------------------------------------------------
+    // Resourceclaim resource operations
+    // ------------------------------------------------------------------------
+
+    /// Plan changes to a resourceclaim resource
+    async fn plan_resourceclaim(
+        &self,
+        current_state: Option<&ResourceOutput>,
+        desired_input: &ResourceInput,
+    ) -> Result<ResourcePlan> {
+        // If no current state exists, this is a create operation
+        if current_state.is_none() {
+            return Ok(ResourcePlan::create());
+        }
+
+        // TODO: Implement proper diff logic
+        // For now, return NoOp if resource exists
+        Ok(ResourcePlan::no_op())
+    }
+
+    /// Create a new resourceclaim resource
+    async fn create_resourceclaim(
+        &self,
+        input: ResourceInput,
+    ) -> Result<ResourceOutput> {
+        // TODO: Implement Kubernetes SDK calls
+        Ok(ResourceOutput::new()
+            .with_id("placeholder-id"))
+    }
+
+    /// Read a resourceclaim resource
+    async fn read_resourceclaim(
+        &self,
+        id: &str,
+    ) -> Result<ResourceOutput> {
+        // TODO: Implement Kubernetes SDK calls
+        Ok(ResourceOutput::new()
+            .with_id(id))
+    }
+
+    /// Update a resourceclaim resource
+    async fn update_resourceclaim(
+        &self,
+        id: &str,
+        input: ResourceInput,
+    ) -> Result<ResourceOutput> {
+        // TODO: Implement Kubernetes SDK calls
+        Ok(ResourceOutput::new()
+            .with_id(id))
+    }
+
+    /// Delete a resourceclaim resource
+    async fn delete_resourceclaim(
+        &self,
+        id: &str,
+    ) -> Result<()> {
+        // TODO: Implement Kubernetes SDK calls
+        Ok(())
+    }
+
+
+    // ------------------------------------------------------------------------
+    // V1beta1 resource operations
+    // ------------------------------------------------------------------------
+
+    /// Plan changes to a v1beta1 resource
+    async fn plan_v1beta1(
+        &self,
+        current_state: Option<&ResourceOutput>,
+        desired_input: &ResourceInput,
+    ) -> Result<ResourcePlan> {
+        // If no current state exists, this is a create operation
+        if current_state.is_none() {
+            return Ok(ResourcePlan::create());
+        }
+
+        // TODO: Implement proper diff logic
+        // For now, return NoOp if resource exists
+        Ok(ResourcePlan::no_op())
+    }
+
+    /// Create a new v1beta1 resource
+    async fn create_v1beta1(
+        &self,
+        input: ResourceInput,
+    ) -> Result<ResourceOutput> {
+        // TODO: Implement Kubernetes SDK calls
+        Ok(ResourceOutput::new()
+            .with_id("placeholder-id"))
+    }
+
+    /// Read a v1beta1 resource
+    async fn read_v1beta1(
+        &self,
+        id: &str,
+    ) -> Result<ResourceOutput> {
+        // TODO: Implement Kubernetes SDK calls
+        Ok(ResourceOutput::new()
+            .with_id(id))
+    }
+
+    /// Update a v1beta1 resource
+    async fn update_v1beta1(
+        &self,
+        id: &str,
+        input: ResourceInput,
+    ) -> Result<ResourceOutput> {
+        // TODO: Implement Kubernetes SDK calls
+        Ok(ResourceOutput::new()
+            .with_id(id))
+    }
+
+    /// Delete a v1beta1 resource
+    async fn delete_v1beta1(
         &self,
         id: &str,
     ) -> Result<()> {
@@ -1024,11 +841,11 @@ impl<'a> Apis_resourceService<'a> {
 
 
     // ------------------------------------------------------------------------
-    // Statu resource operations
+    // Resourceclaimtemplate resource operations
     // ------------------------------------------------------------------------
 
-    /// Plan changes to a statu resource
-    async fn plan_statu(
+    /// Plan changes to a resourceclaimtemplate resource
+    async fn plan_resourceclaimtemplate(
         &self,
         current_state: Option<&ResourceOutput>,
         desired_input: &ResourceInput,
@@ -1043,8 +860,8 @@ impl<'a> Apis_resourceService<'a> {
         Ok(ResourcePlan::no_op())
     }
 
-    /// Create a new statu resource
-    async fn create_statu(
+    /// Create a new resourceclaimtemplate resource
+    async fn create_resourceclaimtemplate(
         &self,
         input: ResourceInput,
     ) -> Result<ResourceOutput> {
@@ -1053,8 +870,8 @@ impl<'a> Apis_resourceService<'a> {
             .with_id("placeholder-id"))
     }
 
-    /// Read a statu resource
-    async fn read_statu(
+    /// Read a resourceclaimtemplate resource
+    async fn read_resourceclaimtemplate(
         &self,
         id: &str,
     ) -> Result<ResourceOutput> {
@@ -1063,8 +880,8 @@ impl<'a> Apis_resourceService<'a> {
             .with_id(id))
     }
 
-    /// Update a statu resource
-    async fn update_statu(
+    /// Update a resourceclaimtemplate resource
+    async fn update_resourceclaimtemplate(
         &self,
         id: &str,
         input: ResourceInput,
@@ -1074,8 +891,69 @@ impl<'a> Apis_resourceService<'a> {
             .with_id(id))
     }
 
-    /// Delete a statu resource
-    async fn delete_statu(
+    /// Delete a resourceclaimtemplate resource
+    async fn delete_resourceclaimtemplate(
+        &self,
+        id: &str,
+    ) -> Result<()> {
+        // TODO: Implement Kubernetes SDK calls
+        Ok(())
+    }
+
+
+    // ------------------------------------------------------------------------
+    // Resourceclaimtemplate resource operations
+    // ------------------------------------------------------------------------
+
+    /// Plan changes to a resourceclaimtemplate resource
+    async fn plan_resourceclaimtemplate(
+        &self,
+        current_state: Option<&ResourceOutput>,
+        desired_input: &ResourceInput,
+    ) -> Result<ResourcePlan> {
+        // If no current state exists, this is a create operation
+        if current_state.is_none() {
+            return Ok(ResourcePlan::create());
+        }
+
+        // TODO: Implement proper diff logic
+        // For now, return NoOp if resource exists
+        Ok(ResourcePlan::no_op())
+    }
+
+    /// Create a new resourceclaimtemplate resource
+    async fn create_resourceclaimtemplate(
+        &self,
+        input: ResourceInput,
+    ) -> Result<ResourceOutput> {
+        // TODO: Implement Kubernetes SDK calls
+        Ok(ResourceOutput::new()
+            .with_id("placeholder-id"))
+    }
+
+    /// Read a resourceclaimtemplate resource
+    async fn read_resourceclaimtemplate(
+        &self,
+        id: &str,
+    ) -> Result<ResourceOutput> {
+        // TODO: Implement Kubernetes SDK calls
+        Ok(ResourceOutput::new()
+            .with_id(id))
+    }
+
+    /// Update a resourceclaimtemplate resource
+    async fn update_resourceclaimtemplate(
+        &self,
+        id: &str,
+        input: ResourceInput,
+    ) -> Result<ResourceOutput> {
+        // TODO: Implement Kubernetes SDK calls
+        Ok(ResourceOutput::new()
+            .with_id(id))
+    }
+
+    /// Delete a resourceclaimtemplate resource
+    async fn delete_resourceclaimtemplate(
         &self,
         id: &str,
     ) -> Result<()> {
@@ -1268,6 +1146,128 @@ impl<'a> Apis_resourceService<'a> {
 
 
     // ------------------------------------------------------------------------
+    // Resourceslice resource operations
+    // ------------------------------------------------------------------------
+
+    /// Plan changes to a resourceslice resource
+    async fn plan_resourceslice(
+        &self,
+        current_state: Option<&ResourceOutput>,
+        desired_input: &ResourceInput,
+    ) -> Result<ResourcePlan> {
+        // If no current state exists, this is a create operation
+        if current_state.is_none() {
+            return Ok(ResourcePlan::create());
+        }
+
+        // TODO: Implement proper diff logic
+        // For now, return NoOp if resource exists
+        Ok(ResourcePlan::no_op())
+    }
+
+    /// Create a new resourceslice resource
+    async fn create_resourceslice(
+        &self,
+        input: ResourceInput,
+    ) -> Result<ResourceOutput> {
+        // TODO: Implement Kubernetes SDK calls
+        Ok(ResourceOutput::new()
+            .with_id("placeholder-id"))
+    }
+
+    /// Read a resourceslice resource
+    async fn read_resourceslice(
+        &self,
+        id: &str,
+    ) -> Result<ResourceOutput> {
+        // TODO: Implement Kubernetes SDK calls
+        Ok(ResourceOutput::new()
+            .with_id(id))
+    }
+
+    /// Update a resourceslice resource
+    async fn update_resourceslice(
+        &self,
+        id: &str,
+        input: ResourceInput,
+    ) -> Result<ResourceOutput> {
+        // TODO: Implement Kubernetes SDK calls
+        Ok(ResourceOutput::new()
+            .with_id(id))
+    }
+
+    /// Delete a resourceslice resource
+    async fn delete_resourceslice(
+        &self,
+        id: &str,
+    ) -> Result<()> {
+        // TODO: Implement Kubernetes SDK calls
+        Ok(())
+    }
+
+
+    // ------------------------------------------------------------------------
+    // Statu resource operations
+    // ------------------------------------------------------------------------
+
+    /// Plan changes to a statu resource
+    async fn plan_statu(
+        &self,
+        current_state: Option<&ResourceOutput>,
+        desired_input: &ResourceInput,
+    ) -> Result<ResourcePlan> {
+        // If no current state exists, this is a create operation
+        if current_state.is_none() {
+            return Ok(ResourcePlan::create());
+        }
+
+        // TODO: Implement proper diff logic
+        // For now, return NoOp if resource exists
+        Ok(ResourcePlan::no_op())
+    }
+
+    /// Create a new statu resource
+    async fn create_statu(
+        &self,
+        input: ResourceInput,
+    ) -> Result<ResourceOutput> {
+        // TODO: Implement Kubernetes SDK calls
+        Ok(ResourceOutput::new()
+            .with_id("placeholder-id"))
+    }
+
+    /// Read a statu resource
+    async fn read_statu(
+        &self,
+        id: &str,
+    ) -> Result<ResourceOutput> {
+        // TODO: Implement Kubernetes SDK calls
+        Ok(ResourceOutput::new()
+            .with_id(id))
+    }
+
+    /// Update a statu resource
+    async fn update_statu(
+        &self,
+        id: &str,
+        input: ResourceInput,
+    ) -> Result<ResourceOutput> {
+        // TODO: Implement Kubernetes SDK calls
+        Ok(ResourceOutput::new()
+            .with_id(id))
+    }
+
+    /// Delete a statu resource
+    async fn delete_statu(
+        &self,
+        id: &str,
+    ) -> Result<()> {
+        // TODO: Implement Kubernetes SDK calls
+        Ok(())
+    }
+
+
+    // ------------------------------------------------------------------------
     // Resource resource operations
     // ------------------------------------------------------------------------
 
@@ -1451,67 +1451,6 @@ impl<'a> Apis_resourceService<'a> {
 
 
     // ------------------------------------------------------------------------
-    // Resourceclaim resource operations
-    // ------------------------------------------------------------------------
-
-    /// Plan changes to a resourceclaim resource
-    async fn plan_resourceclaim(
-        &self,
-        current_state: Option<&ResourceOutput>,
-        desired_input: &ResourceInput,
-    ) -> Result<ResourcePlan> {
-        // If no current state exists, this is a create operation
-        if current_state.is_none() {
-            return Ok(ResourcePlan::create());
-        }
-
-        // TODO: Implement proper diff logic
-        // For now, return NoOp if resource exists
-        Ok(ResourcePlan::no_op())
-    }
-
-    /// Create a new resourceclaim resource
-    async fn create_resourceclaim(
-        &self,
-        input: ResourceInput,
-    ) -> Result<ResourceOutput> {
-        // TODO: Implement Kubernetes SDK calls
-        Ok(ResourceOutput::new()
-            .with_id("placeholder-id"))
-    }
-
-    /// Read a resourceclaim resource
-    async fn read_resourceclaim(
-        &self,
-        id: &str,
-    ) -> Result<ResourceOutput> {
-        // TODO: Implement Kubernetes SDK calls
-        Ok(ResourceOutput::new()
-            .with_id(id))
-    }
-
-    /// Update a resourceclaim resource
-    async fn update_resourceclaim(
-        &self,
-        id: &str,
-        input: ResourceInput,
-    ) -> Result<ResourceOutput> {
-        // TODO: Implement Kubernetes SDK calls
-        Ok(ResourceOutput::new()
-            .with_id(id))
-    }
-
-    /// Delete a resourceclaim resource
-    async fn delete_resourceclaim(
-        &self,
-        id: &str,
-    ) -> Result<()> {
-        // TODO: Implement Kubernetes SDK calls
-        Ok(())
-    }
-
-
-    // ------------------------------------------------------------------------
     // Resourceslice resource operations
     // ------------------------------------------------------------------------
 
@@ -1564,6 +1503,67 @@ impl<'a> Apis_resourceService<'a> {
 
     /// Delete a resourceslice resource
     async fn delete_resourceslice(
+        &self,
+        id: &str,
+    ) -> Result<()> {
+        // TODO: Implement Kubernetes SDK calls
+        Ok(())
+    }
+
+
+    // ------------------------------------------------------------------------
+    // Resourceclaimtemplate resource operations
+    // ------------------------------------------------------------------------
+
+    /// Plan changes to a resourceclaimtemplate resource
+    async fn plan_resourceclaimtemplate(
+        &self,
+        current_state: Option<&ResourceOutput>,
+        desired_input: &ResourceInput,
+    ) -> Result<ResourcePlan> {
+        // If no current state exists, this is a create operation
+        if current_state.is_none() {
+            return Ok(ResourcePlan::create());
+        }
+
+        // TODO: Implement proper diff logic
+        // For now, return NoOp if resource exists
+        Ok(ResourcePlan::no_op())
+    }
+
+    /// Create a new resourceclaimtemplate resource
+    async fn create_resourceclaimtemplate(
+        &self,
+        input: ResourceInput,
+    ) -> Result<ResourceOutput> {
+        // TODO: Implement Kubernetes SDK calls
+        Ok(ResourceOutput::new()
+            .with_id("placeholder-id"))
+    }
+
+    /// Read a resourceclaimtemplate resource
+    async fn read_resourceclaimtemplate(
+        &self,
+        id: &str,
+    ) -> Result<ResourceOutput> {
+        // TODO: Implement Kubernetes SDK calls
+        Ok(ResourceOutput::new()
+            .with_id(id))
+    }
+
+    /// Update a resourceclaimtemplate resource
+    async fn update_resourceclaimtemplate(
+        &self,
+        id: &str,
+        input: ResourceInput,
+    ) -> Result<ResourceOutput> {
+        // TODO: Implement Kubernetes SDK calls
+        Ok(ResourceOutput::new()
+            .with_id(id))
+    }
+
+    /// Delete a resourceclaimtemplate resource
+    async fn delete_resourceclaimtemplate(
         &self,
         id: &str,
     ) -> Result<()> {
@@ -1634,11 +1634,11 @@ impl<'a> Apis_resourceService<'a> {
 
 
     // ------------------------------------------------------------------------
-    // Resourceclaimtemplate resource operations
+    // Resourceclaim resource operations
     // ------------------------------------------------------------------------
 
-    /// Plan changes to a resourceclaimtemplate resource
-    async fn plan_resourceclaimtemplate(
+    /// Plan changes to a resourceclaim resource
+    async fn plan_resourceclaim(
         &self,
         current_state: Option<&ResourceOutput>,
         desired_input: &ResourceInput,
@@ -1653,8 +1653,8 @@ impl<'a> Apis_resourceService<'a> {
         Ok(ResourcePlan::no_op())
     }
 
-    /// Create a new resourceclaimtemplate resource
-    async fn create_resourceclaimtemplate(
+    /// Create a new resourceclaim resource
+    async fn create_resourceclaim(
         &self,
         input: ResourceInput,
     ) -> Result<ResourceOutput> {
@@ -1663,8 +1663,8 @@ impl<'a> Apis_resourceService<'a> {
             .with_id("placeholder-id"))
     }
 
-    /// Read a resourceclaimtemplate resource
-    async fn read_resourceclaimtemplate(
+    /// Read a resourceclaim resource
+    async fn read_resourceclaim(
         &self,
         id: &str,
     ) -> Result<ResourceOutput> {
@@ -1673,8 +1673,8 @@ impl<'a> Apis_resourceService<'a> {
             .with_id(id))
     }
 
-    /// Update a resourceclaimtemplate resource
-    async fn update_resourceclaimtemplate(
+    /// Update a resourceclaim resource
+    async fn update_resourceclaim(
         &self,
         id: &str,
         input: ResourceInput,
@@ -1684,8 +1684,8 @@ impl<'a> Apis_resourceService<'a> {
             .with_id(id))
     }
 
-    /// Delete a resourceclaimtemplate resource
-    async fn delete_resourceclaimtemplate(
+    /// Delete a resourceclaim resource
+    async fn delete_resourceclaim(
         &self,
         id: &str,
     ) -> Result<()> {

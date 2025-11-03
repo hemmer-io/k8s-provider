@@ -27,14 +27,14 @@ impl<'a> Apis_internalService<'a> {
             "internal" => {
                 self.plan_internal(current_state, desired_input).await
             }
+            "storageversion" => {
+                self.plan_storageversion(current_state, desired_input).await
+            }
             "statu" => {
                 self.plan_statu(current_state, desired_input).await
             }
             "v1alpha1" => {
                 self.plan_v1alpha1(current_state, desired_input).await
-            }
-            "storageversion" => {
-                self.plan_storageversion(current_state, desired_input).await
             }
             _ => Err(hemmer_core::HemmerError::Provider(format!(
                 "Unknown resource type: {}.{}",
@@ -54,14 +54,14 @@ impl<'a> Apis_internalService<'a> {
             "internal" => {
                 self.create_internal(input).await
             }
+            "storageversion" => {
+                self.create_storageversion(input).await
+            }
             "statu" => {
                 self.create_statu(input).await
             }
             "v1alpha1" => {
                 self.create_v1alpha1(input).await
-            }
-            "storageversion" => {
-                self.create_storageversion(input).await
             }
             _ => Err(hemmer_core::HemmerError::Provider(format!(
                 "Unknown resource type: {}.{}",
@@ -81,14 +81,14 @@ impl<'a> Apis_internalService<'a> {
             "internal" => {
                 self.read_internal(id).await
             }
+            "storageversion" => {
+                self.read_storageversion(id).await
+            }
             "statu" => {
                 self.read_statu(id).await
             }
             "v1alpha1" => {
                 self.read_v1alpha1(id).await
-            }
-            "storageversion" => {
-                self.read_storageversion(id).await
             }
             _ => Err(hemmer_core::HemmerError::Provider(format!(
                 "Unknown resource type: {}.{}",
@@ -109,14 +109,14 @@ impl<'a> Apis_internalService<'a> {
             "internal" => {
                 self.update_internal(id, input).await
             }
+            "storageversion" => {
+                self.update_storageversion(id, input).await
+            }
             "statu" => {
                 self.update_statu(id, input).await
             }
             "v1alpha1" => {
                 self.update_v1alpha1(id, input).await
-            }
-            "storageversion" => {
-                self.update_storageversion(id, input).await
             }
             _ => Err(hemmer_core::HemmerError::Provider(format!(
                 "Unknown resource type: {}.{}",
@@ -136,14 +136,14 @@ impl<'a> Apis_internalService<'a> {
             "internal" => {
                 self.delete_internal(id).await
             }
+            "storageversion" => {
+                self.delete_storageversion(id).await
+            }
             "statu" => {
                 self.delete_statu(id).await
             }
             "v1alpha1" => {
                 self.delete_v1alpha1(id).await
-            }
-            "storageversion" => {
-                self.delete_storageversion(id).await
             }
             _ => Err(hemmer_core::HemmerError::Provider(format!(
                 "Unknown resource type: {}.{}",
@@ -211,6 +211,67 @@ impl<'a> Apis_internalService<'a> {
 
     /// Delete a internal resource
     async fn delete_internal(
+        &self,
+        id: &str,
+    ) -> Result<()> {
+        // TODO: Implement Kubernetes SDK calls
+        Ok(())
+    }
+
+
+    // ------------------------------------------------------------------------
+    // Storageversion resource operations
+    // ------------------------------------------------------------------------
+
+    /// Plan changes to a storageversion resource
+    async fn plan_storageversion(
+        &self,
+        current_state: Option<&ResourceOutput>,
+        desired_input: &ResourceInput,
+    ) -> Result<ResourcePlan> {
+        // If no current state exists, this is a create operation
+        if current_state.is_none() {
+            return Ok(ResourcePlan::create());
+        }
+
+        // TODO: Implement proper diff logic
+        // For now, return NoOp if resource exists
+        Ok(ResourcePlan::no_op())
+    }
+
+    /// Create a new storageversion resource
+    async fn create_storageversion(
+        &self,
+        input: ResourceInput,
+    ) -> Result<ResourceOutput> {
+        // TODO: Implement Kubernetes SDK calls
+        Ok(ResourceOutput::new()
+            .with_id("placeholder-id"))
+    }
+
+    /// Read a storageversion resource
+    async fn read_storageversion(
+        &self,
+        id: &str,
+    ) -> Result<ResourceOutput> {
+        // TODO: Implement Kubernetes SDK calls
+        Ok(ResourceOutput::new()
+            .with_id(id))
+    }
+
+    /// Update a storageversion resource
+    async fn update_storageversion(
+        &self,
+        id: &str,
+        input: ResourceInput,
+    ) -> Result<ResourceOutput> {
+        // TODO: Implement Kubernetes SDK calls
+        Ok(ResourceOutput::new()
+            .with_id(id))
+    }
+
+    /// Delete a storageversion resource
+    async fn delete_storageversion(
         &self,
         id: &str,
     ) -> Result<()> {
@@ -333,67 +394,6 @@ impl<'a> Apis_internalService<'a> {
 
     /// Delete a v1alpha1 resource
     async fn delete_v1alpha1(
-        &self,
-        id: &str,
-    ) -> Result<()> {
-        // TODO: Implement Kubernetes SDK calls
-        Ok(())
-    }
-
-
-    // ------------------------------------------------------------------------
-    // Storageversion resource operations
-    // ------------------------------------------------------------------------
-
-    /// Plan changes to a storageversion resource
-    async fn plan_storageversion(
-        &self,
-        current_state: Option<&ResourceOutput>,
-        desired_input: &ResourceInput,
-    ) -> Result<ResourcePlan> {
-        // If no current state exists, this is a create operation
-        if current_state.is_none() {
-            return Ok(ResourcePlan::create());
-        }
-
-        // TODO: Implement proper diff logic
-        // For now, return NoOp if resource exists
-        Ok(ResourcePlan::no_op())
-    }
-
-    /// Create a new storageversion resource
-    async fn create_storageversion(
-        &self,
-        input: ResourceInput,
-    ) -> Result<ResourceOutput> {
-        // TODO: Implement Kubernetes SDK calls
-        Ok(ResourceOutput::new()
-            .with_id("placeholder-id"))
-    }
-
-    /// Read a storageversion resource
-    async fn read_storageversion(
-        &self,
-        id: &str,
-    ) -> Result<ResourceOutput> {
-        // TODO: Implement Kubernetes SDK calls
-        Ok(ResourceOutput::new()
-            .with_id(id))
-    }
-
-    /// Update a storageversion resource
-    async fn update_storageversion(
-        &self,
-        id: &str,
-        input: ResourceInput,
-    ) -> Result<ResourceOutput> {
-        // TODO: Implement Kubernetes SDK calls
-        Ok(ResourceOutput::new()
-            .with_id(id))
-    }
-
-    /// Delete a storageversion resource
-    async fn delete_storageversion(
         &self,
         id: &str,
     ) -> Result<()> {

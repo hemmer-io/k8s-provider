@@ -11,8 +11,8 @@
 The apis_apiregistration service provides access to 4 resource types:
 
 - [Statu](#statu) [RU]
-- [Apiservice](#apiservice) [CRUD]
 - [V1](#v1) [R]
+- [Apiservice](#apiservice) [CRUD]
 - [Apiregistration](#apiregistration) [R]
 
 ---
@@ -54,6 +54,37 @@ statu_id = statu.id
 ---
 
 
+### V1
+
+get available resources
+
+**Operations**: ✅ Read
+
+#### Fields
+
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+
+
+
+#### Usage Example
+
+```kcl
+# main.k
+import kubernetes
+
+# Initialize provider
+provider = kubernetes.KubernetesProvider {
+    kubeconfig = "~/.kube/config"
+}
+
+# Access v1 outputs
+v1_id = v1.id
+```
+
+---
+
+
 ### Apiservice
 
 create an APIService
@@ -87,37 +118,6 @@ apiservice = provider.apis_apiregistration.Apiservice {
 
 # Access apiservice outputs
 apiservice_id = apiservice.id
-```
-
----
-
-
-### V1
-
-get available resources
-
-**Operations**: ✅ Read
-
-#### Fields
-
-| Field | Type | Required | Description |
-|-------|------|----------|-------------|
-
-
-
-#### Usage Example
-
-```kcl
-# main.k
-import kubernetes
-
-# Initialize provider
-provider = kubernetes.KubernetesProvider {
-    kubeconfig = "~/.kube/config"
-}
-
-# Access v1 outputs
-v1_id = v1.id
 ```
 
 ---

@@ -27,14 +27,14 @@ impl<'a> Apis_flowcontrolService<'a> {
             "flowcontrol" => {
                 self.plan_flowcontrol(current_state, desired_input).await
             }
-            "prioritylevelconfiguration" => {
-                self.plan_prioritylevelconfiguration(current_state, desired_input).await
-            }
             "flowschema" => {
                 self.plan_flowschema(current_state, desired_input).await
             }
             "v1" => {
                 self.plan_v1(current_state, desired_input).await
+            }
+            "prioritylevelconfiguration" => {
+                self.plan_prioritylevelconfiguration(current_state, desired_input).await
             }
             "statu" => {
                 self.plan_statu(current_state, desired_input).await
@@ -57,14 +57,14 @@ impl<'a> Apis_flowcontrolService<'a> {
             "flowcontrol" => {
                 self.create_flowcontrol(input).await
             }
-            "prioritylevelconfiguration" => {
-                self.create_prioritylevelconfiguration(input).await
-            }
             "flowschema" => {
                 self.create_flowschema(input).await
             }
             "v1" => {
                 self.create_v1(input).await
+            }
+            "prioritylevelconfiguration" => {
+                self.create_prioritylevelconfiguration(input).await
             }
             "statu" => {
                 self.create_statu(input).await
@@ -87,14 +87,14 @@ impl<'a> Apis_flowcontrolService<'a> {
             "flowcontrol" => {
                 self.read_flowcontrol(id).await
             }
-            "prioritylevelconfiguration" => {
-                self.read_prioritylevelconfiguration(id).await
-            }
             "flowschema" => {
                 self.read_flowschema(id).await
             }
             "v1" => {
                 self.read_v1(id).await
+            }
+            "prioritylevelconfiguration" => {
+                self.read_prioritylevelconfiguration(id).await
             }
             "statu" => {
                 self.read_statu(id).await
@@ -118,14 +118,14 @@ impl<'a> Apis_flowcontrolService<'a> {
             "flowcontrol" => {
                 self.update_flowcontrol(id, input).await
             }
-            "prioritylevelconfiguration" => {
-                self.update_prioritylevelconfiguration(id, input).await
-            }
             "flowschema" => {
                 self.update_flowschema(id, input).await
             }
             "v1" => {
                 self.update_v1(id, input).await
+            }
+            "prioritylevelconfiguration" => {
+                self.update_prioritylevelconfiguration(id, input).await
             }
             "statu" => {
                 self.update_statu(id, input).await
@@ -148,14 +148,14 @@ impl<'a> Apis_flowcontrolService<'a> {
             "flowcontrol" => {
                 self.delete_flowcontrol(id).await
             }
-            "prioritylevelconfiguration" => {
-                self.delete_prioritylevelconfiguration(id).await
-            }
             "flowschema" => {
                 self.delete_flowschema(id).await
             }
             "v1" => {
                 self.delete_v1(id).await
+            }
+            "prioritylevelconfiguration" => {
+                self.delete_prioritylevelconfiguration(id).await
             }
             "statu" => {
                 self.delete_statu(id).await
@@ -226,67 +226,6 @@ impl<'a> Apis_flowcontrolService<'a> {
 
     /// Delete a flowcontrol resource
     async fn delete_flowcontrol(
-        &self,
-        id: &str,
-    ) -> Result<()> {
-        // TODO: Implement Kubernetes SDK calls
-        Ok(())
-    }
-
-
-    // ------------------------------------------------------------------------
-    // Prioritylevelconfiguration resource operations
-    // ------------------------------------------------------------------------
-
-    /// Plan changes to a prioritylevelconfiguration resource
-    async fn plan_prioritylevelconfiguration(
-        &self,
-        current_state: Option<&ResourceOutput>,
-        desired_input: &ResourceInput,
-    ) -> Result<ResourcePlan> {
-        // If no current state exists, this is a create operation
-        if current_state.is_none() {
-            return Ok(ResourcePlan::create());
-        }
-
-        // TODO: Implement proper diff logic
-        // For now, return NoOp if resource exists
-        Ok(ResourcePlan::no_op())
-    }
-
-    /// Create a new prioritylevelconfiguration resource
-    async fn create_prioritylevelconfiguration(
-        &self,
-        input: ResourceInput,
-    ) -> Result<ResourceOutput> {
-        // TODO: Implement Kubernetes SDK calls
-        Ok(ResourceOutput::new()
-            .with_id("placeholder-id"))
-    }
-
-    /// Read a prioritylevelconfiguration resource
-    async fn read_prioritylevelconfiguration(
-        &self,
-        id: &str,
-    ) -> Result<ResourceOutput> {
-        // TODO: Implement Kubernetes SDK calls
-        Ok(ResourceOutput::new()
-            .with_id(id))
-    }
-
-    /// Update a prioritylevelconfiguration resource
-    async fn update_prioritylevelconfiguration(
-        &self,
-        id: &str,
-        input: ResourceInput,
-    ) -> Result<ResourceOutput> {
-        // TODO: Implement Kubernetes SDK calls
-        Ok(ResourceOutput::new()
-            .with_id(id))
-    }
-
-    /// Delete a prioritylevelconfiguration resource
-    async fn delete_prioritylevelconfiguration(
         &self,
         id: &str,
     ) -> Result<()> {
@@ -409,6 +348,67 @@ impl<'a> Apis_flowcontrolService<'a> {
 
     /// Delete a v1 resource
     async fn delete_v1(
+        &self,
+        id: &str,
+    ) -> Result<()> {
+        // TODO: Implement Kubernetes SDK calls
+        Ok(())
+    }
+
+
+    // ------------------------------------------------------------------------
+    // Prioritylevelconfiguration resource operations
+    // ------------------------------------------------------------------------
+
+    /// Plan changes to a prioritylevelconfiguration resource
+    async fn plan_prioritylevelconfiguration(
+        &self,
+        current_state: Option<&ResourceOutput>,
+        desired_input: &ResourceInput,
+    ) -> Result<ResourcePlan> {
+        // If no current state exists, this is a create operation
+        if current_state.is_none() {
+            return Ok(ResourcePlan::create());
+        }
+
+        // TODO: Implement proper diff logic
+        // For now, return NoOp if resource exists
+        Ok(ResourcePlan::no_op())
+    }
+
+    /// Create a new prioritylevelconfiguration resource
+    async fn create_prioritylevelconfiguration(
+        &self,
+        input: ResourceInput,
+    ) -> Result<ResourceOutput> {
+        // TODO: Implement Kubernetes SDK calls
+        Ok(ResourceOutput::new()
+            .with_id("placeholder-id"))
+    }
+
+    /// Read a prioritylevelconfiguration resource
+    async fn read_prioritylevelconfiguration(
+        &self,
+        id: &str,
+    ) -> Result<ResourceOutput> {
+        // TODO: Implement Kubernetes SDK calls
+        Ok(ResourceOutput::new()
+            .with_id(id))
+    }
+
+    /// Update a prioritylevelconfiguration resource
+    async fn update_prioritylevelconfiguration(
+        &self,
+        id: &str,
+        input: ResourceInput,
+    ) -> Result<ResourceOutput> {
+        // TODO: Implement Kubernetes SDK calls
+        Ok(ResourceOutput::new()
+            .with_id(id))
+    }
+
+    /// Delete a prioritylevelconfiguration resource
+    async fn delete_prioritylevelconfiguration(
         &self,
         id: &str,
     ) -> Result<()> {

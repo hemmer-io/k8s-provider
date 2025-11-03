@@ -10,36 +10,36 @@
 
 The api service provides access to 31 resource types:
 
-- [Binding](#binding) [C]
-- [Resourcequota](#resourcequota) [CRUD]
-- [Replicationcontroller](#replicationcontroller) [CRUD]
-- [Token](#token) [C]
-- [Proxy](#proxy) [CRUD]
-- [Exec](#exec) [CR]
-- [Namespace](#namespace) [CRUD]
 - [Resize](#resize) [RU]
-- [Log](#log) [R]
-- [Secret](#secret) [CRUD]
-- [Componentstatuse](#componentstatuse) [R]
-- [V1](#v1) [R]
-- [Persistentvolumeclaim](#persistentvolumeclaim) [CRUD]
-- [Attach](#attach) [CR]
-- [Portforward](#portforward) [CR]
-- [Event](#event) [CRUD]
-- [Podtemplate](#podtemplate) [CRUD]
-- [Ephemeralcontainer](#ephemeralcontainer) [RU]
-- [Service](#service) [CRUD]
-- [Endpoint](#endpoint) [CRUD]
-- [Persistentvolume](#persistentvolume) [CRUD]
-- [Statu](#statu) [RU]
-- [Serviceaccount](#serviceaccount) [CRUD]
-- [Configmap](#configmap) [CRUD]
-- [Finalize](#finalize) [U]
-- [Eviction](#eviction) [C]
-- [Node](#node) [CRUD]
-- [Scale](#scale) [RU]
-- [Limitrange](#limitrange) [CRUD]
 - [Pod](#pod) [CRUD]
+- [Replicationcontroller](#replicationcontroller) [CRUD]
+- [Persistentvolumeclaim](#persistentvolumeclaim) [CRUD]
+- [Event](#event) [CRUD]
+- [Attach](#attach) [CR]
+- [Finalize](#finalize) [U]
+- [Service](#service) [CRUD]
+- [Componentstatuse](#componentstatuse) [R]
+- [Log](#log) [R]
+- [Binding](#binding) [C]
+- [Serviceaccount](#serviceaccount) [CRUD]
+- [Resourcequota](#resourcequota) [CRUD]
+- [Secret](#secret) [CRUD]
+- [Portforward](#portforward) [CR]
+- [V1](#v1) [R]
+- [Eviction](#eviction) [C]
+- [Token](#token) [C]
+- [Configmap](#configmap) [CRUD]
+- [Proxy](#proxy) [CRUD]
+- [Scale](#scale) [RU]
+- [Endpoint](#endpoint) [CRUD]
+- [Namespace](#namespace) [CRUD]
+- [Statu](#statu) [RU]
+- [Persistentvolume](#persistentvolume) [CRUD]
+- [Exec](#exec) [CR]
+- [Limitrange](#limitrange) [CRUD]
+- [Ephemeralcontainer](#ephemeralcontainer) [RU]
+- [Podtemplate](#podtemplate) [CRUD]
+- [Node](#node) [CRUD]
 - [Api](#api) [R]
 
 ---
@@ -47,16 +47,19 @@ The api service provides access to 31 resource types:
 ## Resources
 
 
-### Binding
+### Resize
 
-create binding of a Pod
+read resize of the specified Pod
 
-**Operations**: ✅ Create
+**Operations**: ✅ Read ✅ Update
 
 #### Fields
 
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
+| `dry_run` | String |  | When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed |
+| `field_manager` | String |  | fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint. |
+| `field_validation` | String |  | fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered. |
 
 
 
@@ -71,18 +74,16 @@ provider = kubernetes.KubernetesProvider {
     kubeconfig = "~/.kube/config"
 }
 
-# Create binding
-binding = provider.api.Binding {
-}
-
+# Access resize outputs
+resize_id = resize.id
 ```
 
 ---
 
 
-### Resourcequota
+### Pod
 
-create a ResourceQuota
+create a Pod
 
 **Operations**: ✅ Create ✅ Read ✅ Update ✅ Delete
 
@@ -107,12 +108,12 @@ provider = kubernetes.KubernetesProvider {
     kubeconfig = "~/.kube/config"
 }
 
-# Create resourcequota
-resourcequota = provider.api.Resourcequota {
+# Create pod
+pod = provider.api.Pod {
 }
 
-# Access resourcequota outputs
-resourcequota_id = resourcequota.id
+# Access pod outputs
+pod_id = pod.id
 ```
 
 ---
@@ -156,312 +157,6 @@ replicationcontroller_id = replicationcontroller.id
 ---
 
 
-### Token
-
-create token of a ServiceAccount
-
-**Operations**: ✅ Create
-
-#### Fields
-
-| Field | Type | Required | Description |
-|-------|------|----------|-------------|
-
-
-
-#### Usage Example
-
-```kcl
-# main.k
-import kubernetes
-
-# Initialize provider
-provider = kubernetes.KubernetesProvider {
-    kubeconfig = "~/.kube/config"
-}
-
-# Create token
-token = provider.api.Token {
-}
-
-```
-
----
-
-
-### Proxy
-
-connect POST requests to proxy of Service
-
-**Operations**: ✅ Create ✅ Read ✅ Update ✅ Delete
-
-#### Fields
-
-| Field | Type | Required | Description |
-|-------|------|----------|-------------|
-
-
-
-#### Usage Example
-
-```kcl
-# main.k
-import kubernetes
-
-# Initialize provider
-provider = kubernetes.KubernetesProvider {
-    kubeconfig = "~/.kube/config"
-}
-
-# Create proxy
-proxy = provider.api.Proxy {
-}
-
-# Access proxy outputs
-proxy_id = proxy.id
-```
-
----
-
-
-### Exec
-
-connect POST requests to exec of Pod
-
-**Operations**: ✅ Create ✅ Read
-
-#### Fields
-
-| Field | Type | Required | Description |
-|-------|------|----------|-------------|
-
-
-
-#### Usage Example
-
-```kcl
-# main.k
-import kubernetes
-
-# Initialize provider
-provider = kubernetes.KubernetesProvider {
-    kubeconfig = "~/.kube/config"
-}
-
-# Create exec
-exec = provider.api.Exec {
-}
-
-# Access exec outputs
-exec_id = exec.id
-```
-
----
-
-
-### Namespace
-
-create a Namespace
-
-**Operations**: ✅ Create ✅ Read ✅ Update ✅ Delete
-
-#### Fields
-
-| Field | Type | Required | Description |
-|-------|------|----------|-------------|
-| `dry_run` | String |  | When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed |
-| `field_manager` | String |  | fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint. |
-| `field_validation` | String |  | fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered. |
-
-
-
-#### Usage Example
-
-```kcl
-# main.k
-import kubernetes
-
-# Initialize provider
-provider = kubernetes.KubernetesProvider {
-    kubeconfig = "~/.kube/config"
-}
-
-# Create namespace
-namespace = provider.api.Namespace {
-}
-
-# Access namespace outputs
-namespace_id = namespace.id
-```
-
----
-
-
-### Resize
-
-read resize of the specified Pod
-
-**Operations**: ✅ Read ✅ Update
-
-#### Fields
-
-| Field | Type | Required | Description |
-|-------|------|----------|-------------|
-| `dry_run` | String |  | When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed |
-| `field_manager` | String |  | fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint. |
-| `field_validation` | String |  | fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered. |
-
-
-
-#### Usage Example
-
-```kcl
-# main.k
-import kubernetes
-
-# Initialize provider
-provider = kubernetes.KubernetesProvider {
-    kubeconfig = "~/.kube/config"
-}
-
-# Access resize outputs
-resize_id = resize.id
-```
-
----
-
-
-### Log
-
-read log of the specified Pod
-
-**Operations**: ✅ Read
-
-#### Fields
-
-| Field | Type | Required | Description |
-|-------|------|----------|-------------|
-
-
-
-#### Usage Example
-
-```kcl
-# main.k
-import kubernetes
-
-# Initialize provider
-provider = kubernetes.KubernetesProvider {
-    kubeconfig = "~/.kube/config"
-}
-
-# Access log outputs
-log_id = log.id
-```
-
----
-
-
-### Secret
-
-create a Secret
-
-**Operations**: ✅ Create ✅ Read ✅ Update ✅ Delete
-
-#### Fields
-
-| Field | Type | Required | Description |
-|-------|------|----------|-------------|
-| `dry_run` | String |  | When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed |
-| `field_manager` | String |  | fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint. |
-| `field_validation` | String |  | fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered. |
-
-
-
-#### Usage Example
-
-```kcl
-# main.k
-import kubernetes
-
-# Initialize provider
-provider = kubernetes.KubernetesProvider {
-    kubeconfig = "~/.kube/config"
-}
-
-# Create secret
-secret = provider.api.Secret {
-}
-
-# Access secret outputs
-secret_id = secret.id
-```
-
----
-
-
-### Componentstatuse
-
-read the specified ComponentStatus
-
-**Operations**: ✅ Read
-
-#### Fields
-
-| Field | Type | Required | Description |
-|-------|------|----------|-------------|
-
-
-
-#### Usage Example
-
-```kcl
-# main.k
-import kubernetes
-
-# Initialize provider
-provider = kubernetes.KubernetesProvider {
-    kubeconfig = "~/.kube/config"
-}
-
-# Access componentstatuse outputs
-componentstatuse_id = componentstatuse.id
-```
-
----
-
-
-### V1
-
-get available resources
-
-**Operations**: ✅ Read
-
-#### Fields
-
-| Field | Type | Required | Description |
-|-------|------|----------|-------------|
-
-
-
-#### Usage Example
-
-```kcl
-# main.k
-import kubernetes
-
-# Initialize provider
-provider = kubernetes.KubernetesProvider {
-    kubeconfig = "~/.kube/config"
-}
-
-# Access v1 outputs
-v1_id = v1.id
-```
-
----
-
-
 ### Persistentvolumeclaim
 
 create a PersistentVolumeClaim
@@ -495,76 +190,6 @@ persistentvolumeclaim = provider.api.Persistentvolumeclaim {
 
 # Access persistentvolumeclaim outputs
 persistentvolumeclaim_id = persistentvolumeclaim.id
-```
-
----
-
-
-### Attach
-
-connect POST requests to attach of Pod
-
-**Operations**: ✅ Create ✅ Read
-
-#### Fields
-
-| Field | Type | Required | Description |
-|-------|------|----------|-------------|
-
-
-
-#### Usage Example
-
-```kcl
-# main.k
-import kubernetes
-
-# Initialize provider
-provider = kubernetes.KubernetesProvider {
-    kubeconfig = "~/.kube/config"
-}
-
-# Create attach
-attach = provider.api.Attach {
-}
-
-# Access attach outputs
-attach_id = attach.id
-```
-
----
-
-
-### Portforward
-
-connect POST requests to portforward of Pod
-
-**Operations**: ✅ Create ✅ Read
-
-#### Fields
-
-| Field | Type | Required | Description |
-|-------|------|----------|-------------|
-
-
-
-#### Usage Example
-
-```kcl
-# main.k
-import kubernetes
-
-# Initialize provider
-provider = kubernetes.KubernetesProvider {
-    kubeconfig = "~/.kube/config"
-}
-
-# Create portforward
-portforward = provider.api.Portforward {
-}
-
-# Access portforward outputs
-portforward_id = portforward.id
 ```
 
 ---
@@ -608,19 +233,16 @@ event_id = event.id
 ---
 
 
-### Podtemplate
+### Attach
 
-create a PodTemplate
+connect POST requests to attach of Pod
 
-**Operations**: ✅ Create ✅ Read ✅ Update ✅ Delete
+**Operations**: ✅ Create ✅ Read
 
 #### Fields
 
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
-| `dry_run` | String |  | When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed |
-| `field_manager` | String |  | fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint. |
-| `field_validation` | String |  | fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered. |
 
 
 
@@ -635,30 +257,27 @@ provider = kubernetes.KubernetesProvider {
     kubeconfig = "~/.kube/config"
 }
 
-# Create podtemplate
-podtemplate = provider.api.Podtemplate {
+# Create attach
+attach = provider.api.Attach {
 }
 
-# Access podtemplate outputs
-podtemplate_id = podtemplate.id
+# Access attach outputs
+attach_id = attach.id
 ```
 
 ---
 
 
-### Ephemeralcontainer
+### Finalize
 
-read ephemeralcontainers of the specified Pod
 
-**Operations**: ✅ Read ✅ Update
+
+**Operations**: ✅ Update
 
 #### Fields
 
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
-| `dry_run` | String |  | When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed |
-| `field_manager` | String |  | fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint. |
-| `field_validation` | String |  | fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered. |
 
 
 
@@ -673,8 +292,6 @@ provider = kubernetes.KubernetesProvider {
     kubeconfig = "~/.kube/config"
 }
 
-# Access ephemeralcontainer outputs
-ephemeralcontainer_id = ephemeralcontainer.id
 ```
 
 ---
@@ -718,19 +335,16 @@ service_id = service.id
 ---
 
 
-### Endpoint
+### Componentstatuse
 
-create Endpoints
+read the specified ComponentStatus
 
-**Operations**: ✅ Create ✅ Read ✅ Update ✅ Delete
+**Operations**: ✅ Read
 
 #### Fields
 
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
-| `dry_run` | String |  | When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed |
-| `field_manager` | String |  | fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint. |
-| `field_validation` | String |  | fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered. |
 
 
 
@@ -745,30 +359,23 @@ provider = kubernetes.KubernetesProvider {
     kubeconfig = "~/.kube/config"
 }
 
-# Create endpoint
-endpoint = provider.api.Endpoint {
-}
-
-# Access endpoint outputs
-endpoint_id = endpoint.id
+# Access componentstatuse outputs
+componentstatuse_id = componentstatuse.id
 ```
 
 ---
 
 
-### Persistentvolume
+### Log
 
-create a PersistentVolume
+read log of the specified Pod
 
-**Operations**: ✅ Create ✅ Read ✅ Update ✅ Delete
+**Operations**: ✅ Read
 
 #### Fields
 
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
-| `dry_run` | String |  | When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed |
-| `field_manager` | String |  | fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint. |
-| `field_validation` | String |  | fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered. |
 
 
 
@@ -783,30 +390,23 @@ provider = kubernetes.KubernetesProvider {
     kubeconfig = "~/.kube/config"
 }
 
-# Create persistentvolume
-persistentvolume = provider.api.Persistentvolume {
-}
-
-# Access persistentvolume outputs
-persistentvolume_id = persistentvolume.id
+# Access log outputs
+log_id = log.id
 ```
 
 ---
 
 
-### Statu
+### Binding
 
-read status of the specified PersistentVolumeClaim
+create binding of a Pod
 
-**Operations**: ✅ Read ✅ Update
+**Operations**: ✅ Create
 
 #### Fields
 
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
-| `dry_run` | String |  | When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed |
-| `field_manager` | String |  | fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint. |
-| `field_validation` | String |  | fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered. |
 
 
 
@@ -821,8 +421,10 @@ provider = kubernetes.KubernetesProvider {
     kubeconfig = "~/.kube/config"
 }
 
-# Access statu outputs
-statu_id = statu.id
+# Create binding
+binding = provider.api.Binding {
+}
+
 ```
 
 ---
@@ -866,9 +468,9 @@ serviceaccount_id = serviceaccount.id
 ---
 
 
-### Configmap
+### Resourcequota
 
-create a ConfigMap
+create a ResourceQuota
 
 **Operations**: ✅ Create ✅ Read ✅ Update ✅ Delete
 
@@ -893,22 +495,60 @@ provider = kubernetes.KubernetesProvider {
     kubeconfig = "~/.kube/config"
 }
 
-# Create configmap
-configmap = provider.api.Configmap {
+# Create resourcequota
+resourcequota = provider.api.Resourcequota {
 }
 
-# Access configmap outputs
-configmap_id = configmap.id
+# Access resourcequota outputs
+resourcequota_id = resourcequota.id
 ```
 
 ---
 
 
-### Finalize
+### Secret
+
+create a Secret
+
+**Operations**: ✅ Create ✅ Read ✅ Update ✅ Delete
+
+#### Fields
+
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| `dry_run` | String |  | When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed |
+| `field_manager` | String |  | fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint. |
+| `field_validation` | String |  | fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered. |
 
 
 
-**Operations**: ✅ Update
+#### Usage Example
+
+```kcl
+# main.k
+import kubernetes
+
+# Initialize provider
+provider = kubernetes.KubernetesProvider {
+    kubeconfig = "~/.kube/config"
+}
+
+# Create secret
+secret = provider.api.Secret {
+}
+
+# Access secret outputs
+secret_id = secret.id
+```
+
+---
+
+
+### Portforward
+
+connect POST requests to portforward of Pod
+
+**Operations**: ✅ Create ✅ Read
 
 #### Fields
 
@@ -928,6 +568,43 @@ provider = kubernetes.KubernetesProvider {
     kubeconfig = "~/.kube/config"
 }
 
+# Create portforward
+portforward = provider.api.Portforward {
+}
+
+# Access portforward outputs
+portforward_id = portforward.id
+```
+
+---
+
+
+### V1
+
+get available resources
+
+**Operations**: ✅ Read
+
+#### Fields
+
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+
+
+
+#### Usage Example
+
+```kcl
+# main.k
+import kubernetes
+
+# Initialize provider
+provider = kubernetes.KubernetesProvider {
+    kubeconfig = "~/.kube/config"
+}
+
+# Access v1 outputs
+v1_id = v1.id
 ```
 
 ---
@@ -966,9 +643,42 @@ eviction = provider.api.Eviction {
 ---
 
 
-### Node
+### Token
 
-create a Node
+create token of a ServiceAccount
+
+**Operations**: ✅ Create
+
+#### Fields
+
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+
+
+
+#### Usage Example
+
+```kcl
+# main.k
+import kubernetes
+
+# Initialize provider
+provider = kubernetes.KubernetesProvider {
+    kubeconfig = "~/.kube/config"
+}
+
+# Create token
+token = provider.api.Token {
+}
+
+```
+
+---
+
+
+### Configmap
+
+create a ConfigMap
 
 **Operations**: ✅ Create ✅ Read ✅ Update ✅ Delete
 
@@ -993,12 +703,47 @@ provider = kubernetes.KubernetesProvider {
     kubeconfig = "~/.kube/config"
 }
 
-# Create node
-node = provider.api.Node {
+# Create configmap
+configmap = provider.api.Configmap {
 }
 
-# Access node outputs
-node_id = node.id
+# Access configmap outputs
+configmap_id = configmap.id
+```
+
+---
+
+
+### Proxy
+
+connect POST requests to proxy of Service
+
+**Operations**: ✅ Create ✅ Read ✅ Update ✅ Delete
+
+#### Fields
+
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+
+
+
+#### Usage Example
+
+```kcl
+# main.k
+import kubernetes
+
+# Initialize provider
+provider = kubernetes.KubernetesProvider {
+    kubeconfig = "~/.kube/config"
+}
+
+# Create proxy
+proxy = provider.api.Proxy {
+}
+
+# Access proxy outputs
+proxy_id = proxy.id
 ```
 
 ---
@@ -1033,6 +778,189 @@ provider = kubernetes.KubernetesProvider {
 
 # Access scale outputs
 scale_id = scale.id
+```
+
+---
+
+
+### Endpoint
+
+create Endpoints
+
+**Operations**: ✅ Create ✅ Read ✅ Update ✅ Delete
+
+#### Fields
+
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| `dry_run` | String |  | When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed |
+| `field_manager` | String |  | fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint. |
+| `field_validation` | String |  | fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered. |
+
+
+
+#### Usage Example
+
+```kcl
+# main.k
+import kubernetes
+
+# Initialize provider
+provider = kubernetes.KubernetesProvider {
+    kubeconfig = "~/.kube/config"
+}
+
+# Create endpoint
+endpoint = provider.api.Endpoint {
+}
+
+# Access endpoint outputs
+endpoint_id = endpoint.id
+```
+
+---
+
+
+### Namespace
+
+create a Namespace
+
+**Operations**: ✅ Create ✅ Read ✅ Update ✅ Delete
+
+#### Fields
+
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| `dry_run` | String |  | When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed |
+| `field_manager` | String |  | fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint. |
+| `field_validation` | String |  | fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered. |
+
+
+
+#### Usage Example
+
+```kcl
+# main.k
+import kubernetes
+
+# Initialize provider
+provider = kubernetes.KubernetesProvider {
+    kubeconfig = "~/.kube/config"
+}
+
+# Create namespace
+namespace = provider.api.Namespace {
+}
+
+# Access namespace outputs
+namespace_id = namespace.id
+```
+
+---
+
+
+### Statu
+
+read status of the specified Service
+
+**Operations**: ✅ Read ✅ Update
+
+#### Fields
+
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| `dry_run` | String |  | When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed |
+| `field_manager` | String |  | fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint. |
+| `field_validation` | String |  | fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered. |
+
+
+
+#### Usage Example
+
+```kcl
+# main.k
+import kubernetes
+
+# Initialize provider
+provider = kubernetes.KubernetesProvider {
+    kubeconfig = "~/.kube/config"
+}
+
+# Access statu outputs
+statu_id = statu.id
+```
+
+---
+
+
+### Persistentvolume
+
+create a PersistentVolume
+
+**Operations**: ✅ Create ✅ Read ✅ Update ✅ Delete
+
+#### Fields
+
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| `dry_run` | String |  | When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed |
+| `field_manager` | String |  | fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint. |
+| `field_validation` | String |  | fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered. |
+
+
+
+#### Usage Example
+
+```kcl
+# main.k
+import kubernetes
+
+# Initialize provider
+provider = kubernetes.KubernetesProvider {
+    kubeconfig = "~/.kube/config"
+}
+
+# Create persistentvolume
+persistentvolume = provider.api.Persistentvolume {
+}
+
+# Access persistentvolume outputs
+persistentvolume_id = persistentvolume.id
+```
+
+---
+
+
+### Exec
+
+connect POST requests to exec of Pod
+
+**Operations**: ✅ Create ✅ Read
+
+#### Fields
+
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+
+
+
+#### Usage Example
+
+```kcl
+# main.k
+import kubernetes
+
+# Initialize provider
+provider = kubernetes.KubernetesProvider {
+    kubeconfig = "~/.kube/config"
+}
+
+# Create exec
+exec = provider.api.Exec {
+}
+
+# Access exec outputs
+exec_id = exec.id
 ```
 
 ---
@@ -1076,9 +1004,43 @@ limitrange_id = limitrange.id
 ---
 
 
-### Pod
+### Ephemeralcontainer
 
-create a Pod
+read ephemeralcontainers of the specified Pod
+
+**Operations**: ✅ Read ✅ Update
+
+#### Fields
+
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| `dry_run` | String |  | When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed |
+| `field_manager` | String |  | fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint. |
+| `field_validation` | String |  | fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered. |
+
+
+
+#### Usage Example
+
+```kcl
+# main.k
+import kubernetes
+
+# Initialize provider
+provider = kubernetes.KubernetesProvider {
+    kubeconfig = "~/.kube/config"
+}
+
+# Access ephemeralcontainer outputs
+ephemeralcontainer_id = ephemeralcontainer.id
+```
+
+---
+
+
+### Podtemplate
+
+create a PodTemplate
 
 **Operations**: ✅ Create ✅ Read ✅ Update ✅ Delete
 
@@ -1103,12 +1065,50 @@ provider = kubernetes.KubernetesProvider {
     kubeconfig = "~/.kube/config"
 }
 
-# Create pod
-pod = provider.api.Pod {
+# Create podtemplate
+podtemplate = provider.api.Podtemplate {
 }
 
-# Access pod outputs
-pod_id = pod.id
+# Access podtemplate outputs
+podtemplate_id = podtemplate.id
+```
+
+---
+
+
+### Node
+
+create a Node
+
+**Operations**: ✅ Create ✅ Read ✅ Update ✅ Delete
+
+#### Fields
+
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| `dry_run` | String |  | When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed |
+| `field_manager` | String |  | fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint. |
+| `field_validation` | String |  | fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered. |
+
+
+
+#### Usage Example
+
+```kcl
+# main.k
+import kubernetes
+
+# Initialize provider
+provider = kubernetes.KubernetesProvider {
+    kubeconfig = "~/.kube/config"
+}
+
+# Create node
+node = provider.api.Node {
+}
+
+# Access node outputs
+node_id = node.id
 ```
 
 ---
@@ -1157,12 +1157,12 @@ provider = kubernetes.KubernetesProvider {
     kubeconfig = "~/.kube/config"
 }
 
-# Create multiple binding resources
-binding_0 = provider.api.Binding {
+# Create multiple resize resources
+resize_0 = provider.api.Resize {
 }
-binding_1 = provider.api.Binding {
+resize_1 = provider.api.Resize {
 }
-binding_2 = provider.api.Binding {
+resize_2 = provider.api.Resize {
 }
 ```
 
@@ -1171,7 +1171,7 @@ binding_2 = provider.api.Binding {
 ```kcl
 # Only create in production
 if environment == "production":
-    binding = provider.api.Binding {
+    resize = provider.api.Resize {
     }
 ```
 

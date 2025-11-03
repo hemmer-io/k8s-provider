@@ -32,10 +32,10 @@ async fn main() -> anyhow::Result<()> {
     let provider = KubernetesProvider::new().await?;
 
     // Access service
-    let apis_node_service = provider.apis_node();
+    let apis_apps_service = provider.apis_apps();
 
     // Use resources
-    let v1 = apis_node_service.v1();
+    let daemonset = apis_apps_service.daemonset();
 
     Ok(())
 }
@@ -51,32 +51,32 @@ This provider includes the following services:
 
 | Service | Resources | Documentation |
 |---------|-----------|---------------|
-| apis_node | 3 | [docs/services/apis_node.md](docs/services/apis_node.md) |
 | apis_apps | 9 | [docs/services/apis_apps.md](docs/services/apis_apps.md) |
-| api | 31 | [docs/services/api.md](docs/services/api.md) |
-| apis_scheduling | 3 | [docs/services/apis_scheduling.md](docs/services/apis_scheduling.md) |
-| apis_resource | 21 | [docs/services/apis_resource.md](docs/services/apis_resource.md) |
+| apis_node | 3 | [docs/services/apis_node.md](docs/services/apis_node.md) |
+| apis_authorization | 6 | [docs/services/apis_authorization.md](docs/services/apis_authorization.md) |
+| logs | 1 | [docs/services/logs.md](docs/services/logs.md) |
 | apis_flowcontrol | 5 | [docs/services/apis_flowcontrol.md](docs/services/apis_flowcontrol.md) |
+| openid | 1 | [docs/services/openid.md](docs/services/openid.md) |
+| apis_rbac | 6 | [docs/services/apis_rbac.md](docs/services/apis_rbac.md) |
+| apis_apiextensions | 4 | [docs/services/apis_apiextensions.md](docs/services/apis_apiextensions.md) |
+| version | 1 | [docs/services/version.md](docs/services/version.md) |
 | apis_coordination | 7 | [docs/services/apis_coordination.md](docs/services/apis_coordination.md) |
+| apis_policy | 4 | [docs/services/apis_policy.md](docs/services/apis_policy.md) |
+| apis_scheduling | 3 | [docs/services/apis_scheduling.md](docs/services/apis_scheduling.md) |
+| apis_networking | 12 | [docs/services/apis_networking.md](docs/services/apis_networking.md) |
+| apis_storage | 11 | [docs/services/apis_storage.md](docs/services/apis_storage.md) |
+| apis_apiregistration | 4 | [docs/services/apis_apiregistration.md](docs/services/apis_apiregistration.md) |
+| apis_admissionregistration | 13 | [docs/services/apis_admissionregistration.md](docs/services/apis_admissionregistration.md) |
+| apis_autoscaling | 7 | [docs/services/apis_autoscaling.md](docs/services/apis_autoscaling.md) |
+| apis_authentication | 4 | [docs/services/apis_authentication.md](docs/services/apis_authentication.md) |
+| apis_batch | 5 | [docs/services/apis_batch.md](docs/services/apis_batch.md) |
+| apis_events | 3 | [docs/services/apis_events.md](docs/services/apis_events.md) |
+| apis_resource | 21 | [docs/services/apis_resource.md](docs/services/apis_resource.md) |
+| api | 31 | [docs/services/api.md](docs/services/api.md) |
+| apis_internal | 4 | [docs/services/apis_internal.md](docs/services/apis_internal.md) |
 | apis_storagemigration | 4 | [docs/services/apis_storagemigration.md](docs/services/apis_storagemigration.md) |
 | apis | 4 | [docs/services/apis.md](docs/services/apis.md) |
-| apis_events | 3 | [docs/services/apis_events.md](docs/services/apis_events.md) |
-| apis_apiregistration | 4 | [docs/services/apis_apiregistration.md](docs/services/apis_apiregistration.md) |
-| apis_batch | 5 | [docs/services/apis_batch.md](docs/services/apis_batch.md) |
-| apis_internal | 4 | [docs/services/apis_internal.md](docs/services/apis_internal.md) |
-| apis_storage | 11 | [docs/services/apis_storage.md](docs/services/apis_storage.md) |
-| apis_apiextensions | 4 | [docs/services/apis_apiextensions.md](docs/services/apis_apiextensions.md) |
-| apis_admissionregistration | 13 | [docs/services/apis_admissionregistration.md](docs/services/apis_admissionregistration.md) |
-| apis_authorization | 6 | [docs/services/apis_authorization.md](docs/services/apis_authorization.md) |
-| apis_networking | 12 | [docs/services/apis_networking.md](docs/services/apis_networking.md) |
 | apis_certificates | 11 | [docs/services/apis_certificates.md](docs/services/apis_certificates.md) |
-| apis_rbac | 6 | [docs/services/apis_rbac.md](docs/services/apis_rbac.md) |
-| apis_autoscaling | 7 | [docs/services/apis_autoscaling.md](docs/services/apis_autoscaling.md) |
-| version | 1 | [docs/services/version.md](docs/services/version.md) |
-| apis_policy | 4 | [docs/services/apis_policy.md](docs/services/apis_policy.md) |
-| logs | 1 | [docs/services/logs.md](docs/services/logs.md) |
-| apis_authentication | 4 | [docs/services/apis_authentication.md](docs/services/apis_authentication.md) |
-| openid | 1 | [docs/services/openid.md](docs/services/openid.md) |
 
 ---
 
@@ -122,7 +122,7 @@ This provider was automatically generated using the Hemmer Provider Generator.
 - **SDK Version**: v1
 - **Services**: 26
 - **Total Resources**: 184
-- **Generated**: 2025-11-02
+- **Generated**: 2025-11-03
 
 To regenerate this provider:
 

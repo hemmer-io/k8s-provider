@@ -11,9 +11,9 @@
 The apis_authentication service provides access to 4 resource types:
 
 - [Authentication](#authentication) [R]
+- [Selfsubjectreview](#selfsubjectreview) [C]
 - [Tokenreview](#tokenreview) [C]
 - [V1](#v1) [R]
-- [Selfsubjectreview](#selfsubjectreview) [C]
 
 ---
 
@@ -46,6 +46,39 @@ provider = kubernetes.KubernetesProvider {
 
 # Access authentication outputs
 authentication_id = authentication.id
+```
+
+---
+
+
+### Selfsubjectreview
+
+create a SelfSubjectReview
+
+**Operations**: ✅ Create
+
+#### Fields
+
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+
+
+
+#### Usage Example
+
+```kcl
+# main.k
+import kubernetes
+
+# Initialize provider
+provider = kubernetes.KubernetesProvider {
+    kubeconfig = "~/.kube/config"
+}
+
+# Create selfsubjectreview
+selfsubjectreview = provider.apis_authentication.Selfsubjectreview {
+}
+
 ```
 
 ---
@@ -110,39 +143,6 @@ provider = kubernetes.KubernetesProvider {
 
 # Access v1 outputs
 v1_id = v1.id
-```
-
----
-
-
-### Selfsubjectreview
-
-create a SelfSubjectReview
-
-**Operations**: ✅ Create
-
-#### Fields
-
-| Field | Type | Required | Description |
-|-------|------|----------|-------------|
-
-
-
-#### Usage Example
-
-```kcl
-# main.k
-import kubernetes
-
-# Initialize provider
-provider = kubernetes.KubernetesProvider {
-    kubeconfig = "~/.kube/config"
-}
-
-# Create selfsubjectreview
-selfsubjectreview = provider.apis_authentication.Selfsubjectreview {
-}
-
 ```
 
 ---

@@ -12,10 +12,10 @@ The apis_authorization service provides access to 6 resource types:
 
 - [Authorization](#authorization) [R]
 - [Selfsubjectaccessreview](#selfsubjectaccessreview) [C]
-- [Selfsubjectrulesreview](#selfsubjectrulesreview) [C]
-- [Subjectaccessreview](#subjectaccessreview) [C]
 - [Localsubjectaccessreview](#localsubjectaccessreview) [C]
 - [V1](#v1) [R]
+- [Selfsubjectrulesreview](#selfsubjectrulesreview) [C]
+- [Subjectaccessreview](#subjectaccessreview) [C]
 
 ---
 
@@ -86,6 +86,70 @@ selfsubjectaccessreview = provider.apis_authorization.Selfsubjectaccessreview {
 ---
 
 
+### Localsubjectaccessreview
+
+create a LocalSubjectAccessReview
+
+**Operations**: ✅ Create
+
+#### Fields
+
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+
+
+
+#### Usage Example
+
+```kcl
+# main.k
+import kubernetes
+
+# Initialize provider
+provider = kubernetes.KubernetesProvider {
+    kubeconfig = "~/.kube/config"
+}
+
+# Create localsubjectaccessreview
+localsubjectaccessreview = provider.apis_authorization.Localsubjectaccessreview {
+}
+
+```
+
+---
+
+
+### V1
+
+get available resources
+
+**Operations**: ✅ Read
+
+#### Fields
+
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+
+
+
+#### Usage Example
+
+```kcl
+# main.k
+import kubernetes
+
+# Initialize provider
+provider = kubernetes.KubernetesProvider {
+    kubeconfig = "~/.kube/config"
+}
+
+# Access v1 outputs
+v1_id = v1.id
+```
+
+---
+
+
 ### Selfsubjectrulesreview
 
 create a SelfSubjectRulesReview
@@ -147,70 +211,6 @@ provider = kubernetes.KubernetesProvider {
 subjectaccessreview = provider.apis_authorization.Subjectaccessreview {
 }
 
-```
-
----
-
-
-### Localsubjectaccessreview
-
-create a LocalSubjectAccessReview
-
-**Operations**: ✅ Create
-
-#### Fields
-
-| Field | Type | Required | Description |
-|-------|------|----------|-------------|
-
-
-
-#### Usage Example
-
-```kcl
-# main.k
-import kubernetes
-
-# Initialize provider
-provider = kubernetes.KubernetesProvider {
-    kubeconfig = "~/.kube/config"
-}
-
-# Create localsubjectaccessreview
-localsubjectaccessreview = provider.apis_authorization.Localsubjectaccessreview {
-}
-
-```
-
----
-
-
-### V1
-
-get available resources
-
-**Operations**: ✅ Read
-
-#### Fields
-
-| Field | Type | Required | Description |
-|-------|------|----------|-------------|
-
-
-
-#### Usage Example
-
-```kcl
-# main.k
-import kubernetes
-
-# Initialize provider
-provider = kubernetes.KubernetesProvider {
-    kubeconfig = "~/.kube/config"
-}
-
-# Access v1 outputs
-v1_id = v1.id
 ```
 
 ---

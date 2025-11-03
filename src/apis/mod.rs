@@ -30,11 +30,11 @@ impl<'a> ApisService<'a> {
             "discovery" => {
                 self.plan_discovery(current_state, desired_input).await
             }
-            "endpointslice" => {
-                self.plan_endpointslice(current_state, desired_input).await
-            }
             "v1" => {
                 self.plan_v1(current_state, desired_input).await
+            }
+            "endpointslice" => {
+                self.plan_endpointslice(current_state, desired_input).await
             }
             _ => Err(hemmer_core::HemmerError::Provider(format!(
                 "Unknown resource type: {}.{}",
@@ -57,11 +57,11 @@ impl<'a> ApisService<'a> {
             "discovery" => {
                 self.create_discovery(input).await
             }
-            "endpointslice" => {
-                self.create_endpointslice(input).await
-            }
             "v1" => {
                 self.create_v1(input).await
+            }
+            "endpointslice" => {
+                self.create_endpointslice(input).await
             }
             _ => Err(hemmer_core::HemmerError::Provider(format!(
                 "Unknown resource type: {}.{}",
@@ -84,11 +84,11 @@ impl<'a> ApisService<'a> {
             "discovery" => {
                 self.read_discovery(id).await
             }
-            "endpointslice" => {
-                self.read_endpointslice(id).await
-            }
             "v1" => {
                 self.read_v1(id).await
+            }
+            "endpointslice" => {
+                self.read_endpointslice(id).await
             }
             _ => Err(hemmer_core::HemmerError::Provider(format!(
                 "Unknown resource type: {}.{}",
@@ -112,11 +112,11 @@ impl<'a> ApisService<'a> {
             "discovery" => {
                 self.update_discovery(id, input).await
             }
-            "endpointslice" => {
-                self.update_endpointslice(id, input).await
-            }
             "v1" => {
                 self.update_v1(id, input).await
+            }
+            "endpointslice" => {
+                self.update_endpointslice(id, input).await
             }
             _ => Err(hemmer_core::HemmerError::Provider(format!(
                 "Unknown resource type: {}.{}",
@@ -139,11 +139,11 @@ impl<'a> ApisService<'a> {
             "discovery" => {
                 self.delete_discovery(id).await
             }
-            "endpointslice" => {
-                self.delete_endpointslice(id).await
-            }
             "v1" => {
                 self.delete_v1(id).await
+            }
+            "endpointslice" => {
+                self.delete_endpointslice(id).await
             }
             _ => Err(hemmer_core::HemmerError::Provider(format!(
                 "Unknown resource type: {}.{}",
@@ -281,67 +281,6 @@ impl<'a> ApisService<'a> {
 
 
     // ------------------------------------------------------------------------
-    // Endpointslice resource operations
-    // ------------------------------------------------------------------------
-
-    /// Plan changes to a endpointslice resource
-    async fn plan_endpointslice(
-        &self,
-        current_state: Option<&ResourceOutput>,
-        desired_input: &ResourceInput,
-    ) -> Result<ResourcePlan> {
-        // If no current state exists, this is a create operation
-        if current_state.is_none() {
-            return Ok(ResourcePlan::create());
-        }
-
-        // TODO: Implement proper diff logic
-        // For now, return NoOp if resource exists
-        Ok(ResourcePlan::no_op())
-    }
-
-    /// Create a new endpointslice resource
-    async fn create_endpointslice(
-        &self,
-        input: ResourceInput,
-    ) -> Result<ResourceOutput> {
-        // TODO: Implement Kubernetes SDK calls
-        Ok(ResourceOutput::new()
-            .with_id("placeholder-id"))
-    }
-
-    /// Read a endpointslice resource
-    async fn read_endpointslice(
-        &self,
-        id: &str,
-    ) -> Result<ResourceOutput> {
-        // TODO: Implement Kubernetes SDK calls
-        Ok(ResourceOutput::new()
-            .with_id(id))
-    }
-
-    /// Update a endpointslice resource
-    async fn update_endpointslice(
-        &self,
-        id: &str,
-        input: ResourceInput,
-    ) -> Result<ResourceOutput> {
-        // TODO: Implement Kubernetes SDK calls
-        Ok(ResourceOutput::new()
-            .with_id(id))
-    }
-
-    /// Delete a endpointslice resource
-    async fn delete_endpointslice(
-        &self,
-        id: &str,
-    ) -> Result<()> {
-        // TODO: Implement Kubernetes SDK calls
-        Ok(())
-    }
-
-
-    // ------------------------------------------------------------------------
     // V1 resource operations
     // ------------------------------------------------------------------------
 
@@ -394,6 +333,67 @@ impl<'a> ApisService<'a> {
 
     /// Delete a v1 resource
     async fn delete_v1(
+        &self,
+        id: &str,
+    ) -> Result<()> {
+        // TODO: Implement Kubernetes SDK calls
+        Ok(())
+    }
+
+
+    // ------------------------------------------------------------------------
+    // Endpointslice resource operations
+    // ------------------------------------------------------------------------
+
+    /// Plan changes to a endpointslice resource
+    async fn plan_endpointslice(
+        &self,
+        current_state: Option<&ResourceOutput>,
+        desired_input: &ResourceInput,
+    ) -> Result<ResourcePlan> {
+        // If no current state exists, this is a create operation
+        if current_state.is_none() {
+            return Ok(ResourcePlan::create());
+        }
+
+        // TODO: Implement proper diff logic
+        // For now, return NoOp if resource exists
+        Ok(ResourcePlan::no_op())
+    }
+
+    /// Create a new endpointslice resource
+    async fn create_endpointslice(
+        &self,
+        input: ResourceInput,
+    ) -> Result<ResourceOutput> {
+        // TODO: Implement Kubernetes SDK calls
+        Ok(ResourceOutput::new()
+            .with_id("placeholder-id"))
+    }
+
+    /// Read a endpointslice resource
+    async fn read_endpointslice(
+        &self,
+        id: &str,
+    ) -> Result<ResourceOutput> {
+        // TODO: Implement Kubernetes SDK calls
+        Ok(ResourceOutput::new()
+            .with_id(id))
+    }
+
+    /// Update a endpointslice resource
+    async fn update_endpointslice(
+        &self,
+        id: &str,
+        input: ResourceInput,
+    ) -> Result<ResourceOutput> {
+        // TODO: Implement Kubernetes SDK calls
+        Ok(ResourceOutput::new()
+            .with_id(id))
+    }
+
+    /// Delete a endpointslice resource
+    async fn delete_endpointslice(
         &self,
         id: &str,
     ) -> Result<()> {

@@ -1,6 +1,6 @@
 //! Statu resource
 //!
-//! read status of the specified PersistentVolumeClaim
+//! read status of the specified Service
 
 use crate::{ProviderError, Result};
 use std::collections::HashMap;

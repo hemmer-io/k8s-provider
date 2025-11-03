@@ -24,11 +24,11 @@ impl<'a> Apis_eventsService<'a> {
         desired_input: &ResourceInput,
     ) -> Result<ResourcePlan> {
         match resource_name {
-            "event" => {
-                self.plan_event(current_state, desired_input).await
-            }
             "v1" => {
                 self.plan_v1(current_state, desired_input).await
+            }
+            "event" => {
+                self.plan_event(current_state, desired_input).await
             }
             "event" => {
                 self.plan_event(current_state, desired_input).await
@@ -48,11 +48,11 @@ impl<'a> Apis_eventsService<'a> {
         input: ResourceInput,
     ) -> Result<ResourceOutput> {
         match resource_name {
-            "event" => {
-                self.create_event(input).await
-            }
             "v1" => {
                 self.create_v1(input).await
+            }
+            "event" => {
+                self.create_event(input).await
             }
             "event" => {
                 self.create_event(input).await
@@ -72,11 +72,11 @@ impl<'a> Apis_eventsService<'a> {
         id: &str,
     ) -> Result<ResourceOutput> {
         match resource_name {
-            "event" => {
-                self.read_event(id).await
-            }
             "v1" => {
                 self.read_v1(id).await
+            }
+            "event" => {
+                self.read_event(id).await
             }
             "event" => {
                 self.read_event(id).await
@@ -97,11 +97,11 @@ impl<'a> Apis_eventsService<'a> {
         input: ResourceInput,
     ) -> Result<ResourceOutput> {
         match resource_name {
-            "event" => {
-                self.update_event(id, input).await
-            }
             "v1" => {
                 self.update_v1(id, input).await
+            }
+            "event" => {
+                self.update_event(id, input).await
             }
             "event" => {
                 self.update_event(id, input).await
@@ -121,11 +121,11 @@ impl<'a> Apis_eventsService<'a> {
         id: &str,
     ) -> Result<()> {
         match resource_name {
-            "event" => {
-                self.delete_event(id).await
-            }
             "v1" => {
                 self.delete_v1(id).await
+            }
+            "event" => {
+                self.delete_event(id).await
             }
             "event" => {
                 self.delete_event(id).await
@@ -141,67 +141,6 @@ impl<'a> Apis_eventsService<'a> {
     // ========================================================================
     // Resource-specific CRUD implementations
     // ========================================================================
-
-
-    // ------------------------------------------------------------------------
-    // Event resource operations
-    // ------------------------------------------------------------------------
-
-    /// Plan changes to a event resource
-    async fn plan_event(
-        &self,
-        current_state: Option<&ResourceOutput>,
-        desired_input: &ResourceInput,
-    ) -> Result<ResourcePlan> {
-        // If no current state exists, this is a create operation
-        if current_state.is_none() {
-            return Ok(ResourcePlan::create());
-        }
-
-        // TODO: Implement proper diff logic
-        // For now, return NoOp if resource exists
-        Ok(ResourcePlan::no_op())
-    }
-
-    /// Create a new event resource
-    async fn create_event(
-        &self,
-        input: ResourceInput,
-    ) -> Result<ResourceOutput> {
-        // TODO: Implement Kubernetes SDK calls
-        Ok(ResourceOutput::new()
-            .with_id("placeholder-id"))
-    }
-
-    /// Read a event resource
-    async fn read_event(
-        &self,
-        id: &str,
-    ) -> Result<ResourceOutput> {
-        // TODO: Implement Kubernetes SDK calls
-        Ok(ResourceOutput::new()
-            .with_id(id))
-    }
-
-    /// Update a event resource
-    async fn update_event(
-        &self,
-        id: &str,
-        input: ResourceInput,
-    ) -> Result<ResourceOutput> {
-        // TODO: Implement Kubernetes SDK calls
-        Ok(ResourceOutput::new()
-            .with_id(id))
-    }
-
-    /// Delete a event resource
-    async fn delete_event(
-        &self,
-        id: &str,
-    ) -> Result<()> {
-        // TODO: Implement Kubernetes SDK calls
-        Ok(())
-    }
 
 
     // ------------------------------------------------------------------------
@@ -257,6 +196,67 @@ impl<'a> Apis_eventsService<'a> {
 
     /// Delete a v1 resource
     async fn delete_v1(
+        &self,
+        id: &str,
+    ) -> Result<()> {
+        // TODO: Implement Kubernetes SDK calls
+        Ok(())
+    }
+
+
+    // ------------------------------------------------------------------------
+    // Event resource operations
+    // ------------------------------------------------------------------------
+
+    /// Plan changes to a event resource
+    async fn plan_event(
+        &self,
+        current_state: Option<&ResourceOutput>,
+        desired_input: &ResourceInput,
+    ) -> Result<ResourcePlan> {
+        // If no current state exists, this is a create operation
+        if current_state.is_none() {
+            return Ok(ResourcePlan::create());
+        }
+
+        // TODO: Implement proper diff logic
+        // For now, return NoOp if resource exists
+        Ok(ResourcePlan::no_op())
+    }
+
+    /// Create a new event resource
+    async fn create_event(
+        &self,
+        input: ResourceInput,
+    ) -> Result<ResourceOutput> {
+        // TODO: Implement Kubernetes SDK calls
+        Ok(ResourceOutput::new()
+            .with_id("placeholder-id"))
+    }
+
+    /// Read a event resource
+    async fn read_event(
+        &self,
+        id: &str,
+    ) -> Result<ResourceOutput> {
+        // TODO: Implement Kubernetes SDK calls
+        Ok(ResourceOutput::new()
+            .with_id(id))
+    }
+
+    /// Update a event resource
+    async fn update_event(
+        &self,
+        id: &str,
+        input: ResourceInput,
+    ) -> Result<ResourceOutput> {
+        // TODO: Implement Kubernetes SDK calls
+        Ok(ResourceOutput::new()
+            .with_id(id))
+    }
+
+    /// Delete a event resource
+    async fn delete_event(
         &self,
         id: &str,
     ) -> Result<()> {

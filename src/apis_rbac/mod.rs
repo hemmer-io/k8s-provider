@@ -27,20 +27,20 @@ impl<'a> Apis_rbacService<'a> {
             "rbac_authorization" => {
                 self.plan_rbac_authorization(current_state, desired_input).await
             }
-            "rolebinding" => {
-                self.plan_rolebinding(current_state, desired_input).await
+            "clusterrole" => {
+                self.plan_clusterrole(current_state, desired_input).await
             }
             "clusterrolebinding" => {
                 self.plan_clusterrolebinding(current_state, desired_input).await
             }
-            "clusterrole" => {
-                self.plan_clusterrole(current_state, desired_input).await
+            "v1" => {
+                self.plan_v1(current_state, desired_input).await
             }
             "role" => {
                 self.plan_role(current_state, desired_input).await
             }
-            "v1" => {
-                self.plan_v1(current_state, desired_input).await
+            "rolebinding" => {
+                self.plan_rolebinding(current_state, desired_input).await
             }
             _ => Err(hemmer_core::HemmerError::Provider(format!(
                 "Unknown resource type: {}.{}",
@@ -60,20 +60,20 @@ impl<'a> Apis_rbacService<'a> {
             "rbac_authorization" => {
                 self.create_rbac_authorization(input).await
             }
-            "rolebinding" => {
-                self.create_rolebinding(input).await
+            "clusterrole" => {
+                self.create_clusterrole(input).await
             }
             "clusterrolebinding" => {
                 self.create_clusterrolebinding(input).await
             }
-            "clusterrole" => {
-                self.create_clusterrole(input).await
+            "v1" => {
+                self.create_v1(input).await
             }
             "role" => {
                 self.create_role(input).await
             }
-            "v1" => {
-                self.create_v1(input).await
+            "rolebinding" => {
+                self.create_rolebinding(input).await
             }
             _ => Err(hemmer_core::HemmerError::Provider(format!(
                 "Unknown resource type: {}.{}",
@@ -93,20 +93,20 @@ impl<'a> Apis_rbacService<'a> {
             "rbac_authorization" => {
                 self.read_rbac_authorization(id).await
             }
-            "rolebinding" => {
-                self.read_rolebinding(id).await
+            "clusterrole" => {
+                self.read_clusterrole(id).await
             }
             "clusterrolebinding" => {
                 self.read_clusterrolebinding(id).await
             }
-            "clusterrole" => {
-                self.read_clusterrole(id).await
+            "v1" => {
+                self.read_v1(id).await
             }
             "role" => {
                 self.read_role(id).await
             }
-            "v1" => {
-                self.read_v1(id).await
+            "rolebinding" => {
+                self.read_rolebinding(id).await
             }
             _ => Err(hemmer_core::HemmerError::Provider(format!(
                 "Unknown resource type: {}.{}",
@@ -127,20 +127,20 @@ impl<'a> Apis_rbacService<'a> {
             "rbac_authorization" => {
                 self.update_rbac_authorization(id, input).await
             }
-            "rolebinding" => {
-                self.update_rolebinding(id, input).await
+            "clusterrole" => {
+                self.update_clusterrole(id, input).await
             }
             "clusterrolebinding" => {
                 self.update_clusterrolebinding(id, input).await
             }
-            "clusterrole" => {
-                self.update_clusterrole(id, input).await
+            "v1" => {
+                self.update_v1(id, input).await
             }
             "role" => {
                 self.update_role(id, input).await
             }
-            "v1" => {
-                self.update_v1(id, input).await
+            "rolebinding" => {
+                self.update_rolebinding(id, input).await
             }
             _ => Err(hemmer_core::HemmerError::Provider(format!(
                 "Unknown resource type: {}.{}",
@@ -160,20 +160,20 @@ impl<'a> Apis_rbacService<'a> {
             "rbac_authorization" => {
                 self.delete_rbac_authorization(id).await
             }
-            "rolebinding" => {
-                self.delete_rolebinding(id).await
+            "clusterrole" => {
+                self.delete_clusterrole(id).await
             }
             "clusterrolebinding" => {
                 self.delete_clusterrolebinding(id).await
             }
-            "clusterrole" => {
-                self.delete_clusterrole(id).await
+            "v1" => {
+                self.delete_v1(id).await
             }
             "role" => {
                 self.delete_role(id).await
             }
-            "v1" => {
-                self.delete_v1(id).await
+            "rolebinding" => {
+                self.delete_rolebinding(id).await
             }
             _ => Err(hemmer_core::HemmerError::Provider(format!(
                 "Unknown resource type: {}.{}",
@@ -250,11 +250,11 @@ impl<'a> Apis_rbacService<'a> {
 
 
     // ------------------------------------------------------------------------
-    // Rolebinding resource operations
+    // Clusterrole resource operations
     // ------------------------------------------------------------------------
 
-    /// Plan changes to a rolebinding resource
-    async fn plan_rolebinding(
+    /// Plan changes to a clusterrole resource
+    async fn plan_clusterrole(
         &self,
         current_state: Option<&ResourceOutput>,
         desired_input: &ResourceInput,
@@ -269,8 +269,8 @@ impl<'a> Apis_rbacService<'a> {
         Ok(ResourcePlan::no_op())
     }
 
-    /// Create a new rolebinding resource
-    async fn create_rolebinding(
+    /// Create a new clusterrole resource
+    async fn create_clusterrole(
         &self,
         input: ResourceInput,
     ) -> Result<ResourceOutput> {
@@ -279,8 +279,8 @@ impl<'a> Apis_rbacService<'a> {
             .with_id("placeholder-id"))
     }
 
-    /// Read a rolebinding resource
-    async fn read_rolebinding(
+    /// Read a clusterrole resource
+    async fn read_clusterrole(
         &self,
         id: &str,
     ) -> Result<ResourceOutput> {
@@ -289,8 +289,8 @@ impl<'a> Apis_rbacService<'a> {
             .with_id(id))
     }
 
-    /// Update a rolebinding resource
-    async fn update_rolebinding(
+    /// Update a clusterrole resource
+    async fn update_clusterrole(
         &self,
         id: &str,
         input: ResourceInput,
@@ -300,8 +300,8 @@ impl<'a> Apis_rbacService<'a> {
             .with_id(id))
     }
 
-    /// Delete a rolebinding resource
-    async fn delete_rolebinding(
+    /// Delete a clusterrole resource
+    async fn delete_clusterrole(
         &self,
         id: &str,
     ) -> Result<()> {
@@ -372,11 +372,11 @@ impl<'a> Apis_rbacService<'a> {
 
 
     // ------------------------------------------------------------------------
-    // Clusterrole resource operations
+    // V1 resource operations
     // ------------------------------------------------------------------------
 
-    /// Plan changes to a clusterrole resource
-    async fn plan_clusterrole(
+    /// Plan changes to a v1 resource
+    async fn plan_v1(
         &self,
         current_state: Option<&ResourceOutput>,
         desired_input: &ResourceInput,
@@ -391,8 +391,8 @@ impl<'a> Apis_rbacService<'a> {
         Ok(ResourcePlan::no_op())
     }
 
-    /// Create a new clusterrole resource
-    async fn create_clusterrole(
+    /// Create a new v1 resource
+    async fn create_v1(
         &self,
         input: ResourceInput,
     ) -> Result<ResourceOutput> {
@@ -401,8 +401,8 @@ impl<'a> Apis_rbacService<'a> {
             .with_id("placeholder-id"))
     }
 
-    /// Read a clusterrole resource
-    async fn read_clusterrole(
+    /// Read a v1 resource
+    async fn read_v1(
         &self,
         id: &str,
     ) -> Result<ResourceOutput> {
@@ -411,8 +411,8 @@ impl<'a> Apis_rbacService<'a> {
             .with_id(id))
     }
 
-    /// Update a clusterrole resource
-    async fn update_clusterrole(
+    /// Update a v1 resource
+    async fn update_v1(
         &self,
         id: &str,
         input: ResourceInput,
@@ -422,8 +422,8 @@ impl<'a> Apis_rbacService<'a> {
             .with_id(id))
     }
 
-    /// Delete a clusterrole resource
-    async fn delete_clusterrole(
+    /// Delete a v1 resource
+    async fn delete_v1(
         &self,
         id: &str,
     ) -> Result<()> {
@@ -494,11 +494,11 @@ impl<'a> Apis_rbacService<'a> {
 
 
     // ------------------------------------------------------------------------
-    // V1 resource operations
+    // Rolebinding resource operations
     // ------------------------------------------------------------------------
 
-    /// Plan changes to a v1 resource
-    async fn plan_v1(
+    /// Plan changes to a rolebinding resource
+    async fn plan_rolebinding(
         &self,
         current_state: Option<&ResourceOutput>,
         desired_input: &ResourceInput,
@@ -513,8 +513,8 @@ impl<'a> Apis_rbacService<'a> {
         Ok(ResourcePlan::no_op())
     }
 
-    /// Create a new v1 resource
-    async fn create_v1(
+    /// Create a new rolebinding resource
+    async fn create_rolebinding(
         &self,
         input: ResourceInput,
     ) -> Result<ResourceOutput> {
@@ -523,8 +523,8 @@ impl<'a> Apis_rbacService<'a> {
             .with_id("placeholder-id"))
     }
 
-    /// Read a v1 resource
-    async fn read_v1(
+    /// Read a rolebinding resource
+    async fn read_rolebinding(
         &self,
         id: &str,
     ) -> Result<ResourceOutput> {
@@ -533,8 +533,8 @@ impl<'a> Apis_rbacService<'a> {
             .with_id(id))
     }
 
-    /// Update a v1 resource
-    async fn update_v1(
+    /// Update a rolebinding resource
+    async fn update_rolebinding(
         &self,
         id: &str,
         input: ResourceInput,
@@ -544,8 +544,8 @@ impl<'a> Apis_rbacService<'a> {
             .with_id(id))
     }
 
-    /// Delete a v1 resource
-    async fn delete_v1(
+    /// Delete a rolebinding resource
+    async fn delete_rolebinding(
         &self,
         id: &str,
     ) -> Result<()> {

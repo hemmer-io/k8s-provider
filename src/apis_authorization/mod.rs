@@ -30,17 +30,17 @@ impl<'a> Apis_authorizationService<'a> {
             "selfsubjectaccessreview" => {
                 self.plan_selfsubjectaccessreview(current_state, desired_input).await
             }
-            "selfsubjectrulesreview" => {
-                self.plan_selfsubjectrulesreview(current_state, desired_input).await
-            }
-            "subjectaccessreview" => {
-                self.plan_subjectaccessreview(current_state, desired_input).await
-            }
             "localsubjectaccessreview" => {
                 self.plan_localsubjectaccessreview(current_state, desired_input).await
             }
             "v1" => {
                 self.plan_v1(current_state, desired_input).await
+            }
+            "selfsubjectrulesreview" => {
+                self.plan_selfsubjectrulesreview(current_state, desired_input).await
+            }
+            "subjectaccessreview" => {
+                self.plan_subjectaccessreview(current_state, desired_input).await
             }
             _ => Err(hemmer_core::HemmerError::Provider(format!(
                 "Unknown resource type: {}.{}",
@@ -63,17 +63,17 @@ impl<'a> Apis_authorizationService<'a> {
             "selfsubjectaccessreview" => {
                 self.create_selfsubjectaccessreview(input).await
             }
-            "selfsubjectrulesreview" => {
-                self.create_selfsubjectrulesreview(input).await
-            }
-            "subjectaccessreview" => {
-                self.create_subjectaccessreview(input).await
-            }
             "localsubjectaccessreview" => {
                 self.create_localsubjectaccessreview(input).await
             }
             "v1" => {
                 self.create_v1(input).await
+            }
+            "selfsubjectrulesreview" => {
+                self.create_selfsubjectrulesreview(input).await
+            }
+            "subjectaccessreview" => {
+                self.create_subjectaccessreview(input).await
             }
             _ => Err(hemmer_core::HemmerError::Provider(format!(
                 "Unknown resource type: {}.{}",
@@ -96,17 +96,17 @@ impl<'a> Apis_authorizationService<'a> {
             "selfsubjectaccessreview" => {
                 self.read_selfsubjectaccessreview(id).await
             }
-            "selfsubjectrulesreview" => {
-                self.read_selfsubjectrulesreview(id).await
-            }
-            "subjectaccessreview" => {
-                self.read_subjectaccessreview(id).await
-            }
             "localsubjectaccessreview" => {
                 self.read_localsubjectaccessreview(id).await
             }
             "v1" => {
                 self.read_v1(id).await
+            }
+            "selfsubjectrulesreview" => {
+                self.read_selfsubjectrulesreview(id).await
+            }
+            "subjectaccessreview" => {
+                self.read_subjectaccessreview(id).await
             }
             _ => Err(hemmer_core::HemmerError::Provider(format!(
                 "Unknown resource type: {}.{}",
@@ -130,17 +130,17 @@ impl<'a> Apis_authorizationService<'a> {
             "selfsubjectaccessreview" => {
                 self.update_selfsubjectaccessreview(id, input).await
             }
-            "selfsubjectrulesreview" => {
-                self.update_selfsubjectrulesreview(id, input).await
-            }
-            "subjectaccessreview" => {
-                self.update_subjectaccessreview(id, input).await
-            }
             "localsubjectaccessreview" => {
                 self.update_localsubjectaccessreview(id, input).await
             }
             "v1" => {
                 self.update_v1(id, input).await
+            }
+            "selfsubjectrulesreview" => {
+                self.update_selfsubjectrulesreview(id, input).await
+            }
+            "subjectaccessreview" => {
+                self.update_subjectaccessreview(id, input).await
             }
             _ => Err(hemmer_core::HemmerError::Provider(format!(
                 "Unknown resource type: {}.{}",
@@ -163,17 +163,17 @@ impl<'a> Apis_authorizationService<'a> {
             "selfsubjectaccessreview" => {
                 self.delete_selfsubjectaccessreview(id).await
             }
-            "selfsubjectrulesreview" => {
-                self.delete_selfsubjectrulesreview(id).await
-            }
-            "subjectaccessreview" => {
-                self.delete_subjectaccessreview(id).await
-            }
             "localsubjectaccessreview" => {
                 self.delete_localsubjectaccessreview(id).await
             }
             "v1" => {
                 self.delete_v1(id).await
+            }
+            "selfsubjectrulesreview" => {
+                self.delete_selfsubjectrulesreview(id).await
+            }
+            "subjectaccessreview" => {
+                self.delete_subjectaccessreview(id).await
             }
             _ => Err(hemmer_core::HemmerError::Provider(format!(
                 "Unknown resource type: {}.{}",
@@ -311,128 +311,6 @@ impl<'a> Apis_authorizationService<'a> {
 
 
     // ------------------------------------------------------------------------
-    // Selfsubjectrulesreview resource operations
-    // ------------------------------------------------------------------------
-
-    /// Plan changes to a selfsubjectrulesreview resource
-    async fn plan_selfsubjectrulesreview(
-        &self,
-        current_state: Option<&ResourceOutput>,
-        desired_input: &ResourceInput,
-    ) -> Result<ResourcePlan> {
-        // If no current state exists, this is a create operation
-        if current_state.is_none() {
-            return Ok(ResourcePlan::create());
-        }
-
-        // TODO: Implement proper diff logic
-        // For now, return NoOp if resource exists
-        Ok(ResourcePlan::no_op())
-    }
-
-    /// Create a new selfsubjectrulesreview resource
-    async fn create_selfsubjectrulesreview(
-        &self,
-        input: ResourceInput,
-    ) -> Result<ResourceOutput> {
-        // TODO: Implement Kubernetes SDK calls
-        Ok(ResourceOutput::new()
-            .with_id("placeholder-id"))
-    }
-
-    /// Read a selfsubjectrulesreview resource
-    async fn read_selfsubjectrulesreview(
-        &self,
-        id: &str,
-    ) -> Result<ResourceOutput> {
-        // TODO: Implement Kubernetes SDK calls
-        Ok(ResourceOutput::new()
-            .with_id(id))
-    }
-
-    /// Update a selfsubjectrulesreview resource
-    async fn update_selfsubjectrulesreview(
-        &self,
-        id: &str,
-        input: ResourceInput,
-    ) -> Result<ResourceOutput> {
-        // TODO: Implement Kubernetes SDK calls
-        Ok(ResourceOutput::new()
-            .with_id(id))
-    }
-
-    /// Delete a selfsubjectrulesreview resource
-    async fn delete_selfsubjectrulesreview(
-        &self,
-        id: &str,
-    ) -> Result<()> {
-        // TODO: Implement Kubernetes SDK calls
-        Ok(())
-    }
-
-
-    // ------------------------------------------------------------------------
-    // Subjectaccessreview resource operations
-    // ------------------------------------------------------------------------
-
-    /// Plan changes to a subjectaccessreview resource
-    async fn plan_subjectaccessreview(
-        &self,
-        current_state: Option<&ResourceOutput>,
-        desired_input: &ResourceInput,
-    ) -> Result<ResourcePlan> {
-        // If no current state exists, this is a create operation
-        if current_state.is_none() {
-            return Ok(ResourcePlan::create());
-        }
-
-        // TODO: Implement proper diff logic
-        // For now, return NoOp if resource exists
-        Ok(ResourcePlan::no_op())
-    }
-
-    /// Create a new subjectaccessreview resource
-    async fn create_subjectaccessreview(
-        &self,
-        input: ResourceInput,
-    ) -> Result<ResourceOutput> {
-        // TODO: Implement Kubernetes SDK calls
-        Ok(ResourceOutput::new()
-            .with_id("placeholder-id"))
-    }
-
-    /// Read a subjectaccessreview resource
-    async fn read_subjectaccessreview(
-        &self,
-        id: &str,
-    ) -> Result<ResourceOutput> {
-        // TODO: Implement Kubernetes SDK calls
-        Ok(ResourceOutput::new()
-            .with_id(id))
-    }
-
-    /// Update a subjectaccessreview resource
-    async fn update_subjectaccessreview(
-        &self,
-        id: &str,
-        input: ResourceInput,
-    ) -> Result<ResourceOutput> {
-        // TODO: Implement Kubernetes SDK calls
-        Ok(ResourceOutput::new()
-            .with_id(id))
-    }
-
-    /// Delete a subjectaccessreview resource
-    async fn delete_subjectaccessreview(
-        &self,
-        id: &str,
-    ) -> Result<()> {
-        // TODO: Implement Kubernetes SDK calls
-        Ok(())
-    }
-
-
-    // ------------------------------------------------------------------------
     // Localsubjectaccessreview resource operations
     // ------------------------------------------------------------------------
 
@@ -546,6 +424,128 @@ impl<'a> Apis_authorizationService<'a> {
 
     /// Delete a v1 resource
     async fn delete_v1(
+        &self,
+        id: &str,
+    ) -> Result<()> {
+        // TODO: Implement Kubernetes SDK calls
+        Ok(())
+    }
+
+
+    // ------------------------------------------------------------------------
+    // Selfsubjectrulesreview resource operations
+    // ------------------------------------------------------------------------
+
+    /// Plan changes to a selfsubjectrulesreview resource
+    async fn plan_selfsubjectrulesreview(
+        &self,
+        current_state: Option<&ResourceOutput>,
+        desired_input: &ResourceInput,
+    ) -> Result<ResourcePlan> {
+        // If no current state exists, this is a create operation
+        if current_state.is_none() {
+            return Ok(ResourcePlan::create());
+        }
+
+        // TODO: Implement proper diff logic
+        // For now, return NoOp if resource exists
+        Ok(ResourcePlan::no_op())
+    }
+
+    /// Create a new selfsubjectrulesreview resource
+    async fn create_selfsubjectrulesreview(
+        &self,
+        input: ResourceInput,
+    ) -> Result<ResourceOutput> {
+        // TODO: Implement Kubernetes SDK calls
+        Ok(ResourceOutput::new()
+            .with_id("placeholder-id"))
+    }
+
+    /// Read a selfsubjectrulesreview resource
+    async fn read_selfsubjectrulesreview(
+        &self,
+        id: &str,
+    ) -> Result<ResourceOutput> {
+        // TODO: Implement Kubernetes SDK calls
+        Ok(ResourceOutput::new()
+            .with_id(id))
+    }
+
+    /// Update a selfsubjectrulesreview resource
+    async fn update_selfsubjectrulesreview(
+        &self,
+        id: &str,
+        input: ResourceInput,
+    ) -> Result<ResourceOutput> {
+        // TODO: Implement Kubernetes SDK calls
+        Ok(ResourceOutput::new()
+            .with_id(id))
+    }
+
+    /// Delete a selfsubjectrulesreview resource
+    async fn delete_selfsubjectrulesreview(
+        &self,
+        id: &str,
+    ) -> Result<()> {
+        // TODO: Implement Kubernetes SDK calls
+        Ok(())
+    }
+
+
+    // ------------------------------------------------------------------------
+    // Subjectaccessreview resource operations
+    // ------------------------------------------------------------------------
+
+    /// Plan changes to a subjectaccessreview resource
+    async fn plan_subjectaccessreview(
+        &self,
+        current_state: Option<&ResourceOutput>,
+        desired_input: &ResourceInput,
+    ) -> Result<ResourcePlan> {
+        // If no current state exists, this is a create operation
+        if current_state.is_none() {
+            return Ok(ResourcePlan::create());
+        }
+
+        // TODO: Implement proper diff logic
+        // For now, return NoOp if resource exists
+        Ok(ResourcePlan::no_op())
+    }
+
+    /// Create a new subjectaccessreview resource
+    async fn create_subjectaccessreview(
+        &self,
+        input: ResourceInput,
+    ) -> Result<ResourceOutput> {
+        // TODO: Implement Kubernetes SDK calls
+        Ok(ResourceOutput::new()
+            .with_id("placeholder-id"))
+    }
+
+    /// Read a subjectaccessreview resource
+    async fn read_subjectaccessreview(
+        &self,
+        id: &str,
+    ) -> Result<ResourceOutput> {
+        // TODO: Implement Kubernetes SDK calls
+        Ok(ResourceOutput::new()
+            .with_id(id))
+    }
+
+    /// Update a subjectaccessreview resource
+    async fn update_subjectaccessreview(
+        &self,
+        id: &str,
+        input: ResourceInput,
+    ) -> Result<ResourceOutput> {
+        // TODO: Implement Kubernetes SDK calls
+        Ok(ResourceOutput::new()
+            .with_id(id))
+    }
+
+    /// Delete a subjectaccessreview resource
+    async fn delete_subjectaccessreview(
         &self,
         id: &str,
     ) -> Result<()> {

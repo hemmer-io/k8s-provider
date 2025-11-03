@@ -10,13 +10,44 @@
 
 The apis_events service provides access to 3 resource types:
 
-- [Event](#event) [CRUD]
 - [V1](#v1) [R]
+- [Event](#event) [CRUD]
 - [Event](#event) [R]
 
 ---
 
 ## Resources
+
+
+### V1
+
+get available resources
+
+**Operations**: ✅ Read
+
+#### Fields
+
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+
+
+
+#### Usage Example
+
+```kcl
+# main.k
+import kubernetes
+
+# Initialize provider
+provider = kubernetes.KubernetesProvider {
+    kubeconfig = "~/.kube/config"
+}
+
+# Access v1 outputs
+v1_id = v1.id
+```
+
+---
 
 
 ### Event
@@ -52,37 +83,6 @@ event = provider.apis_events.Event {
 
 # Access event outputs
 event_id = event.id
-```
-
----
-
-
-### V1
-
-get available resources
-
-**Operations**: ✅ Read
-
-#### Fields
-
-| Field | Type | Required | Description |
-|-------|------|----------|-------------|
-
-
-
-#### Usage Example
-
-```kcl
-# main.k
-import kubernetes
-
-# Initialize provider
-provider = kubernetes.KubernetesProvider {
-    kubeconfig = "~/.kube/config"
-}
-
-# Access v1 outputs
-v1_id = v1.id
 ```
 
 ---
@@ -131,12 +131,12 @@ provider = kubernetes.KubernetesProvider {
     kubeconfig = "~/.kube/config"
 }
 
-# Create multiple event resources
-event_0 = provider.apis_events.Event {
+# Create multiple v1 resources
+v1_0 = provider.apis_events.V1 {
 }
-event_1 = provider.apis_events.Event {
+v1_1 = provider.apis_events.V1 {
 }
-event_2 = provider.apis_events.Event {
+v1_2 = provider.apis_events.V1 {
 }
 ```
 
@@ -145,7 +145,7 @@ event_2 = provider.apis_events.Event {
 ```kcl
 # Only create in production
 if environment == "production":
-    event = provider.apis_events.Event {
+    v1 = provider.apis_events.V1 {
     }
 ```
 

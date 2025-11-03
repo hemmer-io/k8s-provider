@@ -10,31 +10,62 @@
 
 The apis_resource service provides access to 21 resource types:
 
-- [Devicetaintrule](#devicetaintrule) [CRUD]
 - [V1alpha3](#v1alpha3) [R]
-- [Resourceclaimtemplate](#resourceclaimtemplate) [CRUD]
-- [V1beta1](#v1beta1) [R]
-- [Resourceclaim](#resourceclaim) [CRUD]
-- [Statu](#statu) [RU]
-- [Resourceslice](#resourceslice) [CRUD]
+- [Devicetaintrule](#devicetaintrule) [CRUD]
 - [Deviceclasse](#deviceclasse) [CRUD]
-- [Resourceclaimtemplate](#resourceclaimtemplate) [CRUD]
-- [Resourceslice](#resourceslice) [CRUD]
 - [Statu](#statu) [RU]
+- [Resourceclaim](#resourceclaim) [CRUD]
+- [V1beta1](#v1beta1) [R]
+- [Resourceslice](#resourceslice) [CRUD]
+- [Resourceclaimtemplate](#resourceclaimtemplate) [CRUD]
+- [Resourceclaimtemplate](#resourceclaimtemplate) [CRUD]
 - [Resourceclaim](#resourceclaim) [CRUD]
 - [Deviceclasse](#deviceclasse) [CRUD]
 - [V1beta2](#v1beta2) [R]
+- [Resourceslice](#resourceslice) [CRUD]
+- [Statu](#statu) [RU]
 - [Resource](#resource) [R]
 - [Deviceclasse](#deviceclasse) [CRUD]
 - [V1](#v1) [R]
-- [Resourceclaim](#resourceclaim) [CRUD]
 - [Resourceslice](#resourceslice) [CRUD]
-- [Statu](#statu) [RU]
 - [Resourceclaimtemplate](#resourceclaimtemplate) [CRUD]
+- [Statu](#statu) [RU]
+- [Resourceclaim](#resourceclaim) [CRUD]
 
 ---
 
 ## Resources
+
+
+### V1alpha3
+
+get available resources
+
+**Operations**: ✅ Read
+
+#### Fields
+
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+
+
+
+#### Usage Example
+
+```kcl
+# main.k
+import kubernetes
+
+# Initialize provider
+provider = kubernetes.KubernetesProvider {
+    kubeconfig = "~/.kube/config"
+}
+
+# Access v1alpha3 outputs
+v1alpha3_id = v1alpha3.id
+```
+
+---
 
 
 ### Devicetaintrule
@@ -70,216 +101,6 @@ devicetaintrule = provider.apis_resource.Devicetaintrule {
 
 # Access devicetaintrule outputs
 devicetaintrule_id = devicetaintrule.id
-```
-
----
-
-
-### V1alpha3
-
-get available resources
-
-**Operations**: ✅ Read
-
-#### Fields
-
-| Field | Type | Required | Description |
-|-------|------|----------|-------------|
-
-
-
-#### Usage Example
-
-```kcl
-# main.k
-import kubernetes
-
-# Initialize provider
-provider = kubernetes.KubernetesProvider {
-    kubeconfig = "~/.kube/config"
-}
-
-# Access v1alpha3 outputs
-v1alpha3_id = v1alpha3.id
-```
-
----
-
-
-### Resourceclaimtemplate
-
-create a ResourceClaimTemplate
-
-**Operations**: ✅ Create ✅ Read ✅ Update ✅ Delete
-
-#### Fields
-
-| Field | Type | Required | Description |
-|-------|------|----------|-------------|
-| `dry_run` | String |  | When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed |
-| `field_manager` | String |  | fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint. |
-| `field_validation` | String |  | fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered. |
-
-
-
-#### Usage Example
-
-```kcl
-# main.k
-import kubernetes
-
-# Initialize provider
-provider = kubernetes.KubernetesProvider {
-    kubeconfig = "~/.kube/config"
-}
-
-# Create resourceclaimtemplate
-resourceclaimtemplate = provider.apis_resource.Resourceclaimtemplate {
-}
-
-# Access resourceclaimtemplate outputs
-resourceclaimtemplate_id = resourceclaimtemplate.id
-```
-
----
-
-
-### V1beta1
-
-get available resources
-
-**Operations**: ✅ Read
-
-#### Fields
-
-| Field | Type | Required | Description |
-|-------|------|----------|-------------|
-
-
-
-#### Usage Example
-
-```kcl
-# main.k
-import kubernetes
-
-# Initialize provider
-provider = kubernetes.KubernetesProvider {
-    kubeconfig = "~/.kube/config"
-}
-
-# Access v1beta1 outputs
-v1beta1_id = v1beta1.id
-```
-
----
-
-
-### Resourceclaim
-
-create a ResourceClaim
-
-**Operations**: ✅ Create ✅ Read ✅ Update ✅ Delete
-
-#### Fields
-
-| Field | Type | Required | Description |
-|-------|------|----------|-------------|
-| `dry_run` | String |  | When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed |
-| `field_manager` | String |  | fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint. |
-| `field_validation` | String |  | fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered. |
-
-
-
-#### Usage Example
-
-```kcl
-# main.k
-import kubernetes
-
-# Initialize provider
-provider = kubernetes.KubernetesProvider {
-    kubeconfig = "~/.kube/config"
-}
-
-# Create resourceclaim
-resourceclaim = provider.apis_resource.Resourceclaim {
-}
-
-# Access resourceclaim outputs
-resourceclaim_id = resourceclaim.id
-```
-
----
-
-
-### Statu
-
-read status of the specified ResourceClaim
-
-**Operations**: ✅ Read ✅ Update
-
-#### Fields
-
-| Field | Type | Required | Description |
-|-------|------|----------|-------------|
-| `dry_run` | String |  | When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed |
-| `field_manager` | String |  | fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint. |
-| `field_validation` | String |  | fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered. |
-
-
-
-#### Usage Example
-
-```kcl
-# main.k
-import kubernetes
-
-# Initialize provider
-provider = kubernetes.KubernetesProvider {
-    kubeconfig = "~/.kube/config"
-}
-
-# Access statu outputs
-statu_id = statu.id
-```
-
----
-
-
-### Resourceslice
-
-create a ResourceSlice
-
-**Operations**: ✅ Create ✅ Read ✅ Update ✅ Delete
-
-#### Fields
-
-| Field | Type | Required | Description |
-|-------|------|----------|-------------|
-| `dry_run` | String |  | When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed |
-| `field_manager` | String |  | fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint. |
-| `field_validation` | String |  | fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered. |
-
-
-
-#### Usage Example
-
-```kcl
-# main.k
-import kubernetes
-
-# Initialize provider
-provider = kubernetes.KubernetesProvider {
-    kubeconfig = "~/.kube/config"
-}
-
-# Create resourceslice
-resourceslice = provider.apis_resource.Resourceslice {
-}
-
-# Access resourceslice outputs
-resourceslice_id = resourceslice.id
 ```
 
 ---
@@ -323,9 +144,43 @@ deviceclasse_id = deviceclasse.id
 ---
 
 
-### Resourceclaimtemplate
+### Statu
 
-create a ResourceClaimTemplate
+read status of the specified ResourceClaim
+
+**Operations**: ✅ Read ✅ Update
+
+#### Fields
+
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| `dry_run` | String |  | When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed |
+| `field_manager` | String |  | fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint. |
+| `field_validation` | String |  | fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered. |
+
+
+
+#### Usage Example
+
+```kcl
+# main.k
+import kubernetes
+
+# Initialize provider
+provider = kubernetes.KubernetesProvider {
+    kubeconfig = "~/.kube/config"
+}
+
+# Access statu outputs
+statu_id = statu.id
+```
+
+---
+
+
+### Resourceclaim
+
+create a ResourceClaim
 
 **Operations**: ✅ Create ✅ Read ✅ Update ✅ Delete
 
@@ -350,12 +205,43 @@ provider = kubernetes.KubernetesProvider {
     kubeconfig = "~/.kube/config"
 }
 
-# Create resourceclaimtemplate
-resourceclaimtemplate = provider.apis_resource.Resourceclaimtemplate {
+# Create resourceclaim
+resourceclaim = provider.apis_resource.Resourceclaim {
 }
 
-# Access resourceclaimtemplate outputs
-resourceclaimtemplate_id = resourceclaimtemplate.id
+# Access resourceclaim outputs
+resourceclaim_id = resourceclaim.id
+```
+
+---
+
+
+### V1beta1
+
+get available resources
+
+**Operations**: ✅ Read
+
+#### Fields
+
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+
+
+
+#### Usage Example
+
+```kcl
+# main.k
+import kubernetes
+
+# Initialize provider
+provider = kubernetes.KubernetesProvider {
+    kubeconfig = "~/.kube/config"
+}
+
+# Access v1beta1 outputs
+v1beta1_id = v1beta1.id
 ```
 
 ---
@@ -399,11 +285,11 @@ resourceslice_id = resourceslice.id
 ---
 
 
-### Statu
+### Resourceclaimtemplate
 
-read status of the specified ResourceClaim
+create a ResourceClaimTemplate
 
-**Operations**: ✅ Read ✅ Update
+**Operations**: ✅ Create ✅ Read ✅ Update ✅ Delete
 
 #### Fields
 
@@ -426,8 +312,50 @@ provider = kubernetes.KubernetesProvider {
     kubeconfig = "~/.kube/config"
 }
 
-# Access statu outputs
-statu_id = statu.id
+# Create resourceclaimtemplate
+resourceclaimtemplate = provider.apis_resource.Resourceclaimtemplate {
+}
+
+# Access resourceclaimtemplate outputs
+resourceclaimtemplate_id = resourceclaimtemplate.id
+```
+
+---
+
+
+### Resourceclaimtemplate
+
+create a ResourceClaimTemplate
+
+**Operations**: ✅ Create ✅ Read ✅ Update ✅ Delete
+
+#### Fields
+
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| `dry_run` | String |  | When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed |
+| `field_manager` | String |  | fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint. |
+| `field_validation` | String |  | fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered. |
+
+
+
+#### Usage Example
+
+```kcl
+# main.k
+import kubernetes
+
+# Initialize provider
+provider = kubernetes.KubernetesProvider {
+    kubeconfig = "~/.kube/config"
+}
+
+# Create resourceclaimtemplate
+resourceclaimtemplate = provider.apis_resource.Resourceclaimtemplate {
+}
+
+# Access resourceclaimtemplate outputs
+resourceclaimtemplate_id = resourceclaimtemplate.id
 ```
 
 ---
@@ -540,6 +468,78 @@ v1beta2_id = v1beta2.id
 ---
 
 
+### Resourceslice
+
+create a ResourceSlice
+
+**Operations**: ✅ Create ✅ Read ✅ Update ✅ Delete
+
+#### Fields
+
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| `dry_run` | String |  | When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed |
+| `field_manager` | String |  | fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint. |
+| `field_validation` | String |  | fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered. |
+
+
+
+#### Usage Example
+
+```kcl
+# main.k
+import kubernetes
+
+# Initialize provider
+provider = kubernetes.KubernetesProvider {
+    kubeconfig = "~/.kube/config"
+}
+
+# Create resourceslice
+resourceslice = provider.apis_resource.Resourceslice {
+}
+
+# Access resourceslice outputs
+resourceslice_id = resourceslice.id
+```
+
+---
+
+
+### Statu
+
+read status of the specified ResourceClaim
+
+**Operations**: ✅ Read ✅ Update
+
+#### Fields
+
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| `dry_run` | String |  | When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed |
+| `field_manager` | String |  | fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint. |
+| `field_validation` | String |  | fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered. |
+
+
+
+#### Usage Example
+
+```kcl
+# main.k
+import kubernetes
+
+# Initialize provider
+provider = kubernetes.KubernetesProvider {
+    kubeconfig = "~/.kube/config"
+}
+
+# Access statu outputs
+statu_id = statu.id
+```
+
+---
+
+
 ### Resource
 
 get information of a group
@@ -640,44 +640,6 @@ v1_id = v1.id
 ---
 
 
-### Resourceclaim
-
-create a ResourceClaim
-
-**Operations**: ✅ Create ✅ Read ✅ Update ✅ Delete
-
-#### Fields
-
-| Field | Type | Required | Description |
-|-------|------|----------|-------------|
-| `dry_run` | String |  | When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed |
-| `field_manager` | String |  | fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint. |
-| `field_validation` | String |  | fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered. |
-
-
-
-#### Usage Example
-
-```kcl
-# main.k
-import kubernetes
-
-# Initialize provider
-provider = kubernetes.KubernetesProvider {
-    kubeconfig = "~/.kube/config"
-}
-
-# Create resourceclaim
-resourceclaim = provider.apis_resource.Resourceclaim {
-}
-
-# Access resourceclaim outputs
-resourceclaim_id = resourceclaim.id
-```
-
----
-
-
 ### Resourceslice
 
 create a ResourceSlice
@@ -711,40 +673,6 @@ resourceslice = provider.apis_resource.Resourceslice {
 
 # Access resourceslice outputs
 resourceslice_id = resourceslice.id
-```
-
----
-
-
-### Statu
-
-read status of the specified ResourceClaim
-
-**Operations**: ✅ Read ✅ Update
-
-#### Fields
-
-| Field | Type | Required | Description |
-|-------|------|----------|-------------|
-| `dry_run` | String |  | When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed |
-| `field_manager` | String |  | fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint. |
-| `field_validation` | String |  | fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered. |
-
-
-
-#### Usage Example
-
-```kcl
-# main.k
-import kubernetes
-
-# Initialize provider
-provider = kubernetes.KubernetesProvider {
-    kubeconfig = "~/.kube/config"
-}
-
-# Access statu outputs
-statu_id = statu.id
 ```
 
 ---
@@ -788,6 +716,78 @@ resourceclaimtemplate_id = resourceclaimtemplate.id
 ---
 
 
+### Statu
+
+read status of the specified ResourceClaim
+
+**Operations**: ✅ Read ✅ Update
+
+#### Fields
+
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| `dry_run` | String |  | When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed |
+| `field_manager` | String |  | fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint. |
+| `field_validation` | String |  | fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered. |
+
+
+
+#### Usage Example
+
+```kcl
+# main.k
+import kubernetes
+
+# Initialize provider
+provider = kubernetes.KubernetesProvider {
+    kubeconfig = "~/.kube/config"
+}
+
+# Access statu outputs
+statu_id = statu.id
+```
+
+---
+
+
+### Resourceclaim
+
+create a ResourceClaim
+
+**Operations**: ✅ Create ✅ Read ✅ Update ✅ Delete
+
+#### Fields
+
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| `dry_run` | String |  | When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed |
+| `field_manager` | String |  | fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint. |
+| `field_validation` | String |  | fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered. |
+
+
+
+#### Usage Example
+
+```kcl
+# main.k
+import kubernetes
+
+# Initialize provider
+provider = kubernetes.KubernetesProvider {
+    kubeconfig = "~/.kube/config"
+}
+
+# Create resourceclaim
+resourceclaim = provider.apis_resource.Resourceclaim {
+}
+
+# Access resourceclaim outputs
+resourceclaim_id = resourceclaim.id
+```
+
+---
+
+
 
 ## Common Operations
 
@@ -800,12 +800,12 @@ provider = kubernetes.KubernetesProvider {
     kubeconfig = "~/.kube/config"
 }
 
-# Create multiple devicetaintrule resources
-devicetaintrule_0 = provider.apis_resource.Devicetaintrule {
+# Create multiple v1alpha3 resources
+v1alpha3_0 = provider.apis_resource.V1alpha3 {
 }
-devicetaintrule_1 = provider.apis_resource.Devicetaintrule {
+v1alpha3_1 = provider.apis_resource.V1alpha3 {
 }
-devicetaintrule_2 = provider.apis_resource.Devicetaintrule {
+v1alpha3_2 = provider.apis_resource.V1alpha3 {
 }
 ```
 
@@ -814,7 +814,7 @@ devicetaintrule_2 = provider.apis_resource.Devicetaintrule {
 ```kcl
 # Only create in production
 if environment == "production":
-    devicetaintrule = provider.apis_resource.Devicetaintrule {
+    v1alpha3 = provider.apis_resource.V1alpha3 {
     }
 ```
 
