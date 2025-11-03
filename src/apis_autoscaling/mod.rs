@@ -36,14 +36,14 @@ impl<'a> Apis_autoscalingService<'a> {
             "statu" => {
                 self.plan_statu(current_state, desired_input).await
             }
+            "horizontalpodautoscaler" => {
+                self.plan_horizontalpodautoscaler(current_state, desired_input).await
+            }
             "v2" => {
                 self.plan_v2(current_state, desired_input).await
             }
             "statu" => {
                 self.plan_statu(current_state, desired_input).await
-            }
-            "horizontalpodautoscaler" => {
-                self.plan_horizontalpodautoscaler(current_state, desired_input).await
             }
             _ => Err(hemmer_core::HemmerError::Provider(format!(
                 "Unknown resource type: {}.{}",
@@ -72,14 +72,14 @@ impl<'a> Apis_autoscalingService<'a> {
             "statu" => {
                 self.create_statu(input).await
             }
+            "horizontalpodautoscaler" => {
+                self.create_horizontalpodautoscaler(input).await
+            }
             "v2" => {
                 self.create_v2(input).await
             }
             "statu" => {
                 self.create_statu(input).await
-            }
-            "horizontalpodautoscaler" => {
-                self.create_horizontalpodautoscaler(input).await
             }
             _ => Err(hemmer_core::HemmerError::Provider(format!(
                 "Unknown resource type: {}.{}",
@@ -108,14 +108,14 @@ impl<'a> Apis_autoscalingService<'a> {
             "statu" => {
                 self.read_statu(id).await
             }
+            "horizontalpodautoscaler" => {
+                self.read_horizontalpodautoscaler(id).await
+            }
             "v2" => {
                 self.read_v2(id).await
             }
             "statu" => {
                 self.read_statu(id).await
-            }
-            "horizontalpodautoscaler" => {
-                self.read_horizontalpodautoscaler(id).await
             }
             _ => Err(hemmer_core::HemmerError::Provider(format!(
                 "Unknown resource type: {}.{}",
@@ -145,14 +145,14 @@ impl<'a> Apis_autoscalingService<'a> {
             "statu" => {
                 self.update_statu(id, input).await
             }
+            "horizontalpodautoscaler" => {
+                self.update_horizontalpodautoscaler(id, input).await
+            }
             "v2" => {
                 self.update_v2(id, input).await
             }
             "statu" => {
                 self.update_statu(id, input).await
-            }
-            "horizontalpodautoscaler" => {
-                self.update_horizontalpodautoscaler(id, input).await
             }
             _ => Err(hemmer_core::HemmerError::Provider(format!(
                 "Unknown resource type: {}.{}",
@@ -181,14 +181,14 @@ impl<'a> Apis_autoscalingService<'a> {
             "statu" => {
                 self.delete_statu(id).await
             }
+            "horizontalpodautoscaler" => {
+                self.delete_horizontalpodautoscaler(id).await
+            }
             "v2" => {
                 self.delete_v2(id).await
             }
             "statu" => {
                 self.delete_statu(id).await
-            }
-            "horizontalpodautoscaler" => {
-                self.delete_horizontalpodautoscaler(id).await
             }
             _ => Err(hemmer_core::HemmerError::Provider(format!(
                 "Unknown resource type: {}.{}",
@@ -448,6 +448,67 @@ impl<'a> Apis_autoscalingService<'a> {
 
 
     // ------------------------------------------------------------------------
+    // Horizontalpodautoscaler resource operations
+    // ------------------------------------------------------------------------
+
+    /// Plan changes to a horizontalpodautoscaler resource
+    async fn plan_horizontalpodautoscaler(
+        &self,
+        current_state: Option<&ResourceOutput>,
+        desired_input: &ResourceInput,
+    ) -> Result<ResourcePlan> {
+        // If no current state exists, this is a create operation
+        if current_state.is_none() {
+            return Ok(ResourcePlan::create());
+        }
+
+        // TODO: Implement proper diff logic
+        // For now, return NoOp if resource exists
+        Ok(ResourcePlan::no_op())
+    }
+
+    /// Create a new horizontalpodautoscaler resource
+    async fn create_horizontalpodautoscaler(
+        &self,
+        input: ResourceInput,
+    ) -> Result<ResourceOutput> {
+        // TODO: Implement Kubernetes SDK calls
+        Ok(ResourceOutput::new()
+            .with_id("placeholder-id"))
+    }
+
+    /// Read a horizontalpodautoscaler resource
+    async fn read_horizontalpodautoscaler(
+        &self,
+        id: &str,
+    ) -> Result<ResourceOutput> {
+        // TODO: Implement Kubernetes SDK calls
+        Ok(ResourceOutput::new()
+            .with_id(id))
+    }
+
+    /// Update a horizontalpodautoscaler resource
+    async fn update_horizontalpodautoscaler(
+        &self,
+        id: &str,
+        input: ResourceInput,
+    ) -> Result<ResourceOutput> {
+        // TODO: Implement Kubernetes SDK calls
+        Ok(ResourceOutput::new()
+            .with_id(id))
+    }
+
+    /// Delete a horizontalpodautoscaler resource
+    async fn delete_horizontalpodautoscaler(
+        &self,
+        id: &str,
+    ) -> Result<()> {
+        // TODO: Implement Kubernetes SDK calls
+        Ok(())
+    }
+
+
+    // ------------------------------------------------------------------------
     // V2 resource operations
     // ------------------------------------------------------------------------
 
@@ -561,67 +622,6 @@ impl<'a> Apis_autoscalingService<'a> {
 
     /// Delete a statu resource
     async fn delete_statu(
-        &self,
-        id: &str,
-    ) -> Result<()> {
-        // TODO: Implement Kubernetes SDK calls
-        Ok(())
-    }
-
-
-    // ------------------------------------------------------------------------
-    // Horizontalpodautoscaler resource operations
-    // ------------------------------------------------------------------------
-
-    /// Plan changes to a horizontalpodautoscaler resource
-    async fn plan_horizontalpodautoscaler(
-        &self,
-        current_state: Option<&ResourceOutput>,
-        desired_input: &ResourceInput,
-    ) -> Result<ResourcePlan> {
-        // If no current state exists, this is a create operation
-        if current_state.is_none() {
-            return Ok(ResourcePlan::create());
-        }
-
-        // TODO: Implement proper diff logic
-        // For now, return NoOp if resource exists
-        Ok(ResourcePlan::no_op())
-    }
-
-    /// Create a new horizontalpodautoscaler resource
-    async fn create_horizontalpodautoscaler(
-        &self,
-        input: ResourceInput,
-    ) -> Result<ResourceOutput> {
-        // TODO: Implement Kubernetes SDK calls
-        Ok(ResourceOutput::new()
-            .with_id("placeholder-id"))
-    }
-
-    /// Read a horizontalpodautoscaler resource
-    async fn read_horizontalpodautoscaler(
-        &self,
-        id: &str,
-    ) -> Result<ResourceOutput> {
-        // TODO: Implement Kubernetes SDK calls
-        Ok(ResourceOutput::new()
-            .with_id(id))
-    }
-
-    /// Update a horizontalpodautoscaler resource
-    async fn update_horizontalpodautoscaler(
-        &self,
-        id: &str,
-        input: ResourceInput,
-    ) -> Result<ResourceOutput> {
-        // TODO: Implement Kubernetes SDK calls
-        Ok(ResourceOutput::new()
-            .with_id(id))
-    }
-
-    /// Delete a horizontalpodautoscaler resource
-    async fn delete_horizontalpodautoscaler(
         &self,
         id: &str,
     ) -> Result<()> {

@@ -24,8 +24,8 @@ impl<'a> Apis_networkingService<'a> {
         desired_input: &ResourceInput,
     ) -> Result<ResourcePlan> {
         match resource_name {
-            "v1" => {
-                self.plan_v1(current_state, desired_input).await
+            "statu" => {
+                self.plan_statu(current_state, desired_input).await
             }
             "servicecidr" => {
                 self.plan_servicecidr(current_state, desired_input).await
@@ -33,29 +33,29 @@ impl<'a> Apis_networkingService<'a> {
             "ingresse" => {
                 self.plan_ingresse(current_state, desired_input).await
             }
-            "statu" => {
-                self.plan_statu(current_state, desired_input).await
-            }
-            "ipaddresse" => {
-                self.plan_ipaddresse(current_state, desired_input).await
-            }
             "networkpolicie" => {
                 self.plan_networkpolicie(current_state, desired_input).await
             }
             "ingressclasse" => {
                 self.plan_ingressclasse(current_state, desired_input).await
             }
+            "v1" => {
+                self.plan_v1(current_state, desired_input).await
+            }
+            "ipaddresse" => {
+                self.plan_ipaddresse(current_state, desired_input).await
+            }
+            "servicecidr" => {
+                self.plan_servicecidr(current_state, desired_input).await
+            }
+            "statu" => {
+                self.plan_statu(current_state, desired_input).await
+            }
             "ipaddresse" => {
                 self.plan_ipaddresse(current_state, desired_input).await
             }
             "v1beta1" => {
                 self.plan_v1beta1(current_state, desired_input).await
-            }
-            "statu" => {
-                self.plan_statu(current_state, desired_input).await
-            }
-            "servicecidr" => {
-                self.plan_servicecidr(current_state, desired_input).await
             }
             "networking" => {
                 self.plan_networking(current_state, desired_input).await
@@ -75,8 +75,8 @@ impl<'a> Apis_networkingService<'a> {
         input: ResourceInput,
     ) -> Result<ResourceOutput> {
         match resource_name {
-            "v1" => {
-                self.create_v1(input).await
+            "statu" => {
+                self.create_statu(input).await
             }
             "servicecidr" => {
                 self.create_servicecidr(input).await
@@ -84,29 +84,29 @@ impl<'a> Apis_networkingService<'a> {
             "ingresse" => {
                 self.create_ingresse(input).await
             }
-            "statu" => {
-                self.create_statu(input).await
-            }
-            "ipaddresse" => {
-                self.create_ipaddresse(input).await
-            }
             "networkpolicie" => {
                 self.create_networkpolicie(input).await
             }
             "ingressclasse" => {
                 self.create_ingressclasse(input).await
             }
+            "v1" => {
+                self.create_v1(input).await
+            }
+            "ipaddresse" => {
+                self.create_ipaddresse(input).await
+            }
+            "servicecidr" => {
+                self.create_servicecidr(input).await
+            }
+            "statu" => {
+                self.create_statu(input).await
+            }
             "ipaddresse" => {
                 self.create_ipaddresse(input).await
             }
             "v1beta1" => {
                 self.create_v1beta1(input).await
-            }
-            "statu" => {
-                self.create_statu(input).await
-            }
-            "servicecidr" => {
-                self.create_servicecidr(input).await
             }
             "networking" => {
                 self.create_networking(input).await
@@ -126,8 +126,8 @@ impl<'a> Apis_networkingService<'a> {
         id: &str,
     ) -> Result<ResourceOutput> {
         match resource_name {
-            "v1" => {
-                self.read_v1(id).await
+            "statu" => {
+                self.read_statu(id).await
             }
             "servicecidr" => {
                 self.read_servicecidr(id).await
@@ -135,29 +135,29 @@ impl<'a> Apis_networkingService<'a> {
             "ingresse" => {
                 self.read_ingresse(id).await
             }
-            "statu" => {
-                self.read_statu(id).await
-            }
-            "ipaddresse" => {
-                self.read_ipaddresse(id).await
-            }
             "networkpolicie" => {
                 self.read_networkpolicie(id).await
             }
             "ingressclasse" => {
                 self.read_ingressclasse(id).await
             }
+            "v1" => {
+                self.read_v1(id).await
+            }
+            "ipaddresse" => {
+                self.read_ipaddresse(id).await
+            }
+            "servicecidr" => {
+                self.read_servicecidr(id).await
+            }
+            "statu" => {
+                self.read_statu(id).await
+            }
             "ipaddresse" => {
                 self.read_ipaddresse(id).await
             }
             "v1beta1" => {
                 self.read_v1beta1(id).await
-            }
-            "statu" => {
-                self.read_statu(id).await
-            }
-            "servicecidr" => {
-                self.read_servicecidr(id).await
             }
             "networking" => {
                 self.read_networking(id).await
@@ -178,8 +178,8 @@ impl<'a> Apis_networkingService<'a> {
         input: ResourceInput,
     ) -> Result<ResourceOutput> {
         match resource_name {
-            "v1" => {
-                self.update_v1(id, input).await
+            "statu" => {
+                self.update_statu(id, input).await
             }
             "servicecidr" => {
                 self.update_servicecidr(id, input).await
@@ -187,29 +187,29 @@ impl<'a> Apis_networkingService<'a> {
             "ingresse" => {
                 self.update_ingresse(id, input).await
             }
-            "statu" => {
-                self.update_statu(id, input).await
-            }
-            "ipaddresse" => {
-                self.update_ipaddresse(id, input).await
-            }
             "networkpolicie" => {
                 self.update_networkpolicie(id, input).await
             }
             "ingressclasse" => {
                 self.update_ingressclasse(id, input).await
             }
+            "v1" => {
+                self.update_v1(id, input).await
+            }
+            "ipaddresse" => {
+                self.update_ipaddresse(id, input).await
+            }
+            "servicecidr" => {
+                self.update_servicecidr(id, input).await
+            }
+            "statu" => {
+                self.update_statu(id, input).await
+            }
             "ipaddresse" => {
                 self.update_ipaddresse(id, input).await
             }
             "v1beta1" => {
                 self.update_v1beta1(id, input).await
-            }
-            "statu" => {
-                self.update_statu(id, input).await
-            }
-            "servicecidr" => {
-                self.update_servicecidr(id, input).await
             }
             "networking" => {
                 self.update_networking(id, input).await
@@ -229,8 +229,8 @@ impl<'a> Apis_networkingService<'a> {
         id: &str,
     ) -> Result<()> {
         match resource_name {
-            "v1" => {
-                self.delete_v1(id).await
+            "statu" => {
+                self.delete_statu(id).await
             }
             "servicecidr" => {
                 self.delete_servicecidr(id).await
@@ -238,29 +238,29 @@ impl<'a> Apis_networkingService<'a> {
             "ingresse" => {
                 self.delete_ingresse(id).await
             }
-            "statu" => {
-                self.delete_statu(id).await
-            }
-            "ipaddresse" => {
-                self.delete_ipaddresse(id).await
-            }
             "networkpolicie" => {
                 self.delete_networkpolicie(id).await
             }
             "ingressclasse" => {
                 self.delete_ingressclasse(id).await
             }
+            "v1" => {
+                self.delete_v1(id).await
+            }
+            "ipaddresse" => {
+                self.delete_ipaddresse(id).await
+            }
+            "servicecidr" => {
+                self.delete_servicecidr(id).await
+            }
+            "statu" => {
+                self.delete_statu(id).await
+            }
             "ipaddresse" => {
                 self.delete_ipaddresse(id).await
             }
             "v1beta1" => {
                 self.delete_v1beta1(id).await
-            }
-            "statu" => {
-                self.delete_statu(id).await
-            }
-            "servicecidr" => {
-                self.delete_servicecidr(id).await
             }
             "networking" => {
                 self.delete_networking(id).await
@@ -279,11 +279,11 @@ impl<'a> Apis_networkingService<'a> {
 
 
     // ------------------------------------------------------------------------
-    // V1 resource operations
+    // Statu resource operations
     // ------------------------------------------------------------------------
 
-    /// Plan changes to a v1 resource
-    async fn plan_v1(
+    /// Plan changes to a statu resource
+    async fn plan_statu(
         &self,
         current_state: Option<&ResourceOutput>,
         desired_input: &ResourceInput,
@@ -298,8 +298,8 @@ impl<'a> Apis_networkingService<'a> {
         Ok(ResourcePlan::no_op())
     }
 
-    /// Create a new v1 resource
-    async fn create_v1(
+    /// Create a new statu resource
+    async fn create_statu(
         &self,
         input: ResourceInput,
     ) -> Result<ResourceOutput> {
@@ -308,8 +308,8 @@ impl<'a> Apis_networkingService<'a> {
             .with_id("placeholder-id"))
     }
 
-    /// Read a v1 resource
-    async fn read_v1(
+    /// Read a statu resource
+    async fn read_statu(
         &self,
         id: &str,
     ) -> Result<ResourceOutput> {
@@ -318,8 +318,8 @@ impl<'a> Apis_networkingService<'a> {
             .with_id(id))
     }
 
-    /// Update a v1 resource
-    async fn update_v1(
+    /// Update a statu resource
+    async fn update_statu(
         &self,
         id: &str,
         input: ResourceInput,
@@ -329,8 +329,8 @@ impl<'a> Apis_networkingService<'a> {
             .with_id(id))
     }
 
-    /// Delete a v1 resource
-    async fn delete_v1(
+    /// Delete a statu resource
+    async fn delete_statu(
         &self,
         id: &str,
     ) -> Result<()> {
@@ -462,128 +462,6 @@ impl<'a> Apis_networkingService<'a> {
 
 
     // ------------------------------------------------------------------------
-    // Statu resource operations
-    // ------------------------------------------------------------------------
-
-    /// Plan changes to a statu resource
-    async fn plan_statu(
-        &self,
-        current_state: Option<&ResourceOutput>,
-        desired_input: &ResourceInput,
-    ) -> Result<ResourcePlan> {
-        // If no current state exists, this is a create operation
-        if current_state.is_none() {
-            return Ok(ResourcePlan::create());
-        }
-
-        // TODO: Implement proper diff logic
-        // For now, return NoOp if resource exists
-        Ok(ResourcePlan::no_op())
-    }
-
-    /// Create a new statu resource
-    async fn create_statu(
-        &self,
-        input: ResourceInput,
-    ) -> Result<ResourceOutput> {
-        // TODO: Implement Kubernetes SDK calls
-        Ok(ResourceOutput::new()
-            .with_id("placeholder-id"))
-    }
-
-    /// Read a statu resource
-    async fn read_statu(
-        &self,
-        id: &str,
-    ) -> Result<ResourceOutput> {
-        // TODO: Implement Kubernetes SDK calls
-        Ok(ResourceOutput::new()
-            .with_id(id))
-    }
-
-    /// Update a statu resource
-    async fn update_statu(
-        &self,
-        id: &str,
-        input: ResourceInput,
-    ) -> Result<ResourceOutput> {
-        // TODO: Implement Kubernetes SDK calls
-        Ok(ResourceOutput::new()
-            .with_id(id))
-    }
-
-    /// Delete a statu resource
-    async fn delete_statu(
-        &self,
-        id: &str,
-    ) -> Result<()> {
-        // TODO: Implement Kubernetes SDK calls
-        Ok(())
-    }
-
-
-    // ------------------------------------------------------------------------
-    // Ipaddresse resource operations
-    // ------------------------------------------------------------------------
-
-    /// Plan changes to a ipaddresse resource
-    async fn plan_ipaddresse(
-        &self,
-        current_state: Option<&ResourceOutput>,
-        desired_input: &ResourceInput,
-    ) -> Result<ResourcePlan> {
-        // If no current state exists, this is a create operation
-        if current_state.is_none() {
-            return Ok(ResourcePlan::create());
-        }
-
-        // TODO: Implement proper diff logic
-        // For now, return NoOp if resource exists
-        Ok(ResourcePlan::no_op())
-    }
-
-    /// Create a new ipaddresse resource
-    async fn create_ipaddresse(
-        &self,
-        input: ResourceInput,
-    ) -> Result<ResourceOutput> {
-        // TODO: Implement Kubernetes SDK calls
-        Ok(ResourceOutput::new()
-            .with_id("placeholder-id"))
-    }
-
-    /// Read a ipaddresse resource
-    async fn read_ipaddresse(
-        &self,
-        id: &str,
-    ) -> Result<ResourceOutput> {
-        // TODO: Implement Kubernetes SDK calls
-        Ok(ResourceOutput::new()
-            .with_id(id))
-    }
-
-    /// Update a ipaddresse resource
-    async fn update_ipaddresse(
-        &self,
-        id: &str,
-        input: ResourceInput,
-    ) -> Result<ResourceOutput> {
-        // TODO: Implement Kubernetes SDK calls
-        Ok(ResourceOutput::new()
-            .with_id(id))
-    }
-
-    /// Delete a ipaddresse resource
-    async fn delete_ipaddresse(
-        &self,
-        id: &str,
-    ) -> Result<()> {
-        // TODO: Implement Kubernetes SDK calls
-        Ok(())
-    }
-
-
-    // ------------------------------------------------------------------------
     // Networkpolicie resource operations
     // ------------------------------------------------------------------------
 
@@ -706,6 +584,250 @@ impl<'a> Apis_networkingService<'a> {
 
 
     // ------------------------------------------------------------------------
+    // V1 resource operations
+    // ------------------------------------------------------------------------
+
+    /// Plan changes to a v1 resource
+    async fn plan_v1(
+        &self,
+        current_state: Option<&ResourceOutput>,
+        desired_input: &ResourceInput,
+    ) -> Result<ResourcePlan> {
+        // If no current state exists, this is a create operation
+        if current_state.is_none() {
+            return Ok(ResourcePlan::create());
+        }
+
+        // TODO: Implement proper diff logic
+        // For now, return NoOp if resource exists
+        Ok(ResourcePlan::no_op())
+    }
+
+    /// Create a new v1 resource
+    async fn create_v1(
+        &self,
+        input: ResourceInput,
+    ) -> Result<ResourceOutput> {
+        // TODO: Implement Kubernetes SDK calls
+        Ok(ResourceOutput::new()
+            .with_id("placeholder-id"))
+    }
+
+    /// Read a v1 resource
+    async fn read_v1(
+        &self,
+        id: &str,
+    ) -> Result<ResourceOutput> {
+        // TODO: Implement Kubernetes SDK calls
+        Ok(ResourceOutput::new()
+            .with_id(id))
+    }
+
+    /// Update a v1 resource
+    async fn update_v1(
+        &self,
+        id: &str,
+        input: ResourceInput,
+    ) -> Result<ResourceOutput> {
+        // TODO: Implement Kubernetes SDK calls
+        Ok(ResourceOutput::new()
+            .with_id(id))
+    }
+
+    /// Delete a v1 resource
+    async fn delete_v1(
+        &self,
+        id: &str,
+    ) -> Result<()> {
+        // TODO: Implement Kubernetes SDK calls
+        Ok(())
+    }
+
+
+    // ------------------------------------------------------------------------
+    // Ipaddresse resource operations
+    // ------------------------------------------------------------------------
+
+    /// Plan changes to a ipaddresse resource
+    async fn plan_ipaddresse(
+        &self,
+        current_state: Option<&ResourceOutput>,
+        desired_input: &ResourceInput,
+    ) -> Result<ResourcePlan> {
+        // If no current state exists, this is a create operation
+        if current_state.is_none() {
+            return Ok(ResourcePlan::create());
+        }
+
+        // TODO: Implement proper diff logic
+        // For now, return NoOp if resource exists
+        Ok(ResourcePlan::no_op())
+    }
+
+    /// Create a new ipaddresse resource
+    async fn create_ipaddresse(
+        &self,
+        input: ResourceInput,
+    ) -> Result<ResourceOutput> {
+        // TODO: Implement Kubernetes SDK calls
+        Ok(ResourceOutput::new()
+            .with_id("placeholder-id"))
+    }
+
+    /// Read a ipaddresse resource
+    async fn read_ipaddresse(
+        &self,
+        id: &str,
+    ) -> Result<ResourceOutput> {
+        // TODO: Implement Kubernetes SDK calls
+        Ok(ResourceOutput::new()
+            .with_id(id))
+    }
+
+    /// Update a ipaddresse resource
+    async fn update_ipaddresse(
+        &self,
+        id: &str,
+        input: ResourceInput,
+    ) -> Result<ResourceOutput> {
+        // TODO: Implement Kubernetes SDK calls
+        Ok(ResourceOutput::new()
+            .with_id(id))
+    }
+
+    /// Delete a ipaddresse resource
+    async fn delete_ipaddresse(
+        &self,
+        id: &str,
+    ) -> Result<()> {
+        // TODO: Implement Kubernetes SDK calls
+        Ok(())
+    }
+
+
+    // ------------------------------------------------------------------------
+    // Servicecidr resource operations
+    // ------------------------------------------------------------------------
+
+    /// Plan changes to a servicecidr resource
+    async fn plan_servicecidr(
+        &self,
+        current_state: Option<&ResourceOutput>,
+        desired_input: &ResourceInput,
+    ) -> Result<ResourcePlan> {
+        // If no current state exists, this is a create operation
+        if current_state.is_none() {
+            return Ok(ResourcePlan::create());
+        }
+
+        // TODO: Implement proper diff logic
+        // For now, return NoOp if resource exists
+        Ok(ResourcePlan::no_op())
+    }
+
+    /// Create a new servicecidr resource
+    async fn create_servicecidr(
+        &self,
+        input: ResourceInput,
+    ) -> Result<ResourceOutput> {
+        // TODO: Implement Kubernetes SDK calls
+        Ok(ResourceOutput::new()
+            .with_id("placeholder-id"))
+    }
+
+    /// Read a servicecidr resource
+    async fn read_servicecidr(
+        &self,
+        id: &str,
+    ) -> Result<ResourceOutput> {
+        // TODO: Implement Kubernetes SDK calls
+        Ok(ResourceOutput::new()
+            .with_id(id))
+    }
+
+    /// Update a servicecidr resource
+    async fn update_servicecidr(
+        &self,
+        id: &str,
+        input: ResourceInput,
+    ) -> Result<ResourceOutput> {
+        // TODO: Implement Kubernetes SDK calls
+        Ok(ResourceOutput::new()
+            .with_id(id))
+    }
+
+    /// Delete a servicecidr resource
+    async fn delete_servicecidr(
+        &self,
+        id: &str,
+    ) -> Result<()> {
+        // TODO: Implement Kubernetes SDK calls
+        Ok(())
+    }
+
+
+    // ------------------------------------------------------------------------
+    // Statu resource operations
+    // ------------------------------------------------------------------------
+
+    /// Plan changes to a statu resource
+    async fn plan_statu(
+        &self,
+        current_state: Option<&ResourceOutput>,
+        desired_input: &ResourceInput,
+    ) -> Result<ResourcePlan> {
+        // If no current state exists, this is a create operation
+        if current_state.is_none() {
+            return Ok(ResourcePlan::create());
+        }
+
+        // TODO: Implement proper diff logic
+        // For now, return NoOp if resource exists
+        Ok(ResourcePlan::no_op())
+    }
+
+    /// Create a new statu resource
+    async fn create_statu(
+        &self,
+        input: ResourceInput,
+    ) -> Result<ResourceOutput> {
+        // TODO: Implement Kubernetes SDK calls
+        Ok(ResourceOutput::new()
+            .with_id("placeholder-id"))
+    }
+
+    /// Read a statu resource
+    async fn read_statu(
+        &self,
+        id: &str,
+    ) -> Result<ResourceOutput> {
+        // TODO: Implement Kubernetes SDK calls
+        Ok(ResourceOutput::new()
+            .with_id(id))
+    }
+
+    /// Update a statu resource
+    async fn update_statu(
+        &self,
+        id: &str,
+        input: ResourceInput,
+    ) -> Result<ResourceOutput> {
+        // TODO: Implement Kubernetes SDK calls
+        Ok(ResourceOutput::new()
+            .with_id(id))
+    }
+
+    /// Delete a statu resource
+    async fn delete_statu(
+        &self,
+        id: &str,
+    ) -> Result<()> {
+        // TODO: Implement Kubernetes SDK calls
+        Ok(())
+    }
+
+
+    // ------------------------------------------------------------------------
     // Ipaddresse resource operations
     // ------------------------------------------------------------------------
 
@@ -819,128 +941,6 @@ impl<'a> Apis_networkingService<'a> {
 
     /// Delete a v1beta1 resource
     async fn delete_v1beta1(
-        &self,
-        id: &str,
-    ) -> Result<()> {
-        // TODO: Implement Kubernetes SDK calls
-        Ok(())
-    }
-
-
-    // ------------------------------------------------------------------------
-    // Statu resource operations
-    // ------------------------------------------------------------------------
-
-    /// Plan changes to a statu resource
-    async fn plan_statu(
-        &self,
-        current_state: Option<&ResourceOutput>,
-        desired_input: &ResourceInput,
-    ) -> Result<ResourcePlan> {
-        // If no current state exists, this is a create operation
-        if current_state.is_none() {
-            return Ok(ResourcePlan::create());
-        }
-
-        // TODO: Implement proper diff logic
-        // For now, return NoOp if resource exists
-        Ok(ResourcePlan::no_op())
-    }
-
-    /// Create a new statu resource
-    async fn create_statu(
-        &self,
-        input: ResourceInput,
-    ) -> Result<ResourceOutput> {
-        // TODO: Implement Kubernetes SDK calls
-        Ok(ResourceOutput::new()
-            .with_id("placeholder-id"))
-    }
-
-    /// Read a statu resource
-    async fn read_statu(
-        &self,
-        id: &str,
-    ) -> Result<ResourceOutput> {
-        // TODO: Implement Kubernetes SDK calls
-        Ok(ResourceOutput::new()
-            .with_id(id))
-    }
-
-    /// Update a statu resource
-    async fn update_statu(
-        &self,
-        id: &str,
-        input: ResourceInput,
-    ) -> Result<ResourceOutput> {
-        // TODO: Implement Kubernetes SDK calls
-        Ok(ResourceOutput::new()
-            .with_id(id))
-    }
-
-    /// Delete a statu resource
-    async fn delete_statu(
-        &self,
-        id: &str,
-    ) -> Result<()> {
-        // TODO: Implement Kubernetes SDK calls
-        Ok(())
-    }
-
-
-    // ------------------------------------------------------------------------
-    // Servicecidr resource operations
-    // ------------------------------------------------------------------------
-
-    /// Plan changes to a servicecidr resource
-    async fn plan_servicecidr(
-        &self,
-        current_state: Option<&ResourceOutput>,
-        desired_input: &ResourceInput,
-    ) -> Result<ResourcePlan> {
-        // If no current state exists, this is a create operation
-        if current_state.is_none() {
-            return Ok(ResourcePlan::create());
-        }
-
-        // TODO: Implement proper diff logic
-        // For now, return NoOp if resource exists
-        Ok(ResourcePlan::no_op())
-    }
-
-    /// Create a new servicecidr resource
-    async fn create_servicecidr(
-        &self,
-        input: ResourceInput,
-    ) -> Result<ResourceOutput> {
-        // TODO: Implement Kubernetes SDK calls
-        Ok(ResourceOutput::new()
-            .with_id("placeholder-id"))
-    }
-
-    /// Read a servicecidr resource
-    async fn read_servicecidr(
-        &self,
-        id: &str,
-    ) -> Result<ResourceOutput> {
-        // TODO: Implement Kubernetes SDK calls
-        Ok(ResourceOutput::new()
-            .with_id(id))
-    }
-
-    /// Update a servicecidr resource
-    async fn update_servicecidr(
-        &self,
-        id: &str,
-        input: ResourceInput,
-    ) -> Result<ResourceOutput> {
-        // TODO: Implement Kubernetes SDK calls
-        Ok(ResourceOutput::new()
-            .with_id(id))
-    }
-
-    /// Delete a servicecidr resource
-    async fn delete_servicecidr(
         &self,
         id: &str,
     ) -> Result<()> {

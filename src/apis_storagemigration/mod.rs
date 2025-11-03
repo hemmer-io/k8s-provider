@@ -27,14 +27,14 @@ impl<'a> Apis_storagemigrationService<'a> {
             "storagemigration" => {
                 self.plan_storagemigration(current_state, desired_input).await
             }
+            "storageversionmigration" => {
+                self.plan_storageversionmigration(current_state, desired_input).await
+            }
             "v1beta1" => {
                 self.plan_v1beta1(current_state, desired_input).await
             }
             "statu" => {
                 self.plan_statu(current_state, desired_input).await
-            }
-            "storageversionmigration" => {
-                self.plan_storageversionmigration(current_state, desired_input).await
             }
             _ => Err(hemmer_core::HemmerError::Provider(format!(
                 "Unknown resource type: {}.{}",
@@ -54,14 +54,14 @@ impl<'a> Apis_storagemigrationService<'a> {
             "storagemigration" => {
                 self.create_storagemigration(input).await
             }
+            "storageversionmigration" => {
+                self.create_storageversionmigration(input).await
+            }
             "v1beta1" => {
                 self.create_v1beta1(input).await
             }
             "statu" => {
                 self.create_statu(input).await
-            }
-            "storageversionmigration" => {
-                self.create_storageversionmigration(input).await
             }
             _ => Err(hemmer_core::HemmerError::Provider(format!(
                 "Unknown resource type: {}.{}",
@@ -81,14 +81,14 @@ impl<'a> Apis_storagemigrationService<'a> {
             "storagemigration" => {
                 self.read_storagemigration(id).await
             }
+            "storageversionmigration" => {
+                self.read_storageversionmigration(id).await
+            }
             "v1beta1" => {
                 self.read_v1beta1(id).await
             }
             "statu" => {
                 self.read_statu(id).await
-            }
-            "storageversionmigration" => {
-                self.read_storageversionmigration(id).await
             }
             _ => Err(hemmer_core::HemmerError::Provider(format!(
                 "Unknown resource type: {}.{}",
@@ -109,14 +109,14 @@ impl<'a> Apis_storagemigrationService<'a> {
             "storagemigration" => {
                 self.update_storagemigration(id, input).await
             }
+            "storageversionmigration" => {
+                self.update_storageversionmigration(id, input).await
+            }
             "v1beta1" => {
                 self.update_v1beta1(id, input).await
             }
             "statu" => {
                 self.update_statu(id, input).await
-            }
-            "storageversionmigration" => {
-                self.update_storageversionmigration(id, input).await
             }
             _ => Err(hemmer_core::HemmerError::Provider(format!(
                 "Unknown resource type: {}.{}",
@@ -136,14 +136,14 @@ impl<'a> Apis_storagemigrationService<'a> {
             "storagemigration" => {
                 self.delete_storagemigration(id).await
             }
+            "storageversionmigration" => {
+                self.delete_storageversionmigration(id).await
+            }
             "v1beta1" => {
                 self.delete_v1beta1(id).await
             }
             "statu" => {
                 self.delete_statu(id).await
-            }
-            "storageversionmigration" => {
-                self.delete_storageversionmigration(id).await
             }
             _ => Err(hemmer_core::HemmerError::Provider(format!(
                 "Unknown resource type: {}.{}",
@@ -211,6 +211,67 @@ impl<'a> Apis_storagemigrationService<'a> {
 
     /// Delete a storagemigration resource
     async fn delete_storagemigration(
+        &self,
+        id: &str,
+    ) -> Result<()> {
+        // TODO: Implement Kubernetes SDK calls
+        Ok(())
+    }
+
+
+    // ------------------------------------------------------------------------
+    // Storageversionmigration resource operations
+    // ------------------------------------------------------------------------
+
+    /// Plan changes to a storageversionmigration resource
+    async fn plan_storageversionmigration(
+        &self,
+        current_state: Option<&ResourceOutput>,
+        desired_input: &ResourceInput,
+    ) -> Result<ResourcePlan> {
+        // If no current state exists, this is a create operation
+        if current_state.is_none() {
+            return Ok(ResourcePlan::create());
+        }
+
+        // TODO: Implement proper diff logic
+        // For now, return NoOp if resource exists
+        Ok(ResourcePlan::no_op())
+    }
+
+    /// Create a new storageversionmigration resource
+    async fn create_storageversionmigration(
+        &self,
+        input: ResourceInput,
+    ) -> Result<ResourceOutput> {
+        // TODO: Implement Kubernetes SDK calls
+        Ok(ResourceOutput::new()
+            .with_id("placeholder-id"))
+    }
+
+    /// Read a storageversionmigration resource
+    async fn read_storageversionmigration(
+        &self,
+        id: &str,
+    ) -> Result<ResourceOutput> {
+        // TODO: Implement Kubernetes SDK calls
+        Ok(ResourceOutput::new()
+            .with_id(id))
+    }
+
+    /// Update a storageversionmigration resource
+    async fn update_storageversionmigration(
+        &self,
+        id: &str,
+        input: ResourceInput,
+    ) -> Result<ResourceOutput> {
+        // TODO: Implement Kubernetes SDK calls
+        Ok(ResourceOutput::new()
+            .with_id(id))
+    }
+
+    /// Delete a storageversionmigration resource
+    async fn delete_storageversionmigration(
         &self,
         id: &str,
     ) -> Result<()> {
@@ -333,67 +394,6 @@ impl<'a> Apis_storagemigrationService<'a> {
 
     /// Delete a statu resource
     async fn delete_statu(
-        &self,
-        id: &str,
-    ) -> Result<()> {
-        // TODO: Implement Kubernetes SDK calls
-        Ok(())
-    }
-
-
-    // ------------------------------------------------------------------------
-    // Storageversionmigration resource operations
-    // ------------------------------------------------------------------------
-
-    /// Plan changes to a storageversionmigration resource
-    async fn plan_storageversionmigration(
-        &self,
-        current_state: Option<&ResourceOutput>,
-        desired_input: &ResourceInput,
-    ) -> Result<ResourcePlan> {
-        // If no current state exists, this is a create operation
-        if current_state.is_none() {
-            return Ok(ResourcePlan::create());
-        }
-
-        // TODO: Implement proper diff logic
-        // For now, return NoOp if resource exists
-        Ok(ResourcePlan::no_op())
-    }
-
-    /// Create a new storageversionmigration resource
-    async fn create_storageversionmigration(
-        &self,
-        input: ResourceInput,
-    ) -> Result<ResourceOutput> {
-        // TODO: Implement Kubernetes SDK calls
-        Ok(ResourceOutput::new()
-            .with_id("placeholder-id"))
-    }
-
-    /// Read a storageversionmigration resource
-    async fn read_storageversionmigration(
-        &self,
-        id: &str,
-    ) -> Result<ResourceOutput> {
-        // TODO: Implement Kubernetes SDK calls
-        Ok(ResourceOutput::new()
-            .with_id(id))
-    }
-
-    /// Update a storageversionmigration resource
-    async fn update_storageversionmigration(
-        &self,
-        id: &str,
-        input: ResourceInput,
-    ) -> Result<ResourceOutput> {
-        // TODO: Implement Kubernetes SDK calls
-        Ok(ResourceOutput::new()
-            .with_id(id))
-    }
-
-    /// Delete a storageversionmigration resource
-    async fn delete_storageversionmigration(
         &self,
         id: &str,
     ) -> Result<()> {

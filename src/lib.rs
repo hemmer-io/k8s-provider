@@ -3,60 +3,60 @@
 //! Auto-generated unified provider from kubernetes SDK version v1
 //!
 //! This provider includes multiple services:
-//! - apis_node
 //! - apis_apps
-//! - api
-//! - apis_scheduling
-//! - apis_resource
+//! - apis_node
+//! - apis_authorization
+//! - logs
 //! - apis_flowcontrol
+//! - openid
+//! - apis_rbac
+//! - apis_apiextensions
+//! - version
 //! - apis_coordination
+//! - apis_policy
+//! - apis_scheduling
+//! - apis_networking
+//! - apis_storage
+//! - apis_apiregistration
+//! - apis_admissionregistration
+//! - apis_autoscaling
+//! - apis_authentication
+//! - apis_batch
+//! - apis_events
+//! - apis_resource
+//! - api
+//! - apis_internal
 //! - apis_storagemigration
 //! - apis
-//! - apis_events
-//! - apis_apiregistration
-//! - apis_batch
-//! - apis_internal
-//! - apis_storage
-//! - apis_apiextensions
-//! - apis_admissionregistration
-//! - apis_authorization
-//! - apis_networking
 //! - apis_certificates
-//! - apis_rbac
-//! - apis_autoscaling
-//! - version
-//! - apis_policy
-//! - logs
-//! - apis_authentication
-//! - openid
 
 
-pub mod apis_node;
 pub mod apis_apps;
-pub mod api;
-pub mod apis_scheduling;
-pub mod apis_resource;
+pub mod apis_node;
+pub mod apis_authorization;
+pub mod logs;
 pub mod apis_flowcontrol;
+pub mod openid;
+pub mod apis_rbac;
+pub mod apis_apiextensions;
+pub mod version;
 pub mod apis_coordination;
+pub mod apis_policy;
+pub mod apis_scheduling;
+pub mod apis_networking;
+pub mod apis_storage;
+pub mod apis_apiregistration;
+pub mod apis_admissionregistration;
+pub mod apis_autoscaling;
+pub mod apis_authentication;
+pub mod apis_batch;
+pub mod apis_events;
+pub mod apis_resource;
+pub mod api;
+pub mod apis_internal;
 pub mod apis_storagemigration;
 pub mod apis;
-pub mod apis_events;
-pub mod apis_apiregistration;
-pub mod apis_batch;
-pub mod apis_internal;
-pub mod apis_storage;
-pub mod apis_apiextensions;
-pub mod apis_admissionregistration;
-pub mod apis_authorization;
-pub mod apis_networking;
 pub mod apis_certificates;
-pub mod apis_rbac;
-pub mod apis_autoscaling;
-pub mod version;
-pub mod apis_policy;
-pub mod logs;
-pub mod apis_authentication;
-pub mod openid;
 
 
 use async_trait::async_trait;
@@ -112,33 +112,97 @@ impl KubernetesProvider {
         })
     }
 
-    /// Get apis_node service handler
-    pub fn apis_node(&self) -> apis_node::Apis_nodeService<'_> {
-        apis_node::Apis_nodeService::new(self)
-    }
     /// Get apis_apps service handler
     pub fn apis_apps(&self) -> apis_apps::Apis_appsService<'_> {
         apis_apps::Apis_appsService::new(self)
     }
-    /// Get api service handler
-    pub fn api(&self) -> api::ApiService<'_> {
-        api::ApiService::new(self)
+    /// Get apis_node service handler
+    pub fn apis_node(&self) -> apis_node::Apis_nodeService<'_> {
+        apis_node::Apis_nodeService::new(self)
     }
-    /// Get apis_scheduling service handler
-    pub fn apis_scheduling(&self) -> apis_scheduling::Apis_schedulingService<'_> {
-        apis_scheduling::Apis_schedulingService::new(self)
+    /// Get apis_authorization service handler
+    pub fn apis_authorization(&self) -> apis_authorization::Apis_authorizationService<'_> {
+        apis_authorization::Apis_authorizationService::new(self)
     }
-    /// Get apis_resource service handler
-    pub fn apis_resource(&self) -> apis_resource::Apis_resourceService<'_> {
-        apis_resource::Apis_resourceService::new(self)
+    /// Get logs service handler
+    pub fn logs(&self) -> logs::LogsService<'_> {
+        logs::LogsService::new(self)
     }
     /// Get apis_flowcontrol service handler
     pub fn apis_flowcontrol(&self) -> apis_flowcontrol::Apis_flowcontrolService<'_> {
         apis_flowcontrol::Apis_flowcontrolService::new(self)
     }
+    /// Get openid service handler
+    pub fn openid(&self) -> openid::OpenidService<'_> {
+        openid::OpenidService::new(self)
+    }
+    /// Get apis_rbac service handler
+    pub fn apis_rbac(&self) -> apis_rbac::Apis_rbacService<'_> {
+        apis_rbac::Apis_rbacService::new(self)
+    }
+    /// Get apis_apiextensions service handler
+    pub fn apis_apiextensions(&self) -> apis_apiextensions::Apis_apiextensionsService<'_> {
+        apis_apiextensions::Apis_apiextensionsService::new(self)
+    }
+    /// Get version service handler
+    pub fn version(&self) -> version::VersionService<'_> {
+        version::VersionService::new(self)
+    }
     /// Get apis_coordination service handler
     pub fn apis_coordination(&self) -> apis_coordination::Apis_coordinationService<'_> {
         apis_coordination::Apis_coordinationService::new(self)
+    }
+    /// Get apis_policy service handler
+    pub fn apis_policy(&self) -> apis_policy::Apis_policyService<'_> {
+        apis_policy::Apis_policyService::new(self)
+    }
+    /// Get apis_scheduling service handler
+    pub fn apis_scheduling(&self) -> apis_scheduling::Apis_schedulingService<'_> {
+        apis_scheduling::Apis_schedulingService::new(self)
+    }
+    /// Get apis_networking service handler
+    pub fn apis_networking(&self) -> apis_networking::Apis_networkingService<'_> {
+        apis_networking::Apis_networkingService::new(self)
+    }
+    /// Get apis_storage service handler
+    pub fn apis_storage(&self) -> apis_storage::Apis_storageService<'_> {
+        apis_storage::Apis_storageService::new(self)
+    }
+    /// Get apis_apiregistration service handler
+    pub fn apis_apiregistration(&self) -> apis_apiregistration::Apis_apiregistrationService<'_> {
+        apis_apiregistration::Apis_apiregistrationService::new(self)
+    }
+    /// Get apis_admissionregistration service handler
+    pub fn apis_admissionregistration(&self) -> apis_admissionregistration::Apis_admissionregistrationService<'_> {
+        apis_admissionregistration::Apis_admissionregistrationService::new(self)
+    }
+    /// Get apis_autoscaling service handler
+    pub fn apis_autoscaling(&self) -> apis_autoscaling::Apis_autoscalingService<'_> {
+        apis_autoscaling::Apis_autoscalingService::new(self)
+    }
+    /// Get apis_authentication service handler
+    pub fn apis_authentication(&self) -> apis_authentication::Apis_authenticationService<'_> {
+        apis_authentication::Apis_authenticationService::new(self)
+    }
+    /// Get apis_batch service handler
+    pub fn apis_batch(&self) -> apis_batch::Apis_batchService<'_> {
+        apis_batch::Apis_batchService::new(self)
+    }
+    /// Get apis_events service handler
+    pub fn apis_events(&self) -> apis_events::Apis_eventsService<'_> {
+        apis_events::Apis_eventsService::new(self)
+    }
+    /// Get apis_resource service handler
+    pub fn apis_resource(&self) -> apis_resource::Apis_resourceService<'_> {
+        apis_resource::Apis_resourceService::new(self)
+    }
+    /// Get api service handler
+    pub fn api(&self) -> api::ApiService<'_> {
+        api::ApiService::new(self)
+    }
+    /// Get apis_internal service handler
+    pub fn apis_internal(&self) -> apis_internal::Apis_internalService<'_> {
+        apis_internal::Apis_internalService::new(self)
     }
     /// Get apis_storagemigration service handler
     pub fn apis_storagemigration(&self) -> apis_storagemigration::Apis_storagemigrationService<'_> {
@@ -148,73 +212,9 @@ impl KubernetesProvider {
     pub fn apis(&self) -> apis::ApisService<'_> {
         apis::ApisService::new(self)
     }
-    /// Get apis_events service handler
-    pub fn apis_events(&self) -> apis_events::Apis_eventsService<'_> {
-        apis_events::Apis_eventsService::new(self)
-    }
-    /// Get apis_apiregistration service handler
-    pub fn apis_apiregistration(&self) -> apis_apiregistration::Apis_apiregistrationService<'_> {
-        apis_apiregistration::Apis_apiregistrationService::new(self)
-    }
-    /// Get apis_batch service handler
-    pub fn apis_batch(&self) -> apis_batch::Apis_batchService<'_> {
-        apis_batch::Apis_batchService::new(self)
-    }
-    /// Get apis_internal service handler
-    pub fn apis_internal(&self) -> apis_internal::Apis_internalService<'_> {
-        apis_internal::Apis_internalService::new(self)
-    }
-    /// Get apis_storage service handler
-    pub fn apis_storage(&self) -> apis_storage::Apis_storageService<'_> {
-        apis_storage::Apis_storageService::new(self)
-    }
-    /// Get apis_apiextensions service handler
-    pub fn apis_apiextensions(&self) -> apis_apiextensions::Apis_apiextensionsService<'_> {
-        apis_apiextensions::Apis_apiextensionsService::new(self)
-    }
-    /// Get apis_admissionregistration service handler
-    pub fn apis_admissionregistration(&self) -> apis_admissionregistration::Apis_admissionregistrationService<'_> {
-        apis_admissionregistration::Apis_admissionregistrationService::new(self)
-    }
-    /// Get apis_authorization service handler
-    pub fn apis_authorization(&self) -> apis_authorization::Apis_authorizationService<'_> {
-        apis_authorization::Apis_authorizationService::new(self)
-    }
-    /// Get apis_networking service handler
-    pub fn apis_networking(&self) -> apis_networking::Apis_networkingService<'_> {
-        apis_networking::Apis_networkingService::new(self)
-    }
     /// Get apis_certificates service handler
     pub fn apis_certificates(&self) -> apis_certificates::Apis_certificatesService<'_> {
         apis_certificates::Apis_certificatesService::new(self)
-    }
-    /// Get apis_rbac service handler
-    pub fn apis_rbac(&self) -> apis_rbac::Apis_rbacService<'_> {
-        apis_rbac::Apis_rbacService::new(self)
-    }
-    /// Get apis_autoscaling service handler
-    pub fn apis_autoscaling(&self) -> apis_autoscaling::Apis_autoscalingService<'_> {
-        apis_autoscaling::Apis_autoscalingService::new(self)
-    }
-    /// Get version service handler
-    pub fn version(&self) -> version::VersionService<'_> {
-        version::VersionService::new(self)
-    }
-    /// Get apis_policy service handler
-    pub fn apis_policy(&self) -> apis_policy::Apis_policyService<'_> {
-        apis_policy::Apis_policyService::new(self)
-    }
-    /// Get logs service handler
-    pub fn logs(&self) -> logs::LogsService<'_> {
-        logs::LogsService::new(self)
-    }
-    /// Get apis_authentication service handler
-    pub fn apis_authentication(&self) -> apis_authentication::Apis_authenticationService<'_> {
-        apis_authentication::Apis_authenticationService::new(self)
-    }
-    /// Get openid service handler
-    pub fn openid(&self) -> openid::OpenidService<'_> {
-        openid::OpenidService::new(self)
     }
 
 
@@ -255,26 +255,74 @@ impl ProviderExecutor for KubernetesProvider {
         let resource_name = parts[1];
 
         match service_name {
-            "apis_node" => {
-                self.apis_node().plan_resource(resource_name, current_state, desired_input).await
-            }
             "apis_apps" => {
                 self.apis_apps().plan_resource(resource_name, current_state, desired_input).await
             }
-            "api" => {
-                self.api().plan_resource(resource_name, current_state, desired_input).await
+            "apis_node" => {
+                self.apis_node().plan_resource(resource_name, current_state, desired_input).await
             }
-            "apis_scheduling" => {
-                self.apis_scheduling().plan_resource(resource_name, current_state, desired_input).await
+            "apis_authorization" => {
+                self.apis_authorization().plan_resource(resource_name, current_state, desired_input).await
             }
-            "apis_resource" => {
-                self.apis_resource().plan_resource(resource_name, current_state, desired_input).await
+            "logs" => {
+                self.logs().plan_resource(resource_name, current_state, desired_input).await
             }
             "apis_flowcontrol" => {
                 self.apis_flowcontrol().plan_resource(resource_name, current_state, desired_input).await
             }
+            "openid" => {
+                self.openid().plan_resource(resource_name, current_state, desired_input).await
+            }
+            "apis_rbac" => {
+                self.apis_rbac().plan_resource(resource_name, current_state, desired_input).await
+            }
+            "apis_apiextensions" => {
+                self.apis_apiextensions().plan_resource(resource_name, current_state, desired_input).await
+            }
+            "version" => {
+                self.version().plan_resource(resource_name, current_state, desired_input).await
+            }
             "apis_coordination" => {
                 self.apis_coordination().plan_resource(resource_name, current_state, desired_input).await
+            }
+            "apis_policy" => {
+                self.apis_policy().plan_resource(resource_name, current_state, desired_input).await
+            }
+            "apis_scheduling" => {
+                self.apis_scheduling().plan_resource(resource_name, current_state, desired_input).await
+            }
+            "apis_networking" => {
+                self.apis_networking().plan_resource(resource_name, current_state, desired_input).await
+            }
+            "apis_storage" => {
+                self.apis_storage().plan_resource(resource_name, current_state, desired_input).await
+            }
+            "apis_apiregistration" => {
+                self.apis_apiregistration().plan_resource(resource_name, current_state, desired_input).await
+            }
+            "apis_admissionregistration" => {
+                self.apis_admissionregistration().plan_resource(resource_name, current_state, desired_input).await
+            }
+            "apis_autoscaling" => {
+                self.apis_autoscaling().plan_resource(resource_name, current_state, desired_input).await
+            }
+            "apis_authentication" => {
+                self.apis_authentication().plan_resource(resource_name, current_state, desired_input).await
+            }
+            "apis_batch" => {
+                self.apis_batch().plan_resource(resource_name, current_state, desired_input).await
+            }
+            "apis_events" => {
+                self.apis_events().plan_resource(resource_name, current_state, desired_input).await
+            }
+            "apis_resource" => {
+                self.apis_resource().plan_resource(resource_name, current_state, desired_input).await
+            }
+            "api" => {
+                self.api().plan_resource(resource_name, current_state, desired_input).await
+            }
+            "apis_internal" => {
+                self.apis_internal().plan_resource(resource_name, current_state, desired_input).await
             }
             "apis_storagemigration" => {
                 self.apis_storagemigration().plan_resource(resource_name, current_state, desired_input).await
@@ -282,56 +330,8 @@ impl ProviderExecutor for KubernetesProvider {
             "apis" => {
                 self.apis().plan_resource(resource_name, current_state, desired_input).await
             }
-            "apis_events" => {
-                self.apis_events().plan_resource(resource_name, current_state, desired_input).await
-            }
-            "apis_apiregistration" => {
-                self.apis_apiregistration().plan_resource(resource_name, current_state, desired_input).await
-            }
-            "apis_batch" => {
-                self.apis_batch().plan_resource(resource_name, current_state, desired_input).await
-            }
-            "apis_internal" => {
-                self.apis_internal().plan_resource(resource_name, current_state, desired_input).await
-            }
-            "apis_storage" => {
-                self.apis_storage().plan_resource(resource_name, current_state, desired_input).await
-            }
-            "apis_apiextensions" => {
-                self.apis_apiextensions().plan_resource(resource_name, current_state, desired_input).await
-            }
-            "apis_admissionregistration" => {
-                self.apis_admissionregistration().plan_resource(resource_name, current_state, desired_input).await
-            }
-            "apis_authorization" => {
-                self.apis_authorization().plan_resource(resource_name, current_state, desired_input).await
-            }
-            "apis_networking" => {
-                self.apis_networking().plan_resource(resource_name, current_state, desired_input).await
-            }
             "apis_certificates" => {
                 self.apis_certificates().plan_resource(resource_name, current_state, desired_input).await
-            }
-            "apis_rbac" => {
-                self.apis_rbac().plan_resource(resource_name, current_state, desired_input).await
-            }
-            "apis_autoscaling" => {
-                self.apis_autoscaling().plan_resource(resource_name, current_state, desired_input).await
-            }
-            "version" => {
-                self.version().plan_resource(resource_name, current_state, desired_input).await
-            }
-            "apis_policy" => {
-                self.apis_policy().plan_resource(resource_name, current_state, desired_input).await
-            }
-            "logs" => {
-                self.logs().plan_resource(resource_name, current_state, desired_input).await
-            }
-            "apis_authentication" => {
-                self.apis_authentication().plan_resource(resource_name, current_state, desired_input).await
-            }
-            "openid" => {
-                self.openid().plan_resource(resource_name, current_state, desired_input).await
             }
             _ => Err(hemmer_core::HemmerError::Provider(format!(
                 "Unknown service: {}",
@@ -354,26 +354,74 @@ impl ProviderExecutor for KubernetesProvider {
         let resource_name = parts[1];
 
         match service_name {
-            "apis_node" => {
-                self.apis_node().create_resource(resource_name, input).await
-            }
             "apis_apps" => {
                 self.apis_apps().create_resource(resource_name, input).await
             }
-            "api" => {
-                self.api().create_resource(resource_name, input).await
+            "apis_node" => {
+                self.apis_node().create_resource(resource_name, input).await
             }
-            "apis_scheduling" => {
-                self.apis_scheduling().create_resource(resource_name, input).await
+            "apis_authorization" => {
+                self.apis_authorization().create_resource(resource_name, input).await
             }
-            "apis_resource" => {
-                self.apis_resource().create_resource(resource_name, input).await
+            "logs" => {
+                self.logs().create_resource(resource_name, input).await
             }
             "apis_flowcontrol" => {
                 self.apis_flowcontrol().create_resource(resource_name, input).await
             }
+            "openid" => {
+                self.openid().create_resource(resource_name, input).await
+            }
+            "apis_rbac" => {
+                self.apis_rbac().create_resource(resource_name, input).await
+            }
+            "apis_apiextensions" => {
+                self.apis_apiextensions().create_resource(resource_name, input).await
+            }
+            "version" => {
+                self.version().create_resource(resource_name, input).await
+            }
             "apis_coordination" => {
                 self.apis_coordination().create_resource(resource_name, input).await
+            }
+            "apis_policy" => {
+                self.apis_policy().create_resource(resource_name, input).await
+            }
+            "apis_scheduling" => {
+                self.apis_scheduling().create_resource(resource_name, input).await
+            }
+            "apis_networking" => {
+                self.apis_networking().create_resource(resource_name, input).await
+            }
+            "apis_storage" => {
+                self.apis_storage().create_resource(resource_name, input).await
+            }
+            "apis_apiregistration" => {
+                self.apis_apiregistration().create_resource(resource_name, input).await
+            }
+            "apis_admissionregistration" => {
+                self.apis_admissionregistration().create_resource(resource_name, input).await
+            }
+            "apis_autoscaling" => {
+                self.apis_autoscaling().create_resource(resource_name, input).await
+            }
+            "apis_authentication" => {
+                self.apis_authentication().create_resource(resource_name, input).await
+            }
+            "apis_batch" => {
+                self.apis_batch().create_resource(resource_name, input).await
+            }
+            "apis_events" => {
+                self.apis_events().create_resource(resource_name, input).await
+            }
+            "apis_resource" => {
+                self.apis_resource().create_resource(resource_name, input).await
+            }
+            "api" => {
+                self.api().create_resource(resource_name, input).await
+            }
+            "apis_internal" => {
+                self.apis_internal().create_resource(resource_name, input).await
             }
             "apis_storagemigration" => {
                 self.apis_storagemigration().create_resource(resource_name, input).await
@@ -381,56 +429,8 @@ impl ProviderExecutor for KubernetesProvider {
             "apis" => {
                 self.apis().create_resource(resource_name, input).await
             }
-            "apis_events" => {
-                self.apis_events().create_resource(resource_name, input).await
-            }
-            "apis_apiregistration" => {
-                self.apis_apiregistration().create_resource(resource_name, input).await
-            }
-            "apis_batch" => {
-                self.apis_batch().create_resource(resource_name, input).await
-            }
-            "apis_internal" => {
-                self.apis_internal().create_resource(resource_name, input).await
-            }
-            "apis_storage" => {
-                self.apis_storage().create_resource(resource_name, input).await
-            }
-            "apis_apiextensions" => {
-                self.apis_apiextensions().create_resource(resource_name, input).await
-            }
-            "apis_admissionregistration" => {
-                self.apis_admissionregistration().create_resource(resource_name, input).await
-            }
-            "apis_authorization" => {
-                self.apis_authorization().create_resource(resource_name, input).await
-            }
-            "apis_networking" => {
-                self.apis_networking().create_resource(resource_name, input).await
-            }
             "apis_certificates" => {
                 self.apis_certificates().create_resource(resource_name, input).await
-            }
-            "apis_rbac" => {
-                self.apis_rbac().create_resource(resource_name, input).await
-            }
-            "apis_autoscaling" => {
-                self.apis_autoscaling().create_resource(resource_name, input).await
-            }
-            "version" => {
-                self.version().create_resource(resource_name, input).await
-            }
-            "apis_policy" => {
-                self.apis_policy().create_resource(resource_name, input).await
-            }
-            "logs" => {
-                self.logs().create_resource(resource_name, input).await
-            }
-            "apis_authentication" => {
-                self.apis_authentication().create_resource(resource_name, input).await
-            }
-            "openid" => {
-                self.openid().create_resource(resource_name, input).await
             }
             _ => Err(hemmer_core::HemmerError::Provider(format!(
                 "Unknown service: {}",
@@ -453,26 +453,74 @@ impl ProviderExecutor for KubernetesProvider {
         let resource_name = parts[1];
 
         match service_name {
-            "apis_node" => {
-                self.apis_node().read_resource(resource_name, id).await
-            }
             "apis_apps" => {
                 self.apis_apps().read_resource(resource_name, id).await
             }
-            "api" => {
-                self.api().read_resource(resource_name, id).await
+            "apis_node" => {
+                self.apis_node().read_resource(resource_name, id).await
             }
-            "apis_scheduling" => {
-                self.apis_scheduling().read_resource(resource_name, id).await
+            "apis_authorization" => {
+                self.apis_authorization().read_resource(resource_name, id).await
             }
-            "apis_resource" => {
-                self.apis_resource().read_resource(resource_name, id).await
+            "logs" => {
+                self.logs().read_resource(resource_name, id).await
             }
             "apis_flowcontrol" => {
                 self.apis_flowcontrol().read_resource(resource_name, id).await
             }
+            "openid" => {
+                self.openid().read_resource(resource_name, id).await
+            }
+            "apis_rbac" => {
+                self.apis_rbac().read_resource(resource_name, id).await
+            }
+            "apis_apiextensions" => {
+                self.apis_apiextensions().read_resource(resource_name, id).await
+            }
+            "version" => {
+                self.version().read_resource(resource_name, id).await
+            }
             "apis_coordination" => {
                 self.apis_coordination().read_resource(resource_name, id).await
+            }
+            "apis_policy" => {
+                self.apis_policy().read_resource(resource_name, id).await
+            }
+            "apis_scheduling" => {
+                self.apis_scheduling().read_resource(resource_name, id).await
+            }
+            "apis_networking" => {
+                self.apis_networking().read_resource(resource_name, id).await
+            }
+            "apis_storage" => {
+                self.apis_storage().read_resource(resource_name, id).await
+            }
+            "apis_apiregistration" => {
+                self.apis_apiregistration().read_resource(resource_name, id).await
+            }
+            "apis_admissionregistration" => {
+                self.apis_admissionregistration().read_resource(resource_name, id).await
+            }
+            "apis_autoscaling" => {
+                self.apis_autoscaling().read_resource(resource_name, id).await
+            }
+            "apis_authentication" => {
+                self.apis_authentication().read_resource(resource_name, id).await
+            }
+            "apis_batch" => {
+                self.apis_batch().read_resource(resource_name, id).await
+            }
+            "apis_events" => {
+                self.apis_events().read_resource(resource_name, id).await
+            }
+            "apis_resource" => {
+                self.apis_resource().read_resource(resource_name, id).await
+            }
+            "api" => {
+                self.api().read_resource(resource_name, id).await
+            }
+            "apis_internal" => {
+                self.apis_internal().read_resource(resource_name, id).await
             }
             "apis_storagemigration" => {
                 self.apis_storagemigration().read_resource(resource_name, id).await
@@ -480,56 +528,8 @@ impl ProviderExecutor for KubernetesProvider {
             "apis" => {
                 self.apis().read_resource(resource_name, id).await
             }
-            "apis_events" => {
-                self.apis_events().read_resource(resource_name, id).await
-            }
-            "apis_apiregistration" => {
-                self.apis_apiregistration().read_resource(resource_name, id).await
-            }
-            "apis_batch" => {
-                self.apis_batch().read_resource(resource_name, id).await
-            }
-            "apis_internal" => {
-                self.apis_internal().read_resource(resource_name, id).await
-            }
-            "apis_storage" => {
-                self.apis_storage().read_resource(resource_name, id).await
-            }
-            "apis_apiextensions" => {
-                self.apis_apiextensions().read_resource(resource_name, id).await
-            }
-            "apis_admissionregistration" => {
-                self.apis_admissionregistration().read_resource(resource_name, id).await
-            }
-            "apis_authorization" => {
-                self.apis_authorization().read_resource(resource_name, id).await
-            }
-            "apis_networking" => {
-                self.apis_networking().read_resource(resource_name, id).await
-            }
             "apis_certificates" => {
                 self.apis_certificates().read_resource(resource_name, id).await
-            }
-            "apis_rbac" => {
-                self.apis_rbac().read_resource(resource_name, id).await
-            }
-            "apis_autoscaling" => {
-                self.apis_autoscaling().read_resource(resource_name, id).await
-            }
-            "version" => {
-                self.version().read_resource(resource_name, id).await
-            }
-            "apis_policy" => {
-                self.apis_policy().read_resource(resource_name, id).await
-            }
-            "logs" => {
-                self.logs().read_resource(resource_name, id).await
-            }
-            "apis_authentication" => {
-                self.apis_authentication().read_resource(resource_name, id).await
-            }
-            "openid" => {
-                self.openid().read_resource(resource_name, id).await
             }
             _ => Err(hemmer_core::HemmerError::Provider(format!(
                 "Unknown service: {}",
@@ -557,26 +557,74 @@ impl ProviderExecutor for KubernetesProvider {
         let resource_name = parts[1];
 
         match service_name {
-            "apis_node" => {
-                self.apis_node().update_resource(resource_name, id, input).await
-            }
             "apis_apps" => {
                 self.apis_apps().update_resource(resource_name, id, input).await
             }
-            "api" => {
-                self.api().update_resource(resource_name, id, input).await
+            "apis_node" => {
+                self.apis_node().update_resource(resource_name, id, input).await
             }
-            "apis_scheduling" => {
-                self.apis_scheduling().update_resource(resource_name, id, input).await
+            "apis_authorization" => {
+                self.apis_authorization().update_resource(resource_name, id, input).await
             }
-            "apis_resource" => {
-                self.apis_resource().update_resource(resource_name, id, input).await
+            "logs" => {
+                self.logs().update_resource(resource_name, id, input).await
             }
             "apis_flowcontrol" => {
                 self.apis_flowcontrol().update_resource(resource_name, id, input).await
             }
+            "openid" => {
+                self.openid().update_resource(resource_name, id, input).await
+            }
+            "apis_rbac" => {
+                self.apis_rbac().update_resource(resource_name, id, input).await
+            }
+            "apis_apiextensions" => {
+                self.apis_apiextensions().update_resource(resource_name, id, input).await
+            }
+            "version" => {
+                self.version().update_resource(resource_name, id, input).await
+            }
             "apis_coordination" => {
                 self.apis_coordination().update_resource(resource_name, id, input).await
+            }
+            "apis_policy" => {
+                self.apis_policy().update_resource(resource_name, id, input).await
+            }
+            "apis_scheduling" => {
+                self.apis_scheduling().update_resource(resource_name, id, input).await
+            }
+            "apis_networking" => {
+                self.apis_networking().update_resource(resource_name, id, input).await
+            }
+            "apis_storage" => {
+                self.apis_storage().update_resource(resource_name, id, input).await
+            }
+            "apis_apiregistration" => {
+                self.apis_apiregistration().update_resource(resource_name, id, input).await
+            }
+            "apis_admissionregistration" => {
+                self.apis_admissionregistration().update_resource(resource_name, id, input).await
+            }
+            "apis_autoscaling" => {
+                self.apis_autoscaling().update_resource(resource_name, id, input).await
+            }
+            "apis_authentication" => {
+                self.apis_authentication().update_resource(resource_name, id, input).await
+            }
+            "apis_batch" => {
+                self.apis_batch().update_resource(resource_name, id, input).await
+            }
+            "apis_events" => {
+                self.apis_events().update_resource(resource_name, id, input).await
+            }
+            "apis_resource" => {
+                self.apis_resource().update_resource(resource_name, id, input).await
+            }
+            "api" => {
+                self.api().update_resource(resource_name, id, input).await
+            }
+            "apis_internal" => {
+                self.apis_internal().update_resource(resource_name, id, input).await
             }
             "apis_storagemigration" => {
                 self.apis_storagemigration().update_resource(resource_name, id, input).await
@@ -584,56 +632,8 @@ impl ProviderExecutor for KubernetesProvider {
             "apis" => {
                 self.apis().update_resource(resource_name, id, input).await
             }
-            "apis_events" => {
-                self.apis_events().update_resource(resource_name, id, input).await
-            }
-            "apis_apiregistration" => {
-                self.apis_apiregistration().update_resource(resource_name, id, input).await
-            }
-            "apis_batch" => {
-                self.apis_batch().update_resource(resource_name, id, input).await
-            }
-            "apis_internal" => {
-                self.apis_internal().update_resource(resource_name, id, input).await
-            }
-            "apis_storage" => {
-                self.apis_storage().update_resource(resource_name, id, input).await
-            }
-            "apis_apiextensions" => {
-                self.apis_apiextensions().update_resource(resource_name, id, input).await
-            }
-            "apis_admissionregistration" => {
-                self.apis_admissionregistration().update_resource(resource_name, id, input).await
-            }
-            "apis_authorization" => {
-                self.apis_authorization().update_resource(resource_name, id, input).await
-            }
-            "apis_networking" => {
-                self.apis_networking().update_resource(resource_name, id, input).await
-            }
             "apis_certificates" => {
                 self.apis_certificates().update_resource(resource_name, id, input).await
-            }
-            "apis_rbac" => {
-                self.apis_rbac().update_resource(resource_name, id, input).await
-            }
-            "apis_autoscaling" => {
-                self.apis_autoscaling().update_resource(resource_name, id, input).await
-            }
-            "version" => {
-                self.version().update_resource(resource_name, id, input).await
-            }
-            "apis_policy" => {
-                self.apis_policy().update_resource(resource_name, id, input).await
-            }
-            "logs" => {
-                self.logs().update_resource(resource_name, id, input).await
-            }
-            "apis_authentication" => {
-                self.apis_authentication().update_resource(resource_name, id, input).await
-            }
-            "openid" => {
-                self.openid().update_resource(resource_name, id, input).await
             }
             _ => Err(hemmer_core::HemmerError::Provider(format!(
                 "Unknown service: {}",
@@ -656,26 +656,74 @@ impl ProviderExecutor for KubernetesProvider {
         let resource_name = parts[1];
 
         match service_name {
-            "apis_node" => {
-                self.apis_node().delete_resource(resource_name, id).await
-            }
             "apis_apps" => {
                 self.apis_apps().delete_resource(resource_name, id).await
             }
-            "api" => {
-                self.api().delete_resource(resource_name, id).await
+            "apis_node" => {
+                self.apis_node().delete_resource(resource_name, id).await
             }
-            "apis_scheduling" => {
-                self.apis_scheduling().delete_resource(resource_name, id).await
+            "apis_authorization" => {
+                self.apis_authorization().delete_resource(resource_name, id).await
             }
-            "apis_resource" => {
-                self.apis_resource().delete_resource(resource_name, id).await
+            "logs" => {
+                self.logs().delete_resource(resource_name, id).await
             }
             "apis_flowcontrol" => {
                 self.apis_flowcontrol().delete_resource(resource_name, id).await
             }
+            "openid" => {
+                self.openid().delete_resource(resource_name, id).await
+            }
+            "apis_rbac" => {
+                self.apis_rbac().delete_resource(resource_name, id).await
+            }
+            "apis_apiextensions" => {
+                self.apis_apiextensions().delete_resource(resource_name, id).await
+            }
+            "version" => {
+                self.version().delete_resource(resource_name, id).await
+            }
             "apis_coordination" => {
                 self.apis_coordination().delete_resource(resource_name, id).await
+            }
+            "apis_policy" => {
+                self.apis_policy().delete_resource(resource_name, id).await
+            }
+            "apis_scheduling" => {
+                self.apis_scheduling().delete_resource(resource_name, id).await
+            }
+            "apis_networking" => {
+                self.apis_networking().delete_resource(resource_name, id).await
+            }
+            "apis_storage" => {
+                self.apis_storage().delete_resource(resource_name, id).await
+            }
+            "apis_apiregistration" => {
+                self.apis_apiregistration().delete_resource(resource_name, id).await
+            }
+            "apis_admissionregistration" => {
+                self.apis_admissionregistration().delete_resource(resource_name, id).await
+            }
+            "apis_autoscaling" => {
+                self.apis_autoscaling().delete_resource(resource_name, id).await
+            }
+            "apis_authentication" => {
+                self.apis_authentication().delete_resource(resource_name, id).await
+            }
+            "apis_batch" => {
+                self.apis_batch().delete_resource(resource_name, id).await
+            }
+            "apis_events" => {
+                self.apis_events().delete_resource(resource_name, id).await
+            }
+            "apis_resource" => {
+                self.apis_resource().delete_resource(resource_name, id).await
+            }
+            "api" => {
+                self.api().delete_resource(resource_name, id).await
+            }
+            "apis_internal" => {
+                self.apis_internal().delete_resource(resource_name, id).await
             }
             "apis_storagemigration" => {
                 self.apis_storagemigration().delete_resource(resource_name, id).await
@@ -683,56 +731,8 @@ impl ProviderExecutor for KubernetesProvider {
             "apis" => {
                 self.apis().delete_resource(resource_name, id).await
             }
-            "apis_events" => {
-                self.apis_events().delete_resource(resource_name, id).await
-            }
-            "apis_apiregistration" => {
-                self.apis_apiregistration().delete_resource(resource_name, id).await
-            }
-            "apis_batch" => {
-                self.apis_batch().delete_resource(resource_name, id).await
-            }
-            "apis_internal" => {
-                self.apis_internal().delete_resource(resource_name, id).await
-            }
-            "apis_storage" => {
-                self.apis_storage().delete_resource(resource_name, id).await
-            }
-            "apis_apiextensions" => {
-                self.apis_apiextensions().delete_resource(resource_name, id).await
-            }
-            "apis_admissionregistration" => {
-                self.apis_admissionregistration().delete_resource(resource_name, id).await
-            }
-            "apis_authorization" => {
-                self.apis_authorization().delete_resource(resource_name, id).await
-            }
-            "apis_networking" => {
-                self.apis_networking().delete_resource(resource_name, id).await
-            }
             "apis_certificates" => {
                 self.apis_certificates().delete_resource(resource_name, id).await
-            }
-            "apis_rbac" => {
-                self.apis_rbac().delete_resource(resource_name, id).await
-            }
-            "apis_autoscaling" => {
-                self.apis_autoscaling().delete_resource(resource_name, id).await
-            }
-            "version" => {
-                self.version().delete_resource(resource_name, id).await
-            }
-            "apis_policy" => {
-                self.apis_policy().delete_resource(resource_name, id).await
-            }
-            "logs" => {
-                self.logs().delete_resource(resource_name, id).await
-            }
-            "apis_authentication" => {
-                self.apis_authentication().delete_resource(resource_name, id).await
-            }
-            "openid" => {
-                self.openid().delete_resource(resource_name, id).await
             }
             _ => Err(hemmer_core::HemmerError::Provider(format!(
                 "Unknown service: {}",

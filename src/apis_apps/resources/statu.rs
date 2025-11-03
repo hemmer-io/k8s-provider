@@ -1,6 +1,6 @@
 //! Statu resource
 //!
-//! read status of the specified StatefulSet
+//! read status of the specified DaemonSet
 
 use crate::{ProviderError, Result};
 use std::collections::HashMap;

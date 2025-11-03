@@ -27,11 +27,11 @@ impl<'a> Apis_coordinationService<'a> {
             "coordination" => {
                 self.plan_coordination(current_state, desired_input).await
             }
-            "leasecandidate" => {
-                self.plan_leasecandidate(current_state, desired_input).await
-            }
             "v1alpha2" => {
                 self.plan_v1alpha2(current_state, desired_input).await
+            }
+            "leasecandidate" => {
+                self.plan_leasecandidate(current_state, desired_input).await
             }
             "lease" => {
                 self.plan_lease(current_state, desired_input).await
@@ -63,11 +63,11 @@ impl<'a> Apis_coordinationService<'a> {
             "coordination" => {
                 self.create_coordination(input).await
             }
-            "leasecandidate" => {
-                self.create_leasecandidate(input).await
-            }
             "v1alpha2" => {
                 self.create_v1alpha2(input).await
+            }
+            "leasecandidate" => {
+                self.create_leasecandidate(input).await
             }
             "lease" => {
                 self.create_lease(input).await
@@ -99,11 +99,11 @@ impl<'a> Apis_coordinationService<'a> {
             "coordination" => {
                 self.read_coordination(id).await
             }
-            "leasecandidate" => {
-                self.read_leasecandidate(id).await
-            }
             "v1alpha2" => {
                 self.read_v1alpha2(id).await
+            }
+            "leasecandidate" => {
+                self.read_leasecandidate(id).await
             }
             "lease" => {
                 self.read_lease(id).await
@@ -136,11 +136,11 @@ impl<'a> Apis_coordinationService<'a> {
             "coordination" => {
                 self.update_coordination(id, input).await
             }
-            "leasecandidate" => {
-                self.update_leasecandidate(id, input).await
-            }
             "v1alpha2" => {
                 self.update_v1alpha2(id, input).await
+            }
+            "leasecandidate" => {
+                self.update_leasecandidate(id, input).await
             }
             "lease" => {
                 self.update_lease(id, input).await
@@ -172,11 +172,11 @@ impl<'a> Apis_coordinationService<'a> {
             "coordination" => {
                 self.delete_coordination(id).await
             }
-            "leasecandidate" => {
-                self.delete_leasecandidate(id).await
-            }
             "v1alpha2" => {
                 self.delete_v1alpha2(id).await
+            }
+            "leasecandidate" => {
+                self.delete_leasecandidate(id).await
             }
             "lease" => {
                 self.delete_lease(id).await
@@ -265,67 +265,6 @@ impl<'a> Apis_coordinationService<'a> {
 
 
     // ------------------------------------------------------------------------
-    // Leasecandidate resource operations
-    // ------------------------------------------------------------------------
-
-    /// Plan changes to a leasecandidate resource
-    async fn plan_leasecandidate(
-        &self,
-        current_state: Option<&ResourceOutput>,
-        desired_input: &ResourceInput,
-    ) -> Result<ResourcePlan> {
-        // If no current state exists, this is a create operation
-        if current_state.is_none() {
-            return Ok(ResourcePlan::create());
-        }
-
-        // TODO: Implement proper diff logic
-        // For now, return NoOp if resource exists
-        Ok(ResourcePlan::no_op())
-    }
-
-    /// Create a new leasecandidate resource
-    async fn create_leasecandidate(
-        &self,
-        input: ResourceInput,
-    ) -> Result<ResourceOutput> {
-        // TODO: Implement Kubernetes SDK calls
-        Ok(ResourceOutput::new()
-            .with_id("placeholder-id"))
-    }
-
-    /// Read a leasecandidate resource
-    async fn read_leasecandidate(
-        &self,
-        id: &str,
-    ) -> Result<ResourceOutput> {
-        // TODO: Implement Kubernetes SDK calls
-        Ok(ResourceOutput::new()
-            .with_id(id))
-    }
-
-    /// Update a leasecandidate resource
-    async fn update_leasecandidate(
-        &self,
-        id: &str,
-        input: ResourceInput,
-    ) -> Result<ResourceOutput> {
-        // TODO: Implement Kubernetes SDK calls
-        Ok(ResourceOutput::new()
-            .with_id(id))
-    }
-
-    /// Delete a leasecandidate resource
-    async fn delete_leasecandidate(
-        &self,
-        id: &str,
-    ) -> Result<()> {
-        // TODO: Implement Kubernetes SDK calls
-        Ok(())
-    }
-
-
-    // ------------------------------------------------------------------------
     // V1alpha2 resource operations
     // ------------------------------------------------------------------------
 
@@ -378,6 +317,67 @@ impl<'a> Apis_coordinationService<'a> {
 
     /// Delete a v1alpha2 resource
     async fn delete_v1alpha2(
+        &self,
+        id: &str,
+    ) -> Result<()> {
+        // TODO: Implement Kubernetes SDK calls
+        Ok(())
+    }
+
+
+    // ------------------------------------------------------------------------
+    // Leasecandidate resource operations
+    // ------------------------------------------------------------------------
+
+    /// Plan changes to a leasecandidate resource
+    async fn plan_leasecandidate(
+        &self,
+        current_state: Option<&ResourceOutput>,
+        desired_input: &ResourceInput,
+    ) -> Result<ResourcePlan> {
+        // If no current state exists, this is a create operation
+        if current_state.is_none() {
+            return Ok(ResourcePlan::create());
+        }
+
+        // TODO: Implement proper diff logic
+        // For now, return NoOp if resource exists
+        Ok(ResourcePlan::no_op())
+    }
+
+    /// Create a new leasecandidate resource
+    async fn create_leasecandidate(
+        &self,
+        input: ResourceInput,
+    ) -> Result<ResourceOutput> {
+        // TODO: Implement Kubernetes SDK calls
+        Ok(ResourceOutput::new()
+            .with_id("placeholder-id"))
+    }
+
+    /// Read a leasecandidate resource
+    async fn read_leasecandidate(
+        &self,
+        id: &str,
+    ) -> Result<ResourceOutput> {
+        // TODO: Implement Kubernetes SDK calls
+        Ok(ResourceOutput::new()
+            .with_id(id))
+    }
+
+    /// Update a leasecandidate resource
+    async fn update_leasecandidate(
+        &self,
+        id: &str,
+        input: ResourceInput,
+    ) -> Result<ResourceOutput> {
+        // TODO: Implement Kubernetes SDK calls
+        Ok(ResourceOutput::new()
+            .with_id(id))
+    }
+
+    /// Delete a leasecandidate resource
+    async fn delete_leasecandidate(
         &self,
         id: &str,
     ) -> Result<()> {

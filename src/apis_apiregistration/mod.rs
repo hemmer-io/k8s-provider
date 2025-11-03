@@ -27,11 +27,11 @@ impl<'a> Apis_apiregistrationService<'a> {
             "statu" => {
                 self.plan_statu(current_state, desired_input).await
             }
-            "apiservice" => {
-                self.plan_apiservice(current_state, desired_input).await
-            }
             "v1" => {
                 self.plan_v1(current_state, desired_input).await
+            }
+            "apiservice" => {
+                self.plan_apiservice(current_state, desired_input).await
             }
             "apiregistration" => {
                 self.plan_apiregistration(current_state, desired_input).await
@@ -54,11 +54,11 @@ impl<'a> Apis_apiregistrationService<'a> {
             "statu" => {
                 self.create_statu(input).await
             }
-            "apiservice" => {
-                self.create_apiservice(input).await
-            }
             "v1" => {
                 self.create_v1(input).await
+            }
+            "apiservice" => {
+                self.create_apiservice(input).await
             }
             "apiregistration" => {
                 self.create_apiregistration(input).await
@@ -81,11 +81,11 @@ impl<'a> Apis_apiregistrationService<'a> {
             "statu" => {
                 self.read_statu(id).await
             }
-            "apiservice" => {
-                self.read_apiservice(id).await
-            }
             "v1" => {
                 self.read_v1(id).await
+            }
+            "apiservice" => {
+                self.read_apiservice(id).await
             }
             "apiregistration" => {
                 self.read_apiregistration(id).await
@@ -109,11 +109,11 @@ impl<'a> Apis_apiregistrationService<'a> {
             "statu" => {
                 self.update_statu(id, input).await
             }
-            "apiservice" => {
-                self.update_apiservice(id, input).await
-            }
             "v1" => {
                 self.update_v1(id, input).await
+            }
+            "apiservice" => {
+                self.update_apiservice(id, input).await
             }
             "apiregistration" => {
                 self.update_apiregistration(id, input).await
@@ -136,11 +136,11 @@ impl<'a> Apis_apiregistrationService<'a> {
             "statu" => {
                 self.delete_statu(id).await
             }
-            "apiservice" => {
-                self.delete_apiservice(id).await
-            }
             "v1" => {
                 self.delete_v1(id).await
+            }
+            "apiservice" => {
+                self.delete_apiservice(id).await
             }
             "apiregistration" => {
                 self.delete_apiregistration(id).await
@@ -220,67 +220,6 @@ impl<'a> Apis_apiregistrationService<'a> {
 
 
     // ------------------------------------------------------------------------
-    // Apiservice resource operations
-    // ------------------------------------------------------------------------
-
-    /// Plan changes to a apiservice resource
-    async fn plan_apiservice(
-        &self,
-        current_state: Option<&ResourceOutput>,
-        desired_input: &ResourceInput,
-    ) -> Result<ResourcePlan> {
-        // If no current state exists, this is a create operation
-        if current_state.is_none() {
-            return Ok(ResourcePlan::create());
-        }
-
-        // TODO: Implement proper diff logic
-        // For now, return NoOp if resource exists
-        Ok(ResourcePlan::no_op())
-    }
-
-    /// Create a new apiservice resource
-    async fn create_apiservice(
-        &self,
-        input: ResourceInput,
-    ) -> Result<ResourceOutput> {
-        // TODO: Implement Kubernetes SDK calls
-        Ok(ResourceOutput::new()
-            .with_id("placeholder-id"))
-    }
-
-    /// Read a apiservice resource
-    async fn read_apiservice(
-        &self,
-        id: &str,
-    ) -> Result<ResourceOutput> {
-        // TODO: Implement Kubernetes SDK calls
-        Ok(ResourceOutput::new()
-            .with_id(id))
-    }
-
-    /// Update a apiservice resource
-    async fn update_apiservice(
-        &self,
-        id: &str,
-        input: ResourceInput,
-    ) -> Result<ResourceOutput> {
-        // TODO: Implement Kubernetes SDK calls
-        Ok(ResourceOutput::new()
-            .with_id(id))
-    }
-
-    /// Delete a apiservice resource
-    async fn delete_apiservice(
-        &self,
-        id: &str,
-    ) -> Result<()> {
-        // TODO: Implement Kubernetes SDK calls
-        Ok(())
-    }
-
-
-    // ------------------------------------------------------------------------
     // V1 resource operations
     // ------------------------------------------------------------------------
 
@@ -333,6 +272,67 @@ impl<'a> Apis_apiregistrationService<'a> {
 
     /// Delete a v1 resource
     async fn delete_v1(
+        &self,
+        id: &str,
+    ) -> Result<()> {
+        // TODO: Implement Kubernetes SDK calls
+        Ok(())
+    }
+
+
+    // ------------------------------------------------------------------------
+    // Apiservice resource operations
+    // ------------------------------------------------------------------------
+
+    /// Plan changes to a apiservice resource
+    async fn plan_apiservice(
+        &self,
+        current_state: Option<&ResourceOutput>,
+        desired_input: &ResourceInput,
+    ) -> Result<ResourcePlan> {
+        // If no current state exists, this is a create operation
+        if current_state.is_none() {
+            return Ok(ResourcePlan::create());
+        }
+
+        // TODO: Implement proper diff logic
+        // For now, return NoOp if resource exists
+        Ok(ResourcePlan::no_op())
+    }
+
+    /// Create a new apiservice resource
+    async fn create_apiservice(
+        &self,
+        input: ResourceInput,
+    ) -> Result<ResourceOutput> {
+        // TODO: Implement Kubernetes SDK calls
+        Ok(ResourceOutput::new()
+            .with_id("placeholder-id"))
+    }
+
+    /// Read a apiservice resource
+    async fn read_apiservice(
+        &self,
+        id: &str,
+    ) -> Result<ResourceOutput> {
+        // TODO: Implement Kubernetes SDK calls
+        Ok(ResourceOutput::new()
+            .with_id(id))
+    }
+
+    /// Update a apiservice resource
+    async fn update_apiservice(
+        &self,
+        id: &str,
+        input: ResourceInput,
+    ) -> Result<ResourceOutput> {
+        // TODO: Implement Kubernetes SDK calls
+        Ok(ResourceOutput::new()
+            .with_id(id))
+    }
+
+    /// Delete a apiservice resource
+    async fn delete_apiservice(
         &self,
         id: &str,
     ) -> Result<()> {

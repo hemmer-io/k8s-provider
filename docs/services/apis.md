@@ -12,8 +12,8 @@ The apis service provides access to 4 resource types:
 
 - [Api](#api) [R]
 - [Discovery](#discovery) [R]
-- [Endpointslice](#endpointslice) [CRUD]
 - [V1](#v1) [R]
+- [Endpointslice](#endpointslice) [CRUD]
 
 ---
 
@@ -82,6 +82,37 @@ discovery_id = discovery.id
 ---
 
 
+### V1
+
+get available resources
+
+**Operations**: ✅ Read
+
+#### Fields
+
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+
+
+
+#### Usage Example
+
+```kcl
+# main.k
+import kubernetes
+
+# Initialize provider
+provider = kubernetes.KubernetesProvider {
+    kubeconfig = "~/.kube/config"
+}
+
+# Access v1 outputs
+v1_id = v1.id
+```
+
+---
+
+
 ### Endpointslice
 
 create an EndpointSlice
@@ -115,37 +146,6 @@ endpointslice = provider.apis.Endpointslice {
 
 # Access endpointslice outputs
 endpointslice_id = endpointslice.id
-```
-
----
-
-
-### V1
-
-get available resources
-
-**Operations**: ✅ Read
-
-#### Fields
-
-| Field | Type | Required | Description |
-|-------|------|----------|-------------|
-
-
-
-#### Usage Example
-
-```kcl
-# main.k
-import kubernetes
-
-# Initialize provider
-provider = kubernetes.KubernetesProvider {
-    kubeconfig = "~/.kube/config"
-}
-
-# Access v1 outputs
-v1_id = v1.id
 ```
 
 ---

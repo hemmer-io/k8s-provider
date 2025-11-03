@@ -10,14 +10,45 @@
 
 The apis_policy service provides access to 4 resource types:
 
+- [V1](#v1) [R]
 - [Statu](#statu) [RU]
 - [Poddisruptionbudget](#poddisruptionbudget) [CRUD]
-- [V1](#v1) [R]
 - [Policy](#policy) [R]
 
 ---
 
 ## Resources
+
+
+### V1
+
+get available resources
+
+**Operations**: ✅ Read
+
+#### Fields
+
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+
+
+
+#### Usage Example
+
+```kcl
+# main.k
+import kubernetes
+
+# Initialize provider
+provider = kubernetes.KubernetesProvider {
+    kubeconfig = "~/.kube/config"
+}
+
+# Access v1 outputs
+v1_id = v1.id
+```
+
+---
 
 
 ### Statu
@@ -92,37 +123,6 @@ poddisruptionbudget_id = poddisruptionbudget.id
 ---
 
 
-### V1
-
-get available resources
-
-**Operations**: ✅ Read
-
-#### Fields
-
-| Field | Type | Required | Description |
-|-------|------|----------|-------------|
-
-
-
-#### Usage Example
-
-```kcl
-# main.k
-import kubernetes
-
-# Initialize provider
-provider = kubernetes.KubernetesProvider {
-    kubeconfig = "~/.kube/config"
-}
-
-# Access v1 outputs
-v1_id = v1.id
-```
-
----
-
-
 ### Policy
 
 get information of a group
@@ -166,12 +166,12 @@ provider = kubernetes.KubernetesProvider {
     kubeconfig = "~/.kube/config"
 }
 
-# Create multiple statu resources
-statu_0 = provider.apis_policy.Statu {
+# Create multiple v1 resources
+v1_0 = provider.apis_policy.V1 {
 }
-statu_1 = provider.apis_policy.Statu {
+v1_1 = provider.apis_policy.V1 {
 }
-statu_2 = provider.apis_policy.Statu {
+v1_2 = provider.apis_policy.V1 {
 }
 ```
 
@@ -180,7 +180,7 @@ statu_2 = provider.apis_policy.Statu {
 ```kcl
 # Only create in production
 if environment == "production":
-    statu = provider.apis_policy.Statu {
+    v1 = provider.apis_policy.V1 {
     }
 ```
 

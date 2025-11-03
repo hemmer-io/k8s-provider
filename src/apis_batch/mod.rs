@@ -27,11 +27,11 @@ impl<'a> Apis_batchService<'a> {
             "batch" => {
                 self.plan_batch(current_state, desired_input).await
             }
-            "statu" => {
-                self.plan_statu(current_state, desired_input).await
-            }
             "cronjob" => {
                 self.plan_cronjob(current_state, desired_input).await
+            }
+            "statu" => {
+                self.plan_statu(current_state, desired_input).await
             }
             "job" => {
                 self.plan_job(current_state, desired_input).await
@@ -57,11 +57,11 @@ impl<'a> Apis_batchService<'a> {
             "batch" => {
                 self.create_batch(input).await
             }
-            "statu" => {
-                self.create_statu(input).await
-            }
             "cronjob" => {
                 self.create_cronjob(input).await
+            }
+            "statu" => {
+                self.create_statu(input).await
             }
             "job" => {
                 self.create_job(input).await
@@ -87,11 +87,11 @@ impl<'a> Apis_batchService<'a> {
             "batch" => {
                 self.read_batch(id).await
             }
-            "statu" => {
-                self.read_statu(id).await
-            }
             "cronjob" => {
                 self.read_cronjob(id).await
+            }
+            "statu" => {
+                self.read_statu(id).await
             }
             "job" => {
                 self.read_job(id).await
@@ -118,11 +118,11 @@ impl<'a> Apis_batchService<'a> {
             "batch" => {
                 self.update_batch(id, input).await
             }
-            "statu" => {
-                self.update_statu(id, input).await
-            }
             "cronjob" => {
                 self.update_cronjob(id, input).await
+            }
+            "statu" => {
+                self.update_statu(id, input).await
             }
             "job" => {
                 self.update_job(id, input).await
@@ -148,11 +148,11 @@ impl<'a> Apis_batchService<'a> {
             "batch" => {
                 self.delete_batch(id).await
             }
-            "statu" => {
-                self.delete_statu(id).await
-            }
             "cronjob" => {
                 self.delete_cronjob(id).await
+            }
+            "statu" => {
+                self.delete_statu(id).await
             }
             "job" => {
                 self.delete_job(id).await
@@ -235,67 +235,6 @@ impl<'a> Apis_batchService<'a> {
 
 
     // ------------------------------------------------------------------------
-    // Statu resource operations
-    // ------------------------------------------------------------------------
-
-    /// Plan changes to a statu resource
-    async fn plan_statu(
-        &self,
-        current_state: Option<&ResourceOutput>,
-        desired_input: &ResourceInput,
-    ) -> Result<ResourcePlan> {
-        // If no current state exists, this is a create operation
-        if current_state.is_none() {
-            return Ok(ResourcePlan::create());
-        }
-
-        // TODO: Implement proper diff logic
-        // For now, return NoOp if resource exists
-        Ok(ResourcePlan::no_op())
-    }
-
-    /// Create a new statu resource
-    async fn create_statu(
-        &self,
-        input: ResourceInput,
-    ) -> Result<ResourceOutput> {
-        // TODO: Implement Kubernetes SDK calls
-        Ok(ResourceOutput::new()
-            .with_id("placeholder-id"))
-    }
-
-    /// Read a statu resource
-    async fn read_statu(
-        &self,
-        id: &str,
-    ) -> Result<ResourceOutput> {
-        // TODO: Implement Kubernetes SDK calls
-        Ok(ResourceOutput::new()
-            .with_id(id))
-    }
-
-    /// Update a statu resource
-    async fn update_statu(
-        &self,
-        id: &str,
-        input: ResourceInput,
-    ) -> Result<ResourceOutput> {
-        // TODO: Implement Kubernetes SDK calls
-        Ok(ResourceOutput::new()
-            .with_id(id))
-    }
-
-    /// Delete a statu resource
-    async fn delete_statu(
-        &self,
-        id: &str,
-    ) -> Result<()> {
-        // TODO: Implement Kubernetes SDK calls
-        Ok(())
-    }
-
-
-    // ------------------------------------------------------------------------
     // Cronjob resource operations
     // ------------------------------------------------------------------------
 
@@ -348,6 +287,67 @@ impl<'a> Apis_batchService<'a> {
 
     /// Delete a cronjob resource
     async fn delete_cronjob(
+        &self,
+        id: &str,
+    ) -> Result<()> {
+        // TODO: Implement Kubernetes SDK calls
+        Ok(())
+    }
+
+
+    // ------------------------------------------------------------------------
+    // Statu resource operations
+    // ------------------------------------------------------------------------
+
+    /// Plan changes to a statu resource
+    async fn plan_statu(
+        &self,
+        current_state: Option<&ResourceOutput>,
+        desired_input: &ResourceInput,
+    ) -> Result<ResourcePlan> {
+        // If no current state exists, this is a create operation
+        if current_state.is_none() {
+            return Ok(ResourcePlan::create());
+        }
+
+        // TODO: Implement proper diff logic
+        // For now, return NoOp if resource exists
+        Ok(ResourcePlan::no_op())
+    }
+
+    /// Create a new statu resource
+    async fn create_statu(
+        &self,
+        input: ResourceInput,
+    ) -> Result<ResourceOutput> {
+        // TODO: Implement Kubernetes SDK calls
+        Ok(ResourceOutput::new()
+            .with_id("placeholder-id"))
+    }
+
+    /// Read a statu resource
+    async fn read_statu(
+        &self,
+        id: &str,
+    ) -> Result<ResourceOutput> {
+        // TODO: Implement Kubernetes SDK calls
+        Ok(ResourceOutput::new()
+            .with_id(id))
+    }
+
+    /// Update a statu resource
+    async fn update_statu(
+        &self,
+        id: &str,
+        input: ResourceInput,
+    ) -> Result<ResourceOutput> {
+        // TODO: Implement Kubernetes SDK calls
+        Ok(ResourceOutput::new()
+            .with_id(id))
+    }
+
+    /// Delete a statu resource
+    async fn delete_statu(
         &self,
         id: &str,
     ) -> Result<()> {

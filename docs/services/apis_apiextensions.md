@@ -10,45 +10,14 @@
 
 The apis_apiextensions service provides access to 4 resource types:
 
-- [V1](#v1) [R]
 - [Statu](#statu) [RU]
+- [V1](#v1) [R]
 - [Customresourcedefinition](#customresourcedefinition) [CRUD]
 - [Apiextension](#apiextension) [R]
 
 ---
 
 ## Resources
-
-
-### V1
-
-get available resources
-
-**Operations**: ✅ Read
-
-#### Fields
-
-| Field | Type | Required | Description |
-|-------|------|----------|-------------|
-
-
-
-#### Usage Example
-
-```kcl
-# main.k
-import kubernetes
-
-# Initialize provider
-provider = kubernetes.KubernetesProvider {
-    kubeconfig = "~/.kube/config"
-}
-
-# Access v1 outputs
-v1_id = v1.id
-```
-
----
 
 
 ### Statu
@@ -80,6 +49,37 @@ provider = kubernetes.KubernetesProvider {
 
 # Access statu outputs
 statu_id = statu.id
+```
+
+---
+
+
+### V1
+
+get available resources
+
+**Operations**: ✅ Read
+
+#### Fields
+
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+
+
+
+#### Usage Example
+
+```kcl
+# main.k
+import kubernetes
+
+# Initialize provider
+provider = kubernetes.KubernetesProvider {
+    kubeconfig = "~/.kube/config"
+}
+
+# Access v1 outputs
+v1_id = v1.id
 ```
 
 ---
@@ -166,12 +166,12 @@ provider = kubernetes.KubernetesProvider {
     kubeconfig = "~/.kube/config"
 }
 
-# Create multiple v1 resources
-v1_0 = provider.apis_apiextensions.V1 {
+# Create multiple statu resources
+statu_0 = provider.apis_apiextensions.Statu {
 }
-v1_1 = provider.apis_apiextensions.V1 {
+statu_1 = provider.apis_apiextensions.Statu {
 }
-v1_2 = provider.apis_apiextensions.V1 {
+statu_2 = provider.apis_apiextensions.Statu {
 }
 ```
 
@@ -180,7 +180,7 @@ v1_2 = provider.apis_apiextensions.V1 {
 ```kcl
 # Only create in production
 if environment == "production":
-    v1 = provider.apis_apiextensions.V1 {
+    statu = provider.apis_apiextensions.Statu {
     }
 ```
 

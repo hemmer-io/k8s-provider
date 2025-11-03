@@ -24,11 +24,11 @@ impl<'a> Apis_apiextensionsService<'a> {
         desired_input: &ResourceInput,
     ) -> Result<ResourcePlan> {
         match resource_name {
-            "v1" => {
-                self.plan_v1(current_state, desired_input).await
-            }
             "statu" => {
                 self.plan_statu(current_state, desired_input).await
+            }
+            "v1" => {
+                self.plan_v1(current_state, desired_input).await
             }
             "customresourcedefinition" => {
                 self.plan_customresourcedefinition(current_state, desired_input).await
@@ -51,11 +51,11 @@ impl<'a> Apis_apiextensionsService<'a> {
         input: ResourceInput,
     ) -> Result<ResourceOutput> {
         match resource_name {
-            "v1" => {
-                self.create_v1(input).await
-            }
             "statu" => {
                 self.create_statu(input).await
+            }
+            "v1" => {
+                self.create_v1(input).await
             }
             "customresourcedefinition" => {
                 self.create_customresourcedefinition(input).await
@@ -78,11 +78,11 @@ impl<'a> Apis_apiextensionsService<'a> {
         id: &str,
     ) -> Result<ResourceOutput> {
         match resource_name {
-            "v1" => {
-                self.read_v1(id).await
-            }
             "statu" => {
                 self.read_statu(id).await
+            }
+            "v1" => {
+                self.read_v1(id).await
             }
             "customresourcedefinition" => {
                 self.read_customresourcedefinition(id).await
@@ -106,11 +106,11 @@ impl<'a> Apis_apiextensionsService<'a> {
         input: ResourceInput,
     ) -> Result<ResourceOutput> {
         match resource_name {
-            "v1" => {
-                self.update_v1(id, input).await
-            }
             "statu" => {
                 self.update_statu(id, input).await
+            }
+            "v1" => {
+                self.update_v1(id, input).await
             }
             "customresourcedefinition" => {
                 self.update_customresourcedefinition(id, input).await
@@ -133,11 +133,11 @@ impl<'a> Apis_apiextensionsService<'a> {
         id: &str,
     ) -> Result<()> {
         match resource_name {
-            "v1" => {
-                self.delete_v1(id).await
-            }
             "statu" => {
                 self.delete_statu(id).await
+            }
+            "v1" => {
+                self.delete_v1(id).await
             }
             "customresourcedefinition" => {
                 self.delete_customresourcedefinition(id).await
@@ -156,67 +156,6 @@ impl<'a> Apis_apiextensionsService<'a> {
     // ========================================================================
     // Resource-specific CRUD implementations
     // ========================================================================
-
-
-    // ------------------------------------------------------------------------
-    // V1 resource operations
-    // ------------------------------------------------------------------------
-
-    /// Plan changes to a v1 resource
-    async fn plan_v1(
-        &self,
-        current_state: Option<&ResourceOutput>,
-        desired_input: &ResourceInput,
-    ) -> Result<ResourcePlan> {
-        // If no current state exists, this is a create operation
-        if current_state.is_none() {
-            return Ok(ResourcePlan::create());
-        }
-
-        // TODO: Implement proper diff logic
-        // For now, return NoOp if resource exists
-        Ok(ResourcePlan::no_op())
-    }
-
-    /// Create a new v1 resource
-    async fn create_v1(
-        &self,
-        input: ResourceInput,
-    ) -> Result<ResourceOutput> {
-        // TODO: Implement Kubernetes SDK calls
-        Ok(ResourceOutput::new()
-            .with_id("placeholder-id"))
-    }
-
-    /// Read a v1 resource
-    async fn read_v1(
-        &self,
-        id: &str,
-    ) -> Result<ResourceOutput> {
-        // TODO: Implement Kubernetes SDK calls
-        Ok(ResourceOutput::new()
-            .with_id(id))
-    }
-
-    /// Update a v1 resource
-    async fn update_v1(
-        &self,
-        id: &str,
-        input: ResourceInput,
-    ) -> Result<ResourceOutput> {
-        // TODO: Implement Kubernetes SDK calls
-        Ok(ResourceOutput::new()
-            .with_id(id))
-    }
-
-    /// Delete a v1 resource
-    async fn delete_v1(
-        &self,
-        id: &str,
-    ) -> Result<()> {
-        // TODO: Implement Kubernetes SDK calls
-        Ok(())
-    }
 
 
     // ------------------------------------------------------------------------
@@ -272,6 +211,67 @@ impl<'a> Apis_apiextensionsService<'a> {
 
     /// Delete a statu resource
     async fn delete_statu(
+        &self,
+        id: &str,
+    ) -> Result<()> {
+        // TODO: Implement Kubernetes SDK calls
+        Ok(())
+    }
+
+
+    // ------------------------------------------------------------------------
+    // V1 resource operations
+    // ------------------------------------------------------------------------
+
+    /// Plan changes to a v1 resource
+    async fn plan_v1(
+        &self,
+        current_state: Option<&ResourceOutput>,
+        desired_input: &ResourceInput,
+    ) -> Result<ResourcePlan> {
+        // If no current state exists, this is a create operation
+        if current_state.is_none() {
+            return Ok(ResourcePlan::create());
+        }
+
+        // TODO: Implement proper diff logic
+        // For now, return NoOp if resource exists
+        Ok(ResourcePlan::no_op())
+    }
+
+    /// Create a new v1 resource
+    async fn create_v1(
+        &self,
+        input: ResourceInput,
+    ) -> Result<ResourceOutput> {
+        // TODO: Implement Kubernetes SDK calls
+        Ok(ResourceOutput::new()
+            .with_id("placeholder-id"))
+    }
+
+    /// Read a v1 resource
+    async fn read_v1(
+        &self,
+        id: &str,
+    ) -> Result<ResourceOutput> {
+        // TODO: Implement Kubernetes SDK calls
+        Ok(ResourceOutput::new()
+            .with_id(id))
+    }
+
+    /// Update a v1 resource
+    async fn update_v1(
+        &self,
+        id: &str,
+        input: ResourceInput,
+    ) -> Result<ResourceOutput> {
+        // TODO: Implement Kubernetes SDK calls
+        Ok(ResourceOutput::new()
+            .with_id(id))
+    }
+
+    /// Delete a v1 resource
+    async fn delete_v1(
         &self,
         id: &str,
     ) -> Result<()> {

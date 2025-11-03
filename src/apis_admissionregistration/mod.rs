@@ -27,14 +27,14 @@ impl<'a> Apis_admissionregistrationService<'a> {
             "admissionregistration" => {
                 self.plan_admissionregistration(current_state, desired_input).await
             }
-            "mutatingadmissionpolicybinding" => {
-                self.plan_mutatingadmissionpolicybinding(current_state, desired_input).await
+            "v1beta1" => {
+                self.plan_v1beta1(current_state, desired_input).await
             }
             "mutatingadmissionpolicie" => {
                 self.plan_mutatingadmissionpolicie(current_state, desired_input).await
             }
-            "v1beta1" => {
-                self.plan_v1beta1(current_state, desired_input).await
+            "mutatingadmissionpolicybinding" => {
+                self.plan_mutatingadmissionpolicybinding(current_state, desired_input).await
             }
             "mutatingadmissionpolicie" => {
                 self.plan_mutatingadmissionpolicie(current_state, desired_input).await
@@ -45,23 +45,23 @@ impl<'a> Apis_admissionregistrationService<'a> {
             "v1alpha1" => {
                 self.plan_v1alpha1(current_state, desired_input).await
             }
-            "validatingadmissionpolicie" => {
-                self.plan_validatingadmissionpolicie(current_state, desired_input).await
-            }
-            "mutatingwebhookconfiguration" => {
-                self.plan_mutatingwebhookconfiguration(current_state, desired_input).await
-            }
             "validatingadmissionpolicybinding" => {
                 self.plan_validatingadmissionpolicybinding(current_state, desired_input).await
-            }
-            "v1" => {
-                self.plan_v1(current_state, desired_input).await
             }
             "statu" => {
                 self.plan_statu(current_state, desired_input).await
             }
+            "mutatingwebhookconfiguration" => {
+                self.plan_mutatingwebhookconfiguration(current_state, desired_input).await
+            }
+            "v1" => {
+                self.plan_v1(current_state, desired_input).await
+            }
             "validatingwebhookconfiguration" => {
                 self.plan_validatingwebhookconfiguration(current_state, desired_input).await
+            }
+            "validatingadmissionpolicie" => {
+                self.plan_validatingadmissionpolicie(current_state, desired_input).await
             }
             _ => Err(hemmer_core::HemmerError::Provider(format!(
                 "Unknown resource type: {}.{}",
@@ -81,14 +81,14 @@ impl<'a> Apis_admissionregistrationService<'a> {
             "admissionregistration" => {
                 self.create_admissionregistration(input).await
             }
-            "mutatingadmissionpolicybinding" => {
-                self.create_mutatingadmissionpolicybinding(input).await
+            "v1beta1" => {
+                self.create_v1beta1(input).await
             }
             "mutatingadmissionpolicie" => {
                 self.create_mutatingadmissionpolicie(input).await
             }
-            "v1beta1" => {
-                self.create_v1beta1(input).await
+            "mutatingadmissionpolicybinding" => {
+                self.create_mutatingadmissionpolicybinding(input).await
             }
             "mutatingadmissionpolicie" => {
                 self.create_mutatingadmissionpolicie(input).await
@@ -99,23 +99,23 @@ impl<'a> Apis_admissionregistrationService<'a> {
             "v1alpha1" => {
                 self.create_v1alpha1(input).await
             }
-            "validatingadmissionpolicie" => {
-                self.create_validatingadmissionpolicie(input).await
-            }
-            "mutatingwebhookconfiguration" => {
-                self.create_mutatingwebhookconfiguration(input).await
-            }
             "validatingadmissionpolicybinding" => {
                 self.create_validatingadmissionpolicybinding(input).await
-            }
-            "v1" => {
-                self.create_v1(input).await
             }
             "statu" => {
                 self.create_statu(input).await
             }
+            "mutatingwebhookconfiguration" => {
+                self.create_mutatingwebhookconfiguration(input).await
+            }
+            "v1" => {
+                self.create_v1(input).await
+            }
             "validatingwebhookconfiguration" => {
                 self.create_validatingwebhookconfiguration(input).await
+            }
+            "validatingadmissionpolicie" => {
+                self.create_validatingadmissionpolicie(input).await
             }
             _ => Err(hemmer_core::HemmerError::Provider(format!(
                 "Unknown resource type: {}.{}",
@@ -135,14 +135,14 @@ impl<'a> Apis_admissionregistrationService<'a> {
             "admissionregistration" => {
                 self.read_admissionregistration(id).await
             }
-            "mutatingadmissionpolicybinding" => {
-                self.read_mutatingadmissionpolicybinding(id).await
+            "v1beta1" => {
+                self.read_v1beta1(id).await
             }
             "mutatingadmissionpolicie" => {
                 self.read_mutatingadmissionpolicie(id).await
             }
-            "v1beta1" => {
-                self.read_v1beta1(id).await
+            "mutatingadmissionpolicybinding" => {
+                self.read_mutatingadmissionpolicybinding(id).await
             }
             "mutatingadmissionpolicie" => {
                 self.read_mutatingadmissionpolicie(id).await
@@ -153,23 +153,23 @@ impl<'a> Apis_admissionregistrationService<'a> {
             "v1alpha1" => {
                 self.read_v1alpha1(id).await
             }
-            "validatingadmissionpolicie" => {
-                self.read_validatingadmissionpolicie(id).await
-            }
-            "mutatingwebhookconfiguration" => {
-                self.read_mutatingwebhookconfiguration(id).await
-            }
             "validatingadmissionpolicybinding" => {
                 self.read_validatingadmissionpolicybinding(id).await
-            }
-            "v1" => {
-                self.read_v1(id).await
             }
             "statu" => {
                 self.read_statu(id).await
             }
+            "mutatingwebhookconfiguration" => {
+                self.read_mutatingwebhookconfiguration(id).await
+            }
+            "v1" => {
+                self.read_v1(id).await
+            }
             "validatingwebhookconfiguration" => {
                 self.read_validatingwebhookconfiguration(id).await
+            }
+            "validatingadmissionpolicie" => {
+                self.read_validatingadmissionpolicie(id).await
             }
             _ => Err(hemmer_core::HemmerError::Provider(format!(
                 "Unknown resource type: {}.{}",
@@ -190,14 +190,14 @@ impl<'a> Apis_admissionregistrationService<'a> {
             "admissionregistration" => {
                 self.update_admissionregistration(id, input).await
             }
-            "mutatingadmissionpolicybinding" => {
-                self.update_mutatingadmissionpolicybinding(id, input).await
+            "v1beta1" => {
+                self.update_v1beta1(id, input).await
             }
             "mutatingadmissionpolicie" => {
                 self.update_mutatingadmissionpolicie(id, input).await
             }
-            "v1beta1" => {
-                self.update_v1beta1(id, input).await
+            "mutatingadmissionpolicybinding" => {
+                self.update_mutatingadmissionpolicybinding(id, input).await
             }
             "mutatingadmissionpolicie" => {
                 self.update_mutatingadmissionpolicie(id, input).await
@@ -208,23 +208,23 @@ impl<'a> Apis_admissionregistrationService<'a> {
             "v1alpha1" => {
                 self.update_v1alpha1(id, input).await
             }
-            "validatingadmissionpolicie" => {
-                self.update_validatingadmissionpolicie(id, input).await
-            }
-            "mutatingwebhookconfiguration" => {
-                self.update_mutatingwebhookconfiguration(id, input).await
-            }
             "validatingadmissionpolicybinding" => {
                 self.update_validatingadmissionpolicybinding(id, input).await
-            }
-            "v1" => {
-                self.update_v1(id, input).await
             }
             "statu" => {
                 self.update_statu(id, input).await
             }
+            "mutatingwebhookconfiguration" => {
+                self.update_mutatingwebhookconfiguration(id, input).await
+            }
+            "v1" => {
+                self.update_v1(id, input).await
+            }
             "validatingwebhookconfiguration" => {
                 self.update_validatingwebhookconfiguration(id, input).await
+            }
+            "validatingadmissionpolicie" => {
+                self.update_validatingadmissionpolicie(id, input).await
             }
             _ => Err(hemmer_core::HemmerError::Provider(format!(
                 "Unknown resource type: {}.{}",
@@ -244,14 +244,14 @@ impl<'a> Apis_admissionregistrationService<'a> {
             "admissionregistration" => {
                 self.delete_admissionregistration(id).await
             }
-            "mutatingadmissionpolicybinding" => {
-                self.delete_mutatingadmissionpolicybinding(id).await
+            "v1beta1" => {
+                self.delete_v1beta1(id).await
             }
             "mutatingadmissionpolicie" => {
                 self.delete_mutatingadmissionpolicie(id).await
             }
-            "v1beta1" => {
-                self.delete_v1beta1(id).await
+            "mutatingadmissionpolicybinding" => {
+                self.delete_mutatingadmissionpolicybinding(id).await
             }
             "mutatingadmissionpolicie" => {
                 self.delete_mutatingadmissionpolicie(id).await
@@ -262,23 +262,23 @@ impl<'a> Apis_admissionregistrationService<'a> {
             "v1alpha1" => {
                 self.delete_v1alpha1(id).await
             }
-            "validatingadmissionpolicie" => {
-                self.delete_validatingadmissionpolicie(id).await
-            }
-            "mutatingwebhookconfiguration" => {
-                self.delete_mutatingwebhookconfiguration(id).await
-            }
             "validatingadmissionpolicybinding" => {
                 self.delete_validatingadmissionpolicybinding(id).await
-            }
-            "v1" => {
-                self.delete_v1(id).await
             }
             "statu" => {
                 self.delete_statu(id).await
             }
+            "mutatingwebhookconfiguration" => {
+                self.delete_mutatingwebhookconfiguration(id).await
+            }
+            "v1" => {
+                self.delete_v1(id).await
+            }
             "validatingwebhookconfiguration" => {
                 self.delete_validatingwebhookconfiguration(id).await
+            }
+            "validatingadmissionpolicie" => {
+                self.delete_validatingadmissionpolicie(id).await
             }
             _ => Err(hemmer_core::HemmerError::Provider(format!(
                 "Unknown resource type: {}.{}",
@@ -346,128 +346,6 @@ impl<'a> Apis_admissionregistrationService<'a> {
 
     /// Delete a admissionregistration resource
     async fn delete_admissionregistration(
-        &self,
-        id: &str,
-    ) -> Result<()> {
-        // TODO: Implement Kubernetes SDK calls
-        Ok(())
-    }
-
-
-    // ------------------------------------------------------------------------
-    // Mutatingadmissionpolicybinding resource operations
-    // ------------------------------------------------------------------------
-
-    /// Plan changes to a mutatingadmissionpolicybinding resource
-    async fn plan_mutatingadmissionpolicybinding(
-        &self,
-        current_state: Option<&ResourceOutput>,
-        desired_input: &ResourceInput,
-    ) -> Result<ResourcePlan> {
-        // If no current state exists, this is a create operation
-        if current_state.is_none() {
-            return Ok(ResourcePlan::create());
-        }
-
-        // TODO: Implement proper diff logic
-        // For now, return NoOp if resource exists
-        Ok(ResourcePlan::no_op())
-    }
-
-    /// Create a new mutatingadmissionpolicybinding resource
-    async fn create_mutatingadmissionpolicybinding(
-        &self,
-        input: ResourceInput,
-    ) -> Result<ResourceOutput> {
-        // TODO: Implement Kubernetes SDK calls
-        Ok(ResourceOutput::new()
-            .with_id("placeholder-id"))
-    }
-
-    /// Read a mutatingadmissionpolicybinding resource
-    async fn read_mutatingadmissionpolicybinding(
-        &self,
-        id: &str,
-    ) -> Result<ResourceOutput> {
-        // TODO: Implement Kubernetes SDK calls
-        Ok(ResourceOutput::new()
-            .with_id(id))
-    }
-
-    /// Update a mutatingadmissionpolicybinding resource
-    async fn update_mutatingadmissionpolicybinding(
-        &self,
-        id: &str,
-        input: ResourceInput,
-    ) -> Result<ResourceOutput> {
-        // TODO: Implement Kubernetes SDK calls
-        Ok(ResourceOutput::new()
-            .with_id(id))
-    }
-
-    /// Delete a mutatingadmissionpolicybinding resource
-    async fn delete_mutatingadmissionpolicybinding(
-        &self,
-        id: &str,
-    ) -> Result<()> {
-        // TODO: Implement Kubernetes SDK calls
-        Ok(())
-    }
-
-
-    // ------------------------------------------------------------------------
-    // Mutatingadmissionpolicie resource operations
-    // ------------------------------------------------------------------------
-
-    /// Plan changes to a mutatingadmissionpolicie resource
-    async fn plan_mutatingadmissionpolicie(
-        &self,
-        current_state: Option<&ResourceOutput>,
-        desired_input: &ResourceInput,
-    ) -> Result<ResourcePlan> {
-        // If no current state exists, this is a create operation
-        if current_state.is_none() {
-            return Ok(ResourcePlan::create());
-        }
-
-        // TODO: Implement proper diff logic
-        // For now, return NoOp if resource exists
-        Ok(ResourcePlan::no_op())
-    }
-
-    /// Create a new mutatingadmissionpolicie resource
-    async fn create_mutatingadmissionpolicie(
-        &self,
-        input: ResourceInput,
-    ) -> Result<ResourceOutput> {
-        // TODO: Implement Kubernetes SDK calls
-        Ok(ResourceOutput::new()
-            .with_id("placeholder-id"))
-    }
-
-    /// Read a mutatingadmissionpolicie resource
-    async fn read_mutatingadmissionpolicie(
-        &self,
-        id: &str,
-    ) -> Result<ResourceOutput> {
-        // TODO: Implement Kubernetes SDK calls
-        Ok(ResourceOutput::new()
-            .with_id(id))
-    }
-
-    /// Update a mutatingadmissionpolicie resource
-    async fn update_mutatingadmissionpolicie(
-        &self,
-        id: &str,
-        input: ResourceInput,
-    ) -> Result<ResourceOutput> {
-        // TODO: Implement Kubernetes SDK calls
-        Ok(ResourceOutput::new()
-            .with_id(id))
-    }
-
-    /// Delete a mutatingadmissionpolicie resource
-    async fn delete_mutatingadmissionpolicie(
         &self,
         id: &str,
     ) -> Result<()> {
@@ -660,6 +538,128 @@ impl<'a> Apis_admissionregistrationService<'a> {
 
 
     // ------------------------------------------------------------------------
+    // Mutatingadmissionpolicie resource operations
+    // ------------------------------------------------------------------------
+
+    /// Plan changes to a mutatingadmissionpolicie resource
+    async fn plan_mutatingadmissionpolicie(
+        &self,
+        current_state: Option<&ResourceOutput>,
+        desired_input: &ResourceInput,
+    ) -> Result<ResourcePlan> {
+        // If no current state exists, this is a create operation
+        if current_state.is_none() {
+            return Ok(ResourcePlan::create());
+        }
+
+        // TODO: Implement proper diff logic
+        // For now, return NoOp if resource exists
+        Ok(ResourcePlan::no_op())
+    }
+
+    /// Create a new mutatingadmissionpolicie resource
+    async fn create_mutatingadmissionpolicie(
+        &self,
+        input: ResourceInput,
+    ) -> Result<ResourceOutput> {
+        // TODO: Implement Kubernetes SDK calls
+        Ok(ResourceOutput::new()
+            .with_id("placeholder-id"))
+    }
+
+    /// Read a mutatingadmissionpolicie resource
+    async fn read_mutatingadmissionpolicie(
+        &self,
+        id: &str,
+    ) -> Result<ResourceOutput> {
+        // TODO: Implement Kubernetes SDK calls
+        Ok(ResourceOutput::new()
+            .with_id(id))
+    }
+
+    /// Update a mutatingadmissionpolicie resource
+    async fn update_mutatingadmissionpolicie(
+        &self,
+        id: &str,
+        input: ResourceInput,
+    ) -> Result<ResourceOutput> {
+        // TODO: Implement Kubernetes SDK calls
+        Ok(ResourceOutput::new()
+            .with_id(id))
+    }
+
+    /// Delete a mutatingadmissionpolicie resource
+    async fn delete_mutatingadmissionpolicie(
+        &self,
+        id: &str,
+    ) -> Result<()> {
+        // TODO: Implement Kubernetes SDK calls
+        Ok(())
+    }
+
+
+    // ------------------------------------------------------------------------
+    // Mutatingadmissionpolicybinding resource operations
+    // ------------------------------------------------------------------------
+
+    /// Plan changes to a mutatingadmissionpolicybinding resource
+    async fn plan_mutatingadmissionpolicybinding(
+        &self,
+        current_state: Option<&ResourceOutput>,
+        desired_input: &ResourceInput,
+    ) -> Result<ResourcePlan> {
+        // If no current state exists, this is a create operation
+        if current_state.is_none() {
+            return Ok(ResourcePlan::create());
+        }
+
+        // TODO: Implement proper diff logic
+        // For now, return NoOp if resource exists
+        Ok(ResourcePlan::no_op())
+    }
+
+    /// Create a new mutatingadmissionpolicybinding resource
+    async fn create_mutatingadmissionpolicybinding(
+        &self,
+        input: ResourceInput,
+    ) -> Result<ResourceOutput> {
+        // TODO: Implement Kubernetes SDK calls
+        Ok(ResourceOutput::new()
+            .with_id("placeholder-id"))
+    }
+
+    /// Read a mutatingadmissionpolicybinding resource
+    async fn read_mutatingadmissionpolicybinding(
+        &self,
+        id: &str,
+    ) -> Result<ResourceOutput> {
+        // TODO: Implement Kubernetes SDK calls
+        Ok(ResourceOutput::new()
+            .with_id(id))
+    }
+
+    /// Update a mutatingadmissionpolicybinding resource
+    async fn update_mutatingadmissionpolicybinding(
+        &self,
+        id: &str,
+        input: ResourceInput,
+    ) -> Result<ResourceOutput> {
+        // TODO: Implement Kubernetes SDK calls
+        Ok(ResourceOutput::new()
+            .with_id(id))
+    }
+
+    /// Delete a mutatingadmissionpolicybinding resource
+    async fn delete_mutatingadmissionpolicybinding(
+        &self,
+        id: &str,
+    ) -> Result<()> {
+        // TODO: Implement Kubernetes SDK calls
+        Ok(())
+    }
+
+
+    // ------------------------------------------------------------------------
     // V1alpha1 resource operations
     // ------------------------------------------------------------------------
 
@@ -712,128 +712,6 @@ impl<'a> Apis_admissionregistrationService<'a> {
 
     /// Delete a v1alpha1 resource
     async fn delete_v1alpha1(
-        &self,
-        id: &str,
-    ) -> Result<()> {
-        // TODO: Implement Kubernetes SDK calls
-        Ok(())
-    }
-
-
-    // ------------------------------------------------------------------------
-    // Validatingadmissionpolicie resource operations
-    // ------------------------------------------------------------------------
-
-    /// Plan changes to a validatingadmissionpolicie resource
-    async fn plan_validatingadmissionpolicie(
-        &self,
-        current_state: Option<&ResourceOutput>,
-        desired_input: &ResourceInput,
-    ) -> Result<ResourcePlan> {
-        // If no current state exists, this is a create operation
-        if current_state.is_none() {
-            return Ok(ResourcePlan::create());
-        }
-
-        // TODO: Implement proper diff logic
-        // For now, return NoOp if resource exists
-        Ok(ResourcePlan::no_op())
-    }
-
-    /// Create a new validatingadmissionpolicie resource
-    async fn create_validatingadmissionpolicie(
-        &self,
-        input: ResourceInput,
-    ) -> Result<ResourceOutput> {
-        // TODO: Implement Kubernetes SDK calls
-        Ok(ResourceOutput::new()
-            .with_id("placeholder-id"))
-    }
-
-    /// Read a validatingadmissionpolicie resource
-    async fn read_validatingadmissionpolicie(
-        &self,
-        id: &str,
-    ) -> Result<ResourceOutput> {
-        // TODO: Implement Kubernetes SDK calls
-        Ok(ResourceOutput::new()
-            .with_id(id))
-    }
-
-    /// Update a validatingadmissionpolicie resource
-    async fn update_validatingadmissionpolicie(
-        &self,
-        id: &str,
-        input: ResourceInput,
-    ) -> Result<ResourceOutput> {
-        // TODO: Implement Kubernetes SDK calls
-        Ok(ResourceOutput::new()
-            .with_id(id))
-    }
-
-    /// Delete a validatingadmissionpolicie resource
-    async fn delete_validatingadmissionpolicie(
-        &self,
-        id: &str,
-    ) -> Result<()> {
-        // TODO: Implement Kubernetes SDK calls
-        Ok(())
-    }
-
-
-    // ------------------------------------------------------------------------
-    // Mutatingwebhookconfiguration resource operations
-    // ------------------------------------------------------------------------
-
-    /// Plan changes to a mutatingwebhookconfiguration resource
-    async fn plan_mutatingwebhookconfiguration(
-        &self,
-        current_state: Option<&ResourceOutput>,
-        desired_input: &ResourceInput,
-    ) -> Result<ResourcePlan> {
-        // If no current state exists, this is a create operation
-        if current_state.is_none() {
-            return Ok(ResourcePlan::create());
-        }
-
-        // TODO: Implement proper diff logic
-        // For now, return NoOp if resource exists
-        Ok(ResourcePlan::no_op())
-    }
-
-    /// Create a new mutatingwebhookconfiguration resource
-    async fn create_mutatingwebhookconfiguration(
-        &self,
-        input: ResourceInput,
-    ) -> Result<ResourceOutput> {
-        // TODO: Implement Kubernetes SDK calls
-        Ok(ResourceOutput::new()
-            .with_id("placeholder-id"))
-    }
-
-    /// Read a mutatingwebhookconfiguration resource
-    async fn read_mutatingwebhookconfiguration(
-        &self,
-        id: &str,
-    ) -> Result<ResourceOutput> {
-        // TODO: Implement Kubernetes SDK calls
-        Ok(ResourceOutput::new()
-            .with_id(id))
-    }
-
-    /// Update a mutatingwebhookconfiguration resource
-    async fn update_mutatingwebhookconfiguration(
-        &self,
-        id: &str,
-        input: ResourceInput,
-    ) -> Result<ResourceOutput> {
-        // TODO: Implement Kubernetes SDK calls
-        Ok(ResourceOutput::new()
-            .with_id(id))
-    }
-
-    /// Delete a mutatingwebhookconfiguration resource
-    async fn delete_mutatingwebhookconfiguration(
         &self,
         id: &str,
     ) -> Result<()> {
@@ -904,67 +782,6 @@ impl<'a> Apis_admissionregistrationService<'a> {
 
 
     // ------------------------------------------------------------------------
-    // V1 resource operations
-    // ------------------------------------------------------------------------
-
-    /// Plan changes to a v1 resource
-    async fn plan_v1(
-        &self,
-        current_state: Option<&ResourceOutput>,
-        desired_input: &ResourceInput,
-    ) -> Result<ResourcePlan> {
-        // If no current state exists, this is a create operation
-        if current_state.is_none() {
-            return Ok(ResourcePlan::create());
-        }
-
-        // TODO: Implement proper diff logic
-        // For now, return NoOp if resource exists
-        Ok(ResourcePlan::no_op())
-    }
-
-    /// Create a new v1 resource
-    async fn create_v1(
-        &self,
-        input: ResourceInput,
-    ) -> Result<ResourceOutput> {
-        // TODO: Implement Kubernetes SDK calls
-        Ok(ResourceOutput::new()
-            .with_id("placeholder-id"))
-    }
-
-    /// Read a v1 resource
-    async fn read_v1(
-        &self,
-        id: &str,
-    ) -> Result<ResourceOutput> {
-        // TODO: Implement Kubernetes SDK calls
-        Ok(ResourceOutput::new()
-            .with_id(id))
-    }
-
-    /// Update a v1 resource
-    async fn update_v1(
-        &self,
-        id: &str,
-        input: ResourceInput,
-    ) -> Result<ResourceOutput> {
-        // TODO: Implement Kubernetes SDK calls
-        Ok(ResourceOutput::new()
-            .with_id(id))
-    }
-
-    /// Delete a v1 resource
-    async fn delete_v1(
-        &self,
-        id: &str,
-    ) -> Result<()> {
-        // TODO: Implement Kubernetes SDK calls
-        Ok(())
-    }
-
-
-    // ------------------------------------------------------------------------
     // Statu resource operations
     // ------------------------------------------------------------------------
 
@@ -1026,6 +843,128 @@ impl<'a> Apis_admissionregistrationService<'a> {
 
 
     // ------------------------------------------------------------------------
+    // Mutatingwebhookconfiguration resource operations
+    // ------------------------------------------------------------------------
+
+    /// Plan changes to a mutatingwebhookconfiguration resource
+    async fn plan_mutatingwebhookconfiguration(
+        &self,
+        current_state: Option<&ResourceOutput>,
+        desired_input: &ResourceInput,
+    ) -> Result<ResourcePlan> {
+        // If no current state exists, this is a create operation
+        if current_state.is_none() {
+            return Ok(ResourcePlan::create());
+        }
+
+        // TODO: Implement proper diff logic
+        // For now, return NoOp if resource exists
+        Ok(ResourcePlan::no_op())
+    }
+
+    /// Create a new mutatingwebhookconfiguration resource
+    async fn create_mutatingwebhookconfiguration(
+        &self,
+        input: ResourceInput,
+    ) -> Result<ResourceOutput> {
+        // TODO: Implement Kubernetes SDK calls
+        Ok(ResourceOutput::new()
+            .with_id("placeholder-id"))
+    }
+
+    /// Read a mutatingwebhookconfiguration resource
+    async fn read_mutatingwebhookconfiguration(
+        &self,
+        id: &str,
+    ) -> Result<ResourceOutput> {
+        // TODO: Implement Kubernetes SDK calls
+        Ok(ResourceOutput::new()
+            .with_id(id))
+    }
+
+    /// Update a mutatingwebhookconfiguration resource
+    async fn update_mutatingwebhookconfiguration(
+        &self,
+        id: &str,
+        input: ResourceInput,
+    ) -> Result<ResourceOutput> {
+        // TODO: Implement Kubernetes SDK calls
+        Ok(ResourceOutput::new()
+            .with_id(id))
+    }
+
+    /// Delete a mutatingwebhookconfiguration resource
+    async fn delete_mutatingwebhookconfiguration(
+        &self,
+        id: &str,
+    ) -> Result<()> {
+        // TODO: Implement Kubernetes SDK calls
+        Ok(())
+    }
+
+
+    // ------------------------------------------------------------------------
+    // V1 resource operations
+    // ------------------------------------------------------------------------
+
+    /// Plan changes to a v1 resource
+    async fn plan_v1(
+        &self,
+        current_state: Option<&ResourceOutput>,
+        desired_input: &ResourceInput,
+    ) -> Result<ResourcePlan> {
+        // If no current state exists, this is a create operation
+        if current_state.is_none() {
+            return Ok(ResourcePlan::create());
+        }
+
+        // TODO: Implement proper diff logic
+        // For now, return NoOp if resource exists
+        Ok(ResourcePlan::no_op())
+    }
+
+    /// Create a new v1 resource
+    async fn create_v1(
+        &self,
+        input: ResourceInput,
+    ) -> Result<ResourceOutput> {
+        // TODO: Implement Kubernetes SDK calls
+        Ok(ResourceOutput::new()
+            .with_id("placeholder-id"))
+    }
+
+    /// Read a v1 resource
+    async fn read_v1(
+        &self,
+        id: &str,
+    ) -> Result<ResourceOutput> {
+        // TODO: Implement Kubernetes SDK calls
+        Ok(ResourceOutput::new()
+            .with_id(id))
+    }
+
+    /// Update a v1 resource
+    async fn update_v1(
+        &self,
+        id: &str,
+        input: ResourceInput,
+    ) -> Result<ResourceOutput> {
+        // TODO: Implement Kubernetes SDK calls
+        Ok(ResourceOutput::new()
+            .with_id(id))
+    }
+
+    /// Delete a v1 resource
+    async fn delete_v1(
+        &self,
+        id: &str,
+    ) -> Result<()> {
+        // TODO: Implement Kubernetes SDK calls
+        Ok(())
+    }
+
+
+    // ------------------------------------------------------------------------
     // Validatingwebhookconfiguration resource operations
     // ------------------------------------------------------------------------
 
@@ -1078,6 +1017,67 @@ impl<'a> Apis_admissionregistrationService<'a> {
 
     /// Delete a validatingwebhookconfiguration resource
     async fn delete_validatingwebhookconfiguration(
+        &self,
+        id: &str,
+    ) -> Result<()> {
+        // TODO: Implement Kubernetes SDK calls
+        Ok(())
+    }
+
+
+    // ------------------------------------------------------------------------
+    // Validatingadmissionpolicie resource operations
+    // ------------------------------------------------------------------------
+
+    /// Plan changes to a validatingadmissionpolicie resource
+    async fn plan_validatingadmissionpolicie(
+        &self,
+        current_state: Option<&ResourceOutput>,
+        desired_input: &ResourceInput,
+    ) -> Result<ResourcePlan> {
+        // If no current state exists, this is a create operation
+        if current_state.is_none() {
+            return Ok(ResourcePlan::create());
+        }
+
+        // TODO: Implement proper diff logic
+        // For now, return NoOp if resource exists
+        Ok(ResourcePlan::no_op())
+    }
+
+    /// Create a new validatingadmissionpolicie resource
+    async fn create_validatingadmissionpolicie(
+        &self,
+        input: ResourceInput,
+    ) -> Result<ResourceOutput> {
+        // TODO: Implement Kubernetes SDK calls
+        Ok(ResourceOutput::new()
+            .with_id("placeholder-id"))
+    }
+
+    /// Read a validatingadmissionpolicie resource
+    async fn read_validatingadmissionpolicie(
+        &self,
+        id: &str,
+    ) -> Result<ResourceOutput> {
+        // TODO: Implement Kubernetes SDK calls
+        Ok(ResourceOutput::new()
+            .with_id(id))
+    }
+
+    /// Update a validatingadmissionpolicie resource
+    async fn update_validatingadmissionpolicie(
+        &self,
+        id: &str,
+        input: ResourceInput,
+    ) -> Result<ResourceOutput> {
+        // TODO: Implement Kubernetes SDK calls
+        Ok(ResourceOutput::new()
+            .with_id(id))
+    }
+
+    /// Delete a validatingadmissionpolicie resource
+    async fn delete_validatingadmissionpolicie(
         &self,
         id: &str,
     ) -> Result<()> {

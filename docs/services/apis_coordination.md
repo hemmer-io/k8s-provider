@@ -11,8 +11,8 @@
 The apis_coordination service provides access to 7 resource types:
 
 - [Coordination](#coordination) [R]
-- [Leasecandidate](#leasecandidate) [CRUD]
 - [V1alpha2](#v1alpha2) [R]
+- [Leasecandidate](#leasecandidate) [CRUD]
 - [Lease](#lease) [CRUD]
 - [V1](#v1) [R]
 - [V1beta1](#v1beta1) [R]
@@ -54,6 +54,37 @@ coordination_id = coordination.id
 ---
 
 
+### V1alpha2
+
+get available resources
+
+**Operations**: ✅ Read
+
+#### Fields
+
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+
+
+
+#### Usage Example
+
+```kcl
+# main.k
+import kubernetes
+
+# Initialize provider
+provider = kubernetes.KubernetesProvider {
+    kubeconfig = "~/.kube/config"
+}
+
+# Access v1alpha2 outputs
+v1alpha2_id = v1alpha2.id
+```
+
+---
+
+
 ### Leasecandidate
 
 create a LeaseCandidate
@@ -87,37 +118,6 @@ leasecandidate = provider.apis_coordination.Leasecandidate {
 
 # Access leasecandidate outputs
 leasecandidate_id = leasecandidate.id
-```
-
----
-
-
-### V1alpha2
-
-get available resources
-
-**Operations**: ✅ Read
-
-#### Fields
-
-| Field | Type | Required | Description |
-|-------|------|----------|-------------|
-
-
-
-#### Usage Example
-
-```kcl
-# main.k
-import kubernetes
-
-# Initialize provider
-provider = kubernetes.KubernetesProvider {
-    kubeconfig = "~/.kube/config"
-}
-
-# Access v1alpha2 outputs
-v1alpha2_id = v1alpha2.id
 ```
 
 ---
