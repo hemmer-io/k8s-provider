@@ -7,11 +7,11 @@ use std::collections::HashMap;
 
 /// Devicetaintrule resource handler
 pub struct Devicetaintrule<'a> {
-    provider: &'a crate::K8sProvider,
+    provider: &'a crate::KubernetesProvider,
 }
 
 impl<'a> Devicetaintrule<'a> {
-    pub(crate) fn new(provider: &'a crate::K8sProvider) -> Self {
+    pub(crate) fn new(provider: &'a crate::KubernetesProvider) -> Self {
         Self { provider }
     }
 

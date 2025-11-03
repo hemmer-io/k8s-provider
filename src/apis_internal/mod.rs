@@ -1,4 +1,4 @@
-//! Apis_internal service for K8s provider
+//! Apis_internal service for Kubernetes provider
 //!
 //! This module handles all apis_internal resources and their CRUD operations.
 
@@ -7,12 +7,12 @@ use hemmer_provider::{ResourceInput, ResourceOutput, ResourcePlan};
 
 /// Apis_internal service handler
 pub struct Apis_internalService<'a> {
-    provider: &'a crate::K8sProvider,
+    provider: &'a crate::KubernetesProvider,
 }
 
 impl<'a> Apis_internalService<'a> {
     /// Create a new service handler
-    pub fn new(provider: &'a crate::K8sProvider) -> Self {
+    pub fn new(provider: &'a crate::KubernetesProvider) -> Self {
         Self { provider }
     }
 
@@ -24,13 +24,22 @@ impl<'a> Apis_internalService<'a> {
         desired_input: &ResourceInput,
     ) -> Result<ResourcePlan> {
         match resource_name {
-            "internal" => self.plan_internal(current_state, desired_input).await,
-            "statu" => self.plan_statu(current_state, desired_input).await,
-            "v1alpha1" => self.plan_v1alpha1(current_state, desired_input).await,
-            "storageversion" => self.plan_storageversion(current_state, desired_input).await,
+            "internal" => {
+                self.plan_internal(current_state, desired_input).await
+            }
+            "statu" => {
+                self.plan_statu(current_state, desired_input).await
+            }
+            "v1alpha1" => {
+                self.plan_v1alpha1(current_state, desired_input).await
+            }
+            "storageversion" => {
+                self.plan_storageversion(current_state, desired_input).await
+            }
             _ => Err(hemmer_core::HemmerError::Provider(format!(
                 "Unknown resource type: {}.{}",
-                "apis_internal", resource_name
+                "apis_internal",
+                resource_name
             ))),
         }
     }
@@ -42,27 +51,49 @@ impl<'a> Apis_internalService<'a> {
         input: ResourceInput,
     ) -> Result<ResourceOutput> {
         match resource_name {
-            "internal" => self.create_internal(input).await,
-            "statu" => self.create_statu(input).await,
-            "v1alpha1" => self.create_v1alpha1(input).await,
-            "storageversion" => self.create_storageversion(input).await,
+            "internal" => {
+                self.create_internal(input).await
+            }
+            "statu" => {
+                self.create_statu(input).await
+            }
+            "v1alpha1" => {
+                self.create_v1alpha1(input).await
+            }
+            "storageversion" => {
+                self.create_storageversion(input).await
+            }
             _ => Err(hemmer_core::HemmerError::Provider(format!(
                 "Unknown resource type: {}.{}",
-                "apis_internal", resource_name
+                "apis_internal",
+                resource_name
             ))),
         }
     }
 
     /// Read resource state
-    pub async fn read_resource(&self, resource_name: &str, id: &str) -> Result<ResourceOutput> {
+    pub async fn read_resource(
+        &self,
+        resource_name: &str,
+        id: &str,
+    ) -> Result<ResourceOutput> {
         match resource_name {
-            "internal" => self.read_internal(id).await,
-            "statu" => self.read_statu(id).await,
-            "v1alpha1" => self.read_v1alpha1(id).await,
-            "storageversion" => self.read_storageversion(id).await,
+            "internal" => {
+                self.read_internal(id).await
+            }
+            "statu" => {
+                self.read_statu(id).await
+            }
+            "v1alpha1" => {
+                self.read_v1alpha1(id).await
+            }
+            "storageversion" => {
+                self.read_storageversion(id).await
+            }
             _ => Err(hemmer_core::HemmerError::Provider(format!(
                 "Unknown resource type: {}.{}",
-                "apis_internal", resource_name
+                "apis_internal",
+                resource_name
             ))),
         }
     }
@@ -75,27 +106,49 @@ impl<'a> Apis_internalService<'a> {
         input: ResourceInput,
     ) -> Result<ResourceOutput> {
         match resource_name {
-            "internal" => self.update_internal(id, input).await,
-            "statu" => self.update_statu(id, input).await,
-            "v1alpha1" => self.update_v1alpha1(id, input).await,
-            "storageversion" => self.update_storageversion(id, input).await,
+            "internal" => {
+                self.update_internal(id, input).await
+            }
+            "statu" => {
+                self.update_statu(id, input).await
+            }
+            "v1alpha1" => {
+                self.update_v1alpha1(id, input).await
+            }
+            "storageversion" => {
+                self.update_storageversion(id, input).await
+            }
             _ => Err(hemmer_core::HemmerError::Provider(format!(
                 "Unknown resource type: {}.{}",
-                "apis_internal", resource_name
+                "apis_internal",
+                resource_name
             ))),
         }
     }
 
     /// Delete a resource
-    pub async fn delete_resource(&self, resource_name: &str, id: &str) -> Result<()> {
+    pub async fn delete_resource(
+        &self,
+        resource_name: &str,
+        id: &str,
+    ) -> Result<()> {
         match resource_name {
-            "internal" => self.delete_internal(id).await,
-            "statu" => self.delete_statu(id).await,
-            "v1alpha1" => self.delete_v1alpha1(id).await,
-            "storageversion" => self.delete_storageversion(id).await,
+            "internal" => {
+                self.delete_internal(id).await
+            }
+            "statu" => {
+                self.delete_statu(id).await
+            }
+            "v1alpha1" => {
+                self.delete_v1alpha1(id).await
+            }
+            "storageversion" => {
+                self.delete_storageversion(id).await
+            }
             _ => Err(hemmer_core::HemmerError::Provider(format!(
                 "Unknown resource type: {}.{}",
-                "apis_internal", resource_name
+                "apis_internal",
+                resource_name
             ))),
         }
     }
@@ -103,6 +156,7 @@ impl<'a> Apis_internalService<'a> {
     // ========================================================================
     // Resource-specific CRUD implementations
     // ========================================================================
+
 
     // ------------------------------------------------------------------------
     // Internal resource operations
@@ -125,28 +179,45 @@ impl<'a> Apis_internalService<'a> {
     }
 
     /// Create a new internal resource
-    async fn create_internal(&self, input: ResourceInput) -> Result<ResourceOutput> {
+    async fn create_internal(
+        &self,
+        input: ResourceInput,
+    ) -> Result<ResourceOutput> {
         // TODO: Implement Kubernetes SDK calls
-        Ok(ResourceOutput::new().with_id("placeholder-id"))
+        Ok(ResourceOutput::new()
+            .with_id("placeholder-id"))
     }
 
     /// Read a internal resource
-    async fn read_internal(&self, id: &str) -> Result<ResourceOutput> {
+    async fn read_internal(
+        &self,
+        id: &str,
+    ) -> Result<ResourceOutput> {
         // TODO: Implement Kubernetes SDK calls
-        Ok(ResourceOutput::new().with_id(id))
+        Ok(ResourceOutput::new()
+            .with_id(id))
     }
 
     /// Update a internal resource
-    async fn update_internal(&self, id: &str, input: ResourceInput) -> Result<ResourceOutput> {
+    async fn update_internal(
+        &self,
+        id: &str,
+        input: ResourceInput,
+    ) -> Result<ResourceOutput> {
         // TODO: Implement Kubernetes SDK calls
-        Ok(ResourceOutput::new().with_id(id))
+        Ok(ResourceOutput::new()
+            .with_id(id))
     }
 
     /// Delete a internal resource
-    async fn delete_internal(&self, id: &str) -> Result<()> {
+    async fn delete_internal(
+        &self,
+        id: &str,
+    ) -> Result<()> {
         // TODO: Implement Kubernetes SDK calls
         Ok(())
     }
+
 
     // ------------------------------------------------------------------------
     // Statu resource operations
@@ -169,28 +240,45 @@ impl<'a> Apis_internalService<'a> {
     }
 
     /// Create a new statu resource
-    async fn create_statu(&self, input: ResourceInput) -> Result<ResourceOutput> {
+    async fn create_statu(
+        &self,
+        input: ResourceInput,
+    ) -> Result<ResourceOutput> {
         // TODO: Implement Kubernetes SDK calls
-        Ok(ResourceOutput::new().with_id("placeholder-id"))
+        Ok(ResourceOutput::new()
+            .with_id("placeholder-id"))
     }
 
     /// Read a statu resource
-    async fn read_statu(&self, id: &str) -> Result<ResourceOutput> {
+    async fn read_statu(
+        &self,
+        id: &str,
+    ) -> Result<ResourceOutput> {
         // TODO: Implement Kubernetes SDK calls
-        Ok(ResourceOutput::new().with_id(id))
+        Ok(ResourceOutput::new()
+            .with_id(id))
     }
 
     /// Update a statu resource
-    async fn update_statu(&self, id: &str, input: ResourceInput) -> Result<ResourceOutput> {
+    async fn update_statu(
+        &self,
+        id: &str,
+        input: ResourceInput,
+    ) -> Result<ResourceOutput> {
         // TODO: Implement Kubernetes SDK calls
-        Ok(ResourceOutput::new().with_id(id))
+        Ok(ResourceOutput::new()
+            .with_id(id))
     }
 
     /// Delete a statu resource
-    async fn delete_statu(&self, id: &str) -> Result<()> {
+    async fn delete_statu(
+        &self,
+        id: &str,
+    ) -> Result<()> {
         // TODO: Implement Kubernetes SDK calls
         Ok(())
     }
+
 
     // ------------------------------------------------------------------------
     // V1alpha1 resource operations
@@ -213,28 +301,45 @@ impl<'a> Apis_internalService<'a> {
     }
 
     /// Create a new v1alpha1 resource
-    async fn create_v1alpha1(&self, input: ResourceInput) -> Result<ResourceOutput> {
+    async fn create_v1alpha1(
+        &self,
+        input: ResourceInput,
+    ) -> Result<ResourceOutput> {
         // TODO: Implement Kubernetes SDK calls
-        Ok(ResourceOutput::new().with_id("placeholder-id"))
+        Ok(ResourceOutput::new()
+            .with_id("placeholder-id"))
     }
 
     /// Read a v1alpha1 resource
-    async fn read_v1alpha1(&self, id: &str) -> Result<ResourceOutput> {
+    async fn read_v1alpha1(
+        &self,
+        id: &str,
+    ) -> Result<ResourceOutput> {
         // TODO: Implement Kubernetes SDK calls
-        Ok(ResourceOutput::new().with_id(id))
+        Ok(ResourceOutput::new()
+            .with_id(id))
     }
 
     /// Update a v1alpha1 resource
-    async fn update_v1alpha1(&self, id: &str, input: ResourceInput) -> Result<ResourceOutput> {
+    async fn update_v1alpha1(
+        &self,
+        id: &str,
+        input: ResourceInput,
+    ) -> Result<ResourceOutput> {
         // TODO: Implement Kubernetes SDK calls
-        Ok(ResourceOutput::new().with_id(id))
+        Ok(ResourceOutput::new()
+            .with_id(id))
     }
 
     /// Delete a v1alpha1 resource
-    async fn delete_v1alpha1(&self, id: &str) -> Result<()> {
+    async fn delete_v1alpha1(
+        &self,
+        id: &str,
+    ) -> Result<()> {
         // TODO: Implement Kubernetes SDK calls
         Ok(())
     }
+
 
     // ------------------------------------------------------------------------
     // Storageversion resource operations
@@ -257,15 +362,23 @@ impl<'a> Apis_internalService<'a> {
     }
 
     /// Create a new storageversion resource
-    async fn create_storageversion(&self, input: ResourceInput) -> Result<ResourceOutput> {
+    async fn create_storageversion(
+        &self,
+        input: ResourceInput,
+    ) -> Result<ResourceOutput> {
         // TODO: Implement Kubernetes SDK calls
-        Ok(ResourceOutput::new().with_id("placeholder-id"))
+        Ok(ResourceOutput::new()
+            .with_id("placeholder-id"))
     }
 
     /// Read a storageversion resource
-    async fn read_storageversion(&self, id: &str) -> Result<ResourceOutput> {
+    async fn read_storageversion(
+        &self,
+        id: &str,
+    ) -> Result<ResourceOutput> {
         // TODO: Implement Kubernetes SDK calls
-        Ok(ResourceOutput::new().with_id(id))
+        Ok(ResourceOutput::new()
+            .with_id(id))
     }
 
     /// Update a storageversion resource
@@ -275,12 +388,18 @@ impl<'a> Apis_internalService<'a> {
         input: ResourceInput,
     ) -> Result<ResourceOutput> {
         // TODO: Implement Kubernetes SDK calls
-        Ok(ResourceOutput::new().with_id(id))
+        Ok(ResourceOutput::new()
+            .with_id(id))
     }
 
     /// Delete a storageversion resource
-    async fn delete_storageversion(&self, id: &str) -> Result<()> {
+    async fn delete_storageversion(
+        &self,
+        id: &str,
+    ) -> Result<()> {
         // TODO: Implement Kubernetes SDK calls
         Ok(())
     }
+
+
 }

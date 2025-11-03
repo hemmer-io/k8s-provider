@@ -7,11 +7,11 @@ use std::collections::HashMap;
 
 /// Volumeattachment resource handler
 pub struct Volumeattachment<'a> {
-    provider: &'a crate::K8sProvider,
+    provider: &'a crate::KubernetesProvider,
 }
 
 impl<'a> Volumeattachment<'a> {
-    pub(crate) fn new(provider: &'a crate::K8sProvider) -> Self {
+    pub(crate) fn new(provider: &'a crate::KubernetesProvider) -> Self {
         Self { provider }
     }
 

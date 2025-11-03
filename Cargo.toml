@@ -1,5 +1,5 @@
 [package]
-name = "hemmer-k8s-provider"
+name = "hemmer-kubernetes-provider"
 version = "0.1.0"
 edition = "2021"
 

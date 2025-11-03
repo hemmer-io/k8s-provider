@@ -1,17 +1,17 @@
 //! Proxy resource
 //!
-//! connect POST requests to proxy of Node
+//! connect POST requests to proxy of Service
 
 use crate::{ProviderError, Result};
 use std::collections::HashMap;
 
 /// Proxy resource handler
 pub struct Proxy<'a> {
-    provider: &'a crate::K8sProvider,
+    provider: &'a crate::KubernetesProvider,
 }
 
 impl<'a> Proxy<'a> {
-    pub(crate) fn new(provider: &'a crate::K8sProvider) -> Self {
+    pub(crate) fn new(provider: &'a crate::KubernetesProvider) -> Self {
         Self { provider }
     }
 
